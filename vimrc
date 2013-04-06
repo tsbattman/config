@@ -11,7 +11,6 @@ colorscheme elflord
 set nocompatible        " Use Vim defaults (much better!)
 set bs=2                " Allow backspacing over everything in insert mode
 
-set cindent
 set showmatch
 set shiftwidth=2
 set tabstop=2
