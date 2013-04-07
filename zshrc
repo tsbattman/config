@@ -14,12 +14,7 @@ RPS1="%{${fg[blue]}%}%2~%{${fg[white]}%}"
 export EDITOR="vim"
 export OOO_FORCE_DESKTOP="kde"
 
-export TEVSERVER="97.74.243.23"
-export TEVDIR="$HOME/files/work/health/dev/tevcom"
-
 alias ls='ls --color'
-alias sbcl='rlwrap sbcl --dynamic-space-size 1024'
-alias lisp='sbcl --dynamic-space-size 1024'
 
 setopt NO_BEEP
 setopt AUTO_CD
