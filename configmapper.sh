@@ -6,5 +6,5 @@ for f in `ls`; do
   if [ "$f" = "configmapper.sh" ] || [ -e $HOME/.$f ]; then
     continue
   fi
-  echo ln -sfT  $f $CONFIG_DIR/.$f
+  ln -sfT  $f $CONFIG_DIR/.$f
 done
