@@ -8,7 +8,7 @@ bindkey -e
 
 autoload -U compinit; compinit
 
-PROMPT="%# "
+PROMPT="%n@%m %# "
 RPS1="%{${fg[blue]}%}%2~%{${fg[white]}%}"
 
 export EDITOR="vim"
