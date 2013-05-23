@@ -4,7 +4,7 @@ set hlsearch
 
 filetype plugin indent on
 
-colorscheme elflord
+colorscheme koehler
 
 "let loaded_matchparen=1 " Do not show matching parens
 
