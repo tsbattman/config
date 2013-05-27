@@ -12,7 +12,6 @@ PROMPT="%n@%m %# "
 RPS1="%{${fg[blue]}%}%2~%{${fg[white]}%}"
 
 export EDITOR="vim"
-export OOO_FORCE_DESKTOP="kde"
 
 alias ls='ls --color'
 
