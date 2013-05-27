@@ -1,4 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_cnt =6
 let g:netrw_dirhist_1='/home/thayne/.kde4/Autostart'
 let g:netrw_dirhist_2='/home/thayne/.cabal/packages/hackage.haskell.org/bytestring-csv/0.1.2/bytestring-csv-0.1.2/Text/CSV/ByteString'
+let g:netrw_dirhist_3='/home/thayne/config'
+let g:netrw_dirhist_4='/home/thayne/ansible/network/openvpn'
+let g:netrw_dirhist_5='/home/thayne/ansible/network/tinc'
+let g:netrw_dirhist_6='/home/thayne/downloads/openvpn/plugin'
