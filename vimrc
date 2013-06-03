@@ -1,5 +1,6 @@
 
 syntax on
+syntax sync fromstart
 set hlsearch
 
 filetype plugin indent on
