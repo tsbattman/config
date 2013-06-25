@@ -1,4 +1,3 @@
-
 syntax on
 syntax sync fromstart
 set hlsearch
@@ -28,6 +27,8 @@ set nobackup            " Do not keep a backup file
 set viminfo='20,<500,"500   " read/write a .viminfo file -- limit regs to 500 lines
 set history=50          " keep 50 lines of command history
 set ruler               " Show the cursor position all the time
+
+set guioptions=ri
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
