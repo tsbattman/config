@@ -1,10 +1,5 @@
 #! /bin/zsh
 
-if [ -z "$RCD" ]; then RCD=1;
-else exit; fi
-
-export PATH=$HOME/bin:$HOME/.cabal/bin:$PATH
-export LESS="-FRSX --tabs=2"
 export PAGER=less
 
 bindkey -v
