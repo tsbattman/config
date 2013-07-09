@@ -1,9 +1,8 @@
 #! /usr/bin/env
 
-export LESS="-FRSX --tabs=2"
 export PAGER=less
 
-bindkey -e
+bindkey -v
 
 autoload -U compinit; compinit
 
