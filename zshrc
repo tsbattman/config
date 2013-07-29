@@ -11,8 +11,6 @@ RPS1="%{${fg[blue]}%}%2~%{${fg[white]}%}"
 
 export EDITOR="vim"
 alias ls='ls --color'
-alias rxvt='rxvt -fg white -bg black'
-
 export LESS="-FRSX --tabs=2"
 [ -x /usr/bin/lesspipe ] && eval $(lesspipe)
 

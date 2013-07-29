@@ -1,0 +1,3 @@
+#! /bin/sh
+
+find . -type f \! \( -path "*jquery*" -o -path "*codemirror*" -o -path "*pagedown*" \) \( -name "*.py" -o -name "*.js" -o -name "*.html" \) | xargs grep "$@"
