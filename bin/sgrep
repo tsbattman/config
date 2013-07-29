@@ -1,3 +1,11 @@
-#! /bin/sh
+#! /usr/bin/zsh
 
-find . -type f \! \( -path "*jquery*" -o -path "*codemirror*" -o -path "*pagedown*" \) \( -name "*.py" -o -name "*.js" -o -name "*.html" \) | xargs grep "$@"
+setopt extendedglob
+
+autoload -U zargs
+
+zargs -- ((*~*jquery*~*codemirror*~*pagedown*)/)#*.py  ((*~*jquery*~*codemirror*~*pagedown*)/)#*.js  ((*~*jquery*~*codemirror*~*pagedown*)/)#*.html -- grep "$@"
+
+#zargs -- **/*.py -- ls -l
+
+
