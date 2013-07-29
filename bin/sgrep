@@ -1,6 +1,7 @@
 #! /usr/bin/zsh
 
 setopt extendedglob
+setopt null_glob
 
 autoload -U zargs
 

@@ -28,3 +28,4 @@ function pushd () { builtin pushd $1; ls; }
 function popd () { builtin popd $1; ls; }
 function rmtilda () { rm *~ }
 
+function myproc() { ps -aef | grep "^$USER" }
