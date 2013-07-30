@@ -39,3 +39,5 @@ map Q gq
 set t_ti=
 set t_te=
 
+
+set grepprg=sgrep\ -n
