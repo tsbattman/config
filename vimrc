@@ -39,5 +39,7 @@ map Q gq
 set t_ti=
 set t_te=
 
+let mapleader='-'
 
 set grepprg=sgrep\ -n
+nnoremap <leader># "zyiw:exe "grep ".@z<CR>
