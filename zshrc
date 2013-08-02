@@ -29,3 +29,8 @@ function popd () { builtin popd $1; ls; }
 function rmtilda () { rm *~ }
 
 function myproc() { ps -aef | grep "^$USER" }
+
+function executable() { which $1 >> /dev/null && [ -x `which $1` ] }
+
+if executable xrdb; then xrdb ~/.Xresources; fi
+

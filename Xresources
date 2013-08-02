@@ -2,3 +2,5 @@
 rxvt.background: black
 rxvt.foreground: white
 
+xterm.background: black
+xterm.foreground: white
