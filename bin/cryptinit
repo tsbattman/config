@@ -1,0 +1,17 @@
+#! /bin/sh
+
+function usage() { echo "Usage: $0 <encrypted file> <mapped name>" } 
+if [ $# -lt 2 ]; then echo usage; return; fi
+
+f=$1
+nm=$2
+
+# loopback to block store
+sudo l=`losetup -f --show $f`
+# fill block store with random bits
+sudo badblocks -swt random $l
+# lets go: encrypt
+sudo cryptsetup luksFormat --verify-passphrase --cipher aes $l
+sudo cryptsetup luksOpen $l $nm
+sudo mkfs.btrfs /dev/mapper/$nm
+

@@ -1,0 +1,16 @@
+#! /bin/sh
+
+function usage() { echo "Usage: $0 <encrypted file> <mapped name> <mount directory>" } 
+if [ $# -lt 3 ]; then echo usage; return; fi
+
+f=$1
+nm=$2
+dir=$3
+
+# loopback to encrypted blocks
+sudo l=`losetup -f --show $f`
+# lets go: unencrypt
+sudo cryptsetup luksOpen $l $nm
+# mount unencrypted drive
+sudo mount /dev/mapper/$nm $dir
+
