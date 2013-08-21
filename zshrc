@@ -5,6 +5,7 @@ export PAGER=less
 bindkey -v
 
 autoload -U compinit; compinit
+autoload -U zmv;
 
 PROMPT="%n@%m %# "
 RPS1="%{${fg[blue]}%}%2~%{${fg[white]}%}"
