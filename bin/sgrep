@@ -4,9 +4,13 @@ setopt extendedglob
 setopt null_glob
 
 autoload -U zargs
+pth="((*~*jquery*~*codemirror*~*pagedown*~*reveal*)/)"
 
-zargs -- ((*~*jquery*~*codemirror*~*pagedown*)/)#*.py  ((*~*jquery*~*codemirror*~*pagedown*)/)#*.js  ((*~*jquery*~*codemirror*~*pagedown*)/)#*.html -- grep "$@"
+py="$pth#*.py"
+php="$pth#*.php"
+html="$pth#*.html"
+js="$pth#*.js"
 
-#zargs -- **/*.py -- ls -l
+zargs -- ${~py} ${~php} ${~html} ${~js} -- grep "$@"
 
 

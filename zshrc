@@ -1,10 +1,13 @@
 #! /usr/bin/env
 
+function executable() { which $1 >> /dev/null && [[ -x `which $1` ]] }
+
 export PAGER=less
 
 bindkey -v
 
-autoload -U compinit; compinit
+zstyle :compinstall filename '/home/thayne/.zshrc'
+autoload -Uz compinit; compinit
 autoload -U zmv;
 
 PROMPT="%n@%m %# "
@@ -12,8 +15,10 @@ RPS1="%{${fg[blue]}%}%2~%{${fg[white]}%}"
 
 export EDITOR="vim"
 alias ls='ls --color'
+alias ll='ls -hl'
+alias lt='ll -rt'
+alias grep='grep --color'
 export LESS="-FRSX --tabs=2"
-[[ -x /usr/bin/lesspipe ]] && eval $(lesspipe)
 
 setopt NO_BEEP
 setopt AUTO_CD
@@ -27,11 +32,9 @@ setopt NO_HIST_BEEP
 function cd () { builtin cd $1; ls; }
 function pushd () { builtin pushd $1; ls; }
 function popd () { builtin popd $1; ls; }
-function rmtilda () { rm *~ }
-
 function myproc() { ps -aef | grep "^$USER" }
 
-function executable() { which $1 >> /dev/null && [[ -x `which $1` ]] }
 
+executable lesspipe && eval $(lesspipe)
 if [[ -n "$DISPLAY" ]] && executable xrdb; then xrdb ~/.Xresources; fi
 
