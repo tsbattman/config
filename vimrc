@@ -31,8 +31,6 @@ set history=50          " keep 50 lines of command history
 set ruler               " Show the cursor position all the time
 set guioptions=ri
 
-set guioptions=ri
-
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
@@ -42,4 +40,4 @@ set t_te=
 let mapleader='-'
 
 set grepprg=sgrep\ -n
-nnoremap <leader># "zyiw:exe "grep ".@z<CR>
+nnoremap <leader>* "zyiw:exe "grep ".@z<CR>

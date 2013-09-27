@@ -5,6 +5,7 @@ function executable() { which $1 >> /dev/null && [[ -x `which $1` ]] }
 export PAGER=less
 
 bindkey -v
+bindkey '^R' history-incremental-pattern-search-backward
 
 zstyle :compinstall filename '/home/thayne/.zshrc'
 autoload -Uz compinit; compinit
@@ -30,8 +31,7 @@ setopt HIST_FIND_NO_DUPS
 setopt NO_HIST_BEEP
 
 function cd () { builtin cd $1; ls; }
-function pushd () { builtin pushd $1; ls; }
-function popd () { builtin popd $1; ls; }
+function pd () { builtin pushd $1; ls; }
 function myproc() { ps -aef | grep "^$USER" }
 
 

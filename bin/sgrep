@@ -10,7 +10,9 @@ py="$pth#*.py"
 php="$pth#*.php"
 html="$pth#*.html"
 js="$pth#*.js"
+lisp="$pth#*.lisp"
+hs="$pth#*.hs"
 
-zargs -- ${~py} ${~php} ${~html} ${~js} -- grep "$@"
+zargs -- ${~py} ${~php} ${~html} ${~js} ${~lisp} ${~hs} -- grep "$@"
 
 
