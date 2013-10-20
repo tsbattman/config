@@ -1,6 +1,8 @@
 #! /usr/bin/env
 
 function executable() { which $1 >> /dev/null && [[ -x `which $1` ]] }
+function is_bsd() { [[ `uname` = 'Darwin' ]] }
+
 
 export PAGER=less
 
@@ -15,7 +17,8 @@ PROMPT="%n@%m %# "
 RPS1="%{${fg[blue]}%}%2~%{${fg[white]}%}"
 
 export EDITOR="vim"
-alias ls='ls --color'
+if is_bsd; then alias ls='ls -G';
+else alias ls='ls --color'; fi
 alias ll='ls -hl'
 alias lt='ll -rt'
 alias grep='grep --color'
