@@ -3,8 +3,8 @@
 function executable() { which $1 >> /dev/null && [[ -x `which $1` ]] }
 function is_bsd() { [[ `uname` = 'Darwin' ]] }
 
-
 export PAGER=less
+export LESS="-FRSX --tabs=2"
 
 bindkey -v
 bindkey '^R' history-incremental-pattern-search-backward
@@ -22,7 +22,6 @@ else alias ls='ls --color'; fi
 alias ll='ls -hl'
 alias lt='ll -rt'
 alias grep='grep --color'
-export LESS="-FRSX --tabs=2"
 
 setopt NO_BEEP
 setopt AUTO_CD
@@ -36,7 +35,6 @@ setopt NO_HIST_BEEP
 function cd () { builtin cd $1; ls; }
 function pd () { builtin pushd $1; ls; }
 function myproc() { ps -aef | grep "^$USER" }
-
 
 executable lesspipe && eval $(lesspipe)
 if [[ -n "$DISPLAY" ]] && executable xrdb; then xrdb ~/.Xresources; fi

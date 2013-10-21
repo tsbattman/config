@@ -1,7 +1,8 @@
-#! /bin/sh
+#! /usr/bin/env zsh
 
-if [[ `uname` = 'Darwin' ]]; then opts='-sfF';
-else opts='-sfT'; fi
+if [[ `uname` = 'Darwin' ]]; then OPTS='-sfF';
+else OPTS='-sfT'; fi
+
 
 CONFIG_DIR=$HOME
 

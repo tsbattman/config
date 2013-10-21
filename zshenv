@@ -3,9 +3,18 @@
 if [ -z "$ZSHENVD" ]; then export ZSHENVD=1;
 else; return; fi
 
-export PATH=$HOME/bin:$HOME/.cabal/bin:$PATH
 export PYTHONPATH=$HOME/code/prcore:$PYTHONPATH
 export PRPATH=file://$HOME/code
 
 limit coredumpsize unlimited
 limit addressspace $((5*1024))m
+
+export JAVA_HOME=/usr
+
+# AWS
+EC2_VERSION=1.6.11.0
+export EC2_HOME=$HOME/thirdparty/ec2-api-tools-$EC2_VERSION
+export AWS_ACCESS_KEY=`cat $HOME/thirdparty/ec2-access.key`
+export AWS_SECRET_KEY=`cat $HOME/thirdparty/ec2-secret.key`
+
+export PATH=$HOME/bin:$HOME/.cabal/bin:$EC2_HOME/bin:$PATH
