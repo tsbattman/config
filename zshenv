@@ -13,8 +13,12 @@ export JAVA_HOME=/usr
 
 # AWS
 EC2_VERSION=1.6.11.0
-export EC2_HOME=$HOME/thirdparty/ec2-api-tools-$EC2_VERSION
-export AWS_ACCESS_KEY=`cat $HOME/thirdparty/ec2-access.key`
-export AWS_SECRET_KEY=`cat $HOME/thirdparty/ec2-secret.key`
+EC2_HOME=$HOME/thirdparty/ec2-api-tools-$EC2_VERSION
+if [[ -d $EC2_HOME ]]; then
+  export EC2_HOME
+  export AWS_ACCESS_KEY=`cat $HOME/thirdparty/ec2-access.key`
+  export AWS_SECRET_KEY=`cat $HOME/thirdparty/ec2-secret.key`
+  export PATH=$EC2_HOME/bin:$PATH
+fi
 
-export PATH=$HOME/bin:$HOME/.cabal/bin:$EC2_HOME/bin:$PATH
+export PATH=$HOME/bin:$HOME/.cabal/bin:$PATH
