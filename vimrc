@@ -22,7 +22,7 @@ set laststatus=2
 
 set foldmethod=indent   " Set folding method
 set foldlevelstart=99   " Do not fold by default
-set wildignore=*.fasl,*.o,*.class,*.hi
+set wildignore=*.fasl,*.o,*.class,*.hi,*.pyc
 
 set formatoptions=tcroq " Formatting options
 set nobackup            " Do not keep a backup file
@@ -41,3 +41,6 @@ let mapleader='-'
 
 set grepprg=sgrep\ -n
 nnoremap <leader>* "zyiw:exe "grep ".@z<CR>
+nnoremap } }zz
+nnoremap { {zz
+

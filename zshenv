@@ -5,11 +5,10 @@ else; return; fi
 
 export PYTHONPATH=$HOME/code/prcore:$PYTHONPATH
 export PRPATH=file://$HOME/code
+export JAVA_HOME=/usr
 
 limit coredumpsize unlimited
-limit addressspace $((5*1024))m
-
-export JAVA_HOME=/usr
+#limit addressspace $((5*1024))m
 
 # AWS
 EC2_VERSION=1.6.11.0
