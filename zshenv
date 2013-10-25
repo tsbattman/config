@@ -1,7 +1,7 @@
 #! /usr/bin/env zsh
 
-if [ -z "$ZSHENVD" ]; then export ZSHENVD=1;
-else; return; fi
+typeset -U path
+path=($HOME/bin $HOME/.cabal/bin $HOME/.local/bin $path)
 
 export PYTHONPATH=$HOME/code/prcore:$PYTHONPATH
 export PRPATH=file://$HOME/code
@@ -11,13 +11,8 @@ limit coredumpsize unlimited
 #limit addressspace $((5*1024))m
 
 # AWS
-EC2_VERSION=1.6.11.0
-EC2_HOME=$HOME/thirdparty/ec2-api-tools-$EC2_VERSION
-if [[ -d $EC2_HOME ]]; then
-  export EC2_HOME
-  export AWS_ACCESS_KEY=`cat $HOME/thirdparty/ec2-access.key`
-  export AWS_SECRET_KEY=`cat $HOME/thirdparty/ec2-secret.key`
-  export PATH=$EC2_HOME/bin:$PATH
-fi
+EC2_ACCESS=$HOME/thirdparty/ec2-access.key
+EC2_SECRET=$HOME/thirdparty/ec2-secret.key
+[[ -f $EC2_ACCESS ]] && export AWS_ACCESS_KEY=`cat $EC2_ACCESS`
+[[ -f $EC2_SECRET ]] && export AWS_SECRET_KEY=`cat $EC2_SECRET`
 
-export PATH=$HOME/bin:$HOME/.cabal/bin:$PATH
