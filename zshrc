@@ -18,9 +18,10 @@ if is_bsd; then
 else
   alias ls='ls --color'
 fi
-alias ll='ls -hl'
 
 export EDITOR="vim"
+alias ll='ls -hl'
+alias la='ll -a'
 alias lt='ll -rt'
 alias grep='grep --color'
 setopt NO_BEEP
@@ -38,5 +39,5 @@ function myproc() { ps -aef | grep "^$USER" }
 
 executable lesspipe && eval $(lesspipe)
 executable aws_zsh_completer.sh && source `which aws_zsh_completer.sh`
-if [[ -n "$DISPLAY" ]] && executable xrdb; then xrdb ~/.Xresources; fi
+[[ -n "$DISPLAY" ]] && executable xrdb && xrdb ~/.Xresources
 
