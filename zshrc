@@ -1,8 +1,5 @@
 #! /usr/bin/env
 
-function executable() { which $1 >> /dev/null && [[ -x `which $1` ]] }
-function is_bsd() { [[ `uname` = 'Darwin' ]] }
-
 export PAGER=less
 export LESS="-FRSX --tabs=2"
 
@@ -16,13 +13,16 @@ autoload -U zmv;
 PROMPT="%n@%m %# "
 RPS1="%{${fg[blue]}%}%2~%{${fg[white]}%}"
 
-export EDITOR="vim"
-if is_bsd; then alias ls='ls -G';
-else alias ls='ls --color'; fi
+if is_bsd; then
+  alias ls='ls -G'
+else
+  alias ls='ls --color'
+fi
 alias ll='ls -hl'
+
+export EDITOR="vim"
 alias lt='ll -rt'
 alias grep='grep --color'
-
 setopt NO_BEEP
 setopt AUTO_CD
 setopt EXTENDED_GLOB
@@ -37,5 +37,6 @@ function pd () { builtin pushd $1; ls; }
 function myproc() { ps -aef | grep "^$USER" }
 
 executable lesspipe && eval $(lesspipe)
+executable aws_zsh_completer.sh && source `which aws_zsh_completer.sh`
 if [[ -n "$DISPLAY" ]] && executable xrdb; then xrdb ~/.Xresources; fi
 

@@ -1,20 +1,14 @@
 #! /usr/bin/env zsh
 
-if [[ `uname` = 'Darwin' ]]; then OPTS='-sfF';
+CONFIG_DIR=$HOME
+if [[ `uname` = 'Darwin' ]]; then OPTS='-sfhF';
 else OPTS='-sfT'; fi
 
-
-CONFIG_DIR=$HOME
-
 for f in `ls`; do
-  if [ "$f" = "configmapper.sh" ] || [ "$f" = "bin" ] || [ -e $CONFIG_DIR/.$f ]; then
-    continue
-  fi
+  if [ "$f" = "configmapper.sh" ] || [ "$f" = "bin" ]; then continue; fi
   ln $OPTS  $PWD/$f $CONFIG_DIR/.$f
 done
 
-if [ ! -d $CONFIG_DIR/bin ]; then mkdir -p $CONFIG_DIR/bin; fi
+[[ ! -d $CONFIG_DIR/bin ]] && mkdir -p $CONFIG_DIR/bin
+for b in `ls bin`; do ln $OPTS $PWD/bin/$b $CONFIG_DIR/bin/$b; done
 
-for b in `ls bin`; do
-  ln $OPTS $PWD/bin/$b $CONFIG_DIR/bin/$b
-done
