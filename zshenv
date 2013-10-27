@@ -2,25 +2,29 @@
 
 function executable() { which $1 >> /dev/null && [[ -x `which $1` ]] }
 function is_bsd() { [[ `uname` = 'Darwin' ]] }
+function init_path() {
+  if is_bsd; then
+    local PYBIN=$HOME/Library/Python/2.7/bin
+  else
+    local PYBIN=$HOME/.local/bin
+  fi
+  typeset -gU path; path=($HOME/bin $HOME/.cabal/bin $PYBIN $path); export path
+}
+function init_aws() {
+  local AWS_CONFIG=$HOME/thirdparty/aws-config.ini
+  [[ -f $AWS_CONFIG ]] && export AWS_CONFIG_FILE=$AWS_CONFIG
+}
 
-if is_bsd; then
-  PYBIN=$HOME/Library/Python/2.7/bin
-else
-  PYBIN=$HOME/.local/bin
-fi
-typeset -U path
-path=($HOME/bin $HOME/.cabal/bin $PYBIN $path)
+init_path
+init_aws
 
-export PYTHONPATH=$HOME/code/prcore:$PYTHONPATH
+typeset -T PYTHONPATH pythonpath
+pythonpath=($HOME/code/prcore $pythonpath)
 export PRPATH=file://$HOME/code
 export JAVA_HOME=/usr
+export LANG=en_US.utf8
 
 limit coredumpsize unlimited
 #limit addressspace $((5*1024))m
 
-# AWS
-EC2_ACCESS=$HOME/thirdparty/ec2-access.key
-EC2_SECRET=$HOME/thirdparty/ec2-secret.key
-[[ -f $EC2_ACCESS ]] && export AWS_ACCESS_KEY=`cat $EC2_ACCESS`
-[[ -f $EC2_SECRET ]] && export AWS_SECRET_KEY=`cat $EC2_SECRET`
 
