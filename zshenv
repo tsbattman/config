@@ -3,12 +3,13 @@
 function executable() { which $1 >> /dev/null && [[ -x `which $1` ]] }
 function is_bsd() { [[ `uname` = 'Darwin' ]] }
 function init_path() {
+  typeset -a bins
   if is_bsd; then
-    local PYBIN=$HOME/Library/Python/2.7/bin
+    bins=($HOME/Library/Python/2.7/bin $HOME/Library/Haskell/bin)
   else
-    local PYBIN=$HOME/.local/bin
+    bins=($HOME/.local/bin $HOME/.cabal/bin)
   fi
-  typeset -gU path; path=($HOME/bin $HOME/.cabal/bin $PYBIN $path); export path
+  typeset -gU path; path=($HOME/bin $bins $path)
 }
 function init_aws() {
   local AWS_CONFIG=$HOME/thirdparty/aws-config.ini

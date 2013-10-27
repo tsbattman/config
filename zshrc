@@ -1,9 +1,10 @@
 #! /usr/bin/env
 
 # oh my zsh
+# git clone http://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="random"
-plugins=(git svn colored-man)
+plugins=(git svn cabal colored-man)
 CASE_SENSITIVE="true"
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
