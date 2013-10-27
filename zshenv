@@ -22,9 +22,7 @@ typeset -T PYTHONPATH pythonpath
 pythonpath=($HOME/code/prcore $pythonpath)
 export PRPATH=file://$HOME/code
 export JAVA_HOME=/usr
-export LANG=en_US.utf8
+export LANG=en_US.UTF-8
 
 limit coredumpsize unlimited
-#limit addressspace $((5*1024))m
-
 
