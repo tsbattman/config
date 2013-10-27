@@ -4,6 +4,7 @@
 # git clone http://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="random"
+#ZSH_THEME="junkfood"
 plugins=(git svn cabal colored-man)
 CASE_SENSITIVE="true"
 DISABLE_AUTO_UPDATE="true"
