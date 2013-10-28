@@ -19,8 +19,9 @@ function init_aws() {
 init_path
 init_aws
 
-typeset -T PYTHONPATH pythonpath
+typeset -T -U PYTHONPATH pythonpath
 pythonpath=($HOME/code/prcore $pythonpath)
+export PYTHONPATH
 export PRPATH=file://$HOME/code
 export JAVA_HOME=/usr
 export LANG=en_US.UTF-8
