@@ -35,5 +35,5 @@ function myproc() { ps -aef | grep "^$USER" }
 executable lesspipe && eval $(lesspipe)
 executable aws_zsh_completer.sh && source `which aws_zsh_completer.sh`
 [[ -n "$DISPLAY" ]] && executable xrdb && xrdb ~/.Xresources
-
+[[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh
 

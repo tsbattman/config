@@ -4,6 +4,10 @@ CONFIG_DIR=$HOME
 if [[ `uname` = 'Darwin' ]]; then OPTS='-sfhF';
 else OPTS='-sfT'; fi
 
+if [[ ! -d $CONFIG_DIR/.oh-my-zsh ]] && executable git; then
+  git clone http://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+fi
+
 for f in `ls`; do
   if [ "$f" = "configmapper.sh" ] || [ "$f" = "bin" ]; then continue; fi
   ln $OPTS  $PWD/$f $CONFIG_DIR/.$f
