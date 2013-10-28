@@ -1,10 +1,19 @@
-syntax on
+
+execute pathogen#infect()
+
+syntax enable
 syntax sync fromstart
 set hlsearch
 
 filetype plugin indent on
 
-colorscheme koehler
+set background=dark
+if has('gui_running')
+  "let g:solarized_contrast="high"
+  colorscheme solarized
+else
+  colorscheme koehler
+end
 
 set cursorline
 
