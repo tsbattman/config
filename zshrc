@@ -12,6 +12,7 @@ COMPLETION_WAITING_DOTS="true"
 source $ZSH/oh-my-zsh.sh
 
 # my stuff
+autoload zmv
 export LESS="-FRSX --tabs=2"
 
 # use  oh-my-zsh for now
@@ -34,6 +35,7 @@ function myproc() { ps -aef | grep "^$USER" }
 
 executable lesspipe && eval $(lesspipe)
 executable aws_zsh_completer.sh && source `which aws_zsh_completer.sh`
+executable dircolors && [[ -f $HOME/.dircolors ]] && eval $(dircolors $HOME/.dircolors)
 [[ -n "$DISPLAY" ]] && executable xrdb && xrdb ~/.Xresources
 [[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh
 
