@@ -12,7 +12,8 @@ html="$pth#*.html"
 js="$pth#*.js"
 lisp="$pth#*.lisp"
 hs="$pth#*.hs"
+cpp="$pth#*.cpp"
+h="$pth#*.h"
 
-zargs -- ${~py} ${~php} ${~html} ${~js} ${~lisp} ${~hs} -- grep "$@"
-
+zargs -- ${~py} ${~php} ${~html} ${~js} ${~lisp} ${~hs} ${~cpp} ${~h} -- grep "$@"
 

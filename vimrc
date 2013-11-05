@@ -49,7 +49,7 @@ set t_te=
 let mapleader='-'
 
 set grepprg=sgrep\ -n
-nnoremap <leader>* "zyiw:exe "grep ".@z<CR>
+nnoremap <leader>* "zyiw:exe "grep '\\<".@z."\\>'"<CR>
 nnoremap } }zz
 nnoremap { {zz
 
