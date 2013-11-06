@@ -3,13 +3,12 @@
 # oh my zsh
 # git clone http://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="random"
-#ZSH_THEME="junkfood"
 plugins=(git svn cabal colored-man)
 CASE_SENSITIVE="true"
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
 source $ZSH/oh-my-zsh.sh
+
 
 # my stuff
 autoload zmv
@@ -18,8 +17,8 @@ export LESS="-FRSX --tabs=2"
 # use  oh-my-zsh for now
 #bindkey -v
 #bindkey '^R' history-incremental-pattern-search-backward
-#PROMPT="%n@%m %# "
-#RPS1="%{${fg[blue]}%}%2~%{${fg[white]}%}"
+PROMPT="%{$fg[blue]%}%D{[%I:%M:%S]} %{$fg_bold[green]%}%n@%m %{$fg_bold[blue]%}%#%{$reset_color%} "
+RPS1="%{$fg[white]%}%2~%{$reset_color%}"
 
 export EDITOR="vim"
 alias lt='ll -rt'
@@ -35,7 +34,10 @@ function myproc() { ps -aef | grep "^$USER" }
 
 executable lesspipe && eval $(lesspipe)
 executable aws_zsh_completer.sh && source `which aws_zsh_completer.sh`
-executable dircolors && [[ -f $HOME/.dircolors ]] && eval $(dircolors $HOME/.dircolors)
+if executable dircolors && [[ -f $HOME/.dircolors ]]; then
+  eval $(dircolors $HOME/.dircolors)
+  zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+fi
 [[ -n "$DISPLAY" ]] && executable xrdb && xrdb ~/.Xresources
 [[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh
 
