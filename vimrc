@@ -2,7 +2,7 @@
 set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
 Bundle 'gmarik/vundle'
-Bundle 'wincent/Command-T'
+Bundle 'wincent/Command-T' " Need to run rake make in bundle
 Bundle 'altercation/vim-colors-solarized'
 
 syntax enable
