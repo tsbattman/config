@@ -1,5 +1,9 @@
 
-execute pathogen#infect()
+set rtp+=~/.vim/bundle/vundle
+call vundle#rc()
+Bundle 'gmarik/vundle'
+Bundle 'wincent/Command-T'
+Bundle 'altercation/vim-colors-solarized'
 
 syntax enable
 syntax sync fromstart
