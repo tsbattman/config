@@ -1,12 +1,16 @@
 
-" NOTES
-" Need to run rake make in command-t bundle
+let mapleader='-'
+
+" Thirdparty stuff
+let g:ctrlp_map='<leader>t'
+
 set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
 Bundle 'gmarik/vundle'
-Bundle 'wincent/Command-T' 
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'kien/ctrlp.vim'
 
+" My stuff
 syntax enable
 syntax sync fromstart
 set hlsearch
@@ -21,18 +25,22 @@ else
   colorscheme koehler
 end
 
-set cursorline
-
 "let loaded_matchparen=1 " Do not show matching parens
 
 set nocompatible        " Use Vim defaults (much better!)
 set bs=2                " Allow backspacing over everything in insert mode
+set cursorline
 
 set showmatch
 set shiftwidth=2
 set tabstop=2
 set expandtab
+set shiftround
 
+set nowrap
+set scrolloff=2
+set sidescroll=1
+set sidescrolloff=5
 set laststatus=2
 
 set foldmethod=indent   " Set folding method
@@ -45,14 +53,13 @@ set viminfo='20,<500,"500   " read/write a .viminfo file -- limit regs to 500 li
 set history=50          " keep 50 lines of command history
 set ruler               " Show the cursor position all the time
 set guioptions=ri
+set autoread
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
 set t_ti=
 set t_te=
-
-let mapleader='-'
 
 set grepprg=sgrep\ -n
 nnoremap <leader>* "zyiw:exe "grep '\\<".@z."\\>'"<CR>
