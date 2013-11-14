@@ -17,8 +17,8 @@ export LESS="-FRSX --tabs=2"
 # use  oh-my-zsh for now
 #bindkey -v
 #bindkey '^R' history-incremental-pattern-search-backward
-PROMPT="%{$fg[blue]%}%D{[%I:%M:%S]} %{$fg_bold[green]%}%n@%m %{$fg_bold[blue]%}%#%{$reset_color%} "
-RPS1="%{$fg[white]%}%2~%{$reset_color%}"
+PROMPT="%{$fg[blue]%}%D{[%I:%M:%S]} %{$fg[white]%}%2~ %{$fg_bold[blue]%}%#%{$reset_color%} "
+RPS1="%{$fg_bold[green]%}%n@%m %{$reset_color%}"
 
 export EDITOR="vim"
 alias lt='ll -rt'
@@ -37,6 +37,8 @@ executable aws_zsh_completer.sh && source `which aws_zsh_completer.sh`
 if executable dircolors && [[ -f $HOME/.dircolors ]]; then
   eval $(dircolors $HOME/.dircolors)
   zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+else
+  export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
 fi
 [[ -n "$DISPLAY" ]] && executable xrdb && xrdb ~/.Xresources
 [[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh
