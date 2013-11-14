@@ -3,14 +3,32 @@ let mapleader='-'
 
 " Thirdparty stuff
 let g:ctrlp_map='<leader>t'
+let g:ctrlp_cmd='CtrlPMixed'
+let g:neobundle#types#git#default_protocol='git'
+" let g:unite_enable_start_insert = 1
+" let g:unite_split_rule = "botright"
+" let g:unite_force_overwrite_statusline = 0
 
-set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
-Bundle 'gmarik/vundle'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'kien/ctrlp.vim'
+set rtp+=~/.vim/bundle/neobundle.vim
+call neobundle#rc(expand('~/.vim/bundle'))
+NeoBundleFetch 'Shougo/neobundle.vim'
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'bling/vim-airline'
+NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'kien/ctrlp.vim'
 
-" My stuff
+" call unite#filters#matcher_default#use(['matcher_fuzzy'])
+" call unite#filters#sorter_default#use(['sorter_rank'])
+" nnoremap <leader>t :<C-u>Unite  -buffer-name=files -start-insert buffer file_rec<CR>
+
+" Unused
+"set rtp+=~/.vim/bundle/vundle
+"call vundle#rc()
+"Bundle 'gmarik/vundle'
+
+""""" My stuff
 syntax enable
 syntax sync fromstart
 set hlsearch
