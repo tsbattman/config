@@ -5,6 +5,9 @@ let mapleader='-'
 let g:ctrlp_map='<leader>t'
 let g:ctrlp_cmd='CtrlPMixed'
 let g:neobundle#types#git#default_protocol='git'
+let g:unite_source_grep_command='sgrep'
+let g:unite_source_grep_default_opts='-nH'
+let g:unite_source_grep_recursive_opt=''
 " let g:unite_enable_start_insert = 1
 " let g:unite_split_rule = "botright"
 " let g:unite_force_overwrite_statusline = 0
@@ -14,7 +17,7 @@ call neobundle#rc(expand('~/.vim/bundle'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'bling/vim-airline'
-NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/vimproc', { 'build': {'unix': 'make -f make_unix.mak', 'mac': 'make -f make_mac.mak'}, }
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'kien/ctrlp.vim'
@@ -72,15 +75,21 @@ set history=50          " keep 50 lines of command history
 set ruler               " Show the cursor position all the time
 set guioptions=ri
 set autoread
+set shortmess=aTI
+set splitbelow
+set splitright
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
 set t_ti=
 set t_te=
+set t_vb=
+set novisualbell
 
-set grepprg=sgrep\ -n
-nnoremap <leader>* "zyiw:exe "grep '\\<".@z."\\>'"<CR>
+set grepprg=sgrep\ -nH
+nnoremap <leader>* "zyiw:exe ":Unite grep:.:-rnH:\\\\<".@z."\\\\>"<CR>
+nnoremap <leader>/ :Unite grep:.<CR>
 nnoremap } }zz
 nnoremap { {zz
 
