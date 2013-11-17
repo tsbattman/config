@@ -3,7 +3,7 @@
 # oh my zsh
 # git clone http://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 ZSH=$HOME/.oh-my-zsh
-plugins=(git svn cabal colored-man)
+plugins=(git svn cabal colored-man colorize)
 CASE_SENSITIVE="true"
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
@@ -22,6 +22,7 @@ RPS1="%{$fg_bold[green]%}%n@%m %{$reset_color%}"
 
 export EDITOR="vim"
 alias lt='ll -rt'
+alias ccat='colorize'
 setopt NO_BEEP
 setopt EXTENDED_GLOB
 setopt CORRECT
