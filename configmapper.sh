@@ -4,7 +4,7 @@ CONFIG_DIR=$HOME
 if [[ `uname` = 'Darwin' ]]; then OPTS='-sfhF';
 else OPTS='-sfT'; fi
 
-mkdir -p $CONFIG_DIR/thirdparty/vim
+mkdir -p $CONFIG_DIR/thirdparty/vim $CONFIG_DIR/thirdparty/style
 if executable git; then
   #[[ ! -d $CONFIG_DIR/thirdparty/vim/bundle/vundle ]] && git clone https://github.com/gmarik/vundle $CONFIG_DIR/thirdparty/vim/bundle/vundle
   [[ ! -d $CONFIG_DIR/thirdparty/vim/bundle/neobundle.vim ]] && git clone git://github.com/Shougo/neobundle.vim $CONFIG_DIR/thirdparty/vim/bundle/neobundle.vim
