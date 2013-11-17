@@ -11,6 +11,7 @@ let g:unite_source_grep_recursive_opt=''
 " let g:unite_enable_start_insert = 1
 " let g:unite_split_rule = "botright"
 " let g:unite_force_overwrite_statusline = 0
+let g:syntastic_haskell_checkers=['ghc_mod']
 
 set rtp+=~/.vim/bundle/neobundle.vim
 call neobundle#rc(expand('~/.vim/bundle'))
@@ -21,6 +22,7 @@ NeoBundle 'Shougo/vimproc', { 'build': {'unix': 'make -f make_unix.mak', 'mac': 
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'eagletmt/ghcmod-vim'
 
 " call unite#filters#matcher_default#use(['matcher_fuzzy'])
 " call unite#filters#sorter_default#use(['sorter_rank'])
@@ -92,4 +94,3 @@ nnoremap <leader>* "zyiw:exe ":Unite grep:.:-rnH:\\\\<".@z."\\\\>"<CR>
 nnoremap <leader>/ :Unite grep:.<CR>
 nnoremap } }zz
 nnoremap { {zz
-
