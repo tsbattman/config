@@ -39,12 +39,12 @@ set hlsearch
 filetype plugin indent on
 
 set background=dark
+let g:solarized_contrast="high"
 if has('gui_running')
-  "let g:solarized_contrast="high"
-  colorscheme solarized
 else
-  colorscheme koehler
+  let g:solarized_termcolors=256
 end
+colorscheme solarized
 
 "let loaded_matchparen=1 " Do not show matching parens
 
