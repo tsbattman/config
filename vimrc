@@ -11,6 +11,7 @@ let g:unite_source_grep_recursive_opt=''
 " let g:unite_enable_start_insert = 1
 " let g:unite_split_rule = "botright"
 " let g:unite_force_overwrite_statusline = 0
+let g:syntastic_python_checkers=['python']
 let g:syntastic_haskell_checkers=['ghc_mod']
 
 set rtp+=~/.vim/bundle/neobundle.vim
@@ -90,7 +91,7 @@ set t_vb=
 set novisualbell
 
 set grepprg=sgrep\ -nH
-nnoremap <leader>* "zyiw:exe ":Unite grep:.:-rnH:\\\\<".@z."\\\\>"<CR>
-nnoremap <leader>/ :Unite grep:.<CR>
+nnoremap <leader>* "zyiw:exe ":Unite -no-quit grep:.:-rnH:\\\\<".@z."\\\\>"<CR>
+nnoremap <leader>/ :Unite -no-quit grep:.<CR>
 nnoremap } }zz
 nnoremap { {zz
