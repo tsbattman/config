@@ -12,11 +12,14 @@ if executable git; then
   pushd vim; ln $OPTS $CONFIG_DIR/thirdparty/vim/bundle bundle; popd
 fi
 
-for f in `\ls`; do
+for f in *; do
   if [ "$f" = "configmapper.sh" ] || [ "$f" = "bin" ]; then continue; fi
-  ln $OPTS  $PWD/$f $CONFIG_DIR/.$f
+  ln $OPTS  $f $CONFIG_DIR/.`basename $f`
 done
 
 [[ ! -d $CONFIG_DIR/bin ]] && mkdir -p $CONFIG_DIR/bin
-for b in `\ls bin`; do ln $OPTS $PWD/bin/$b $CONFIG_DIR/bin/$b; done
+for b in $PWD/bin/*; do ln $OPTS $b $CONFIG_DIR/bin/`basename $b`; done
 
+for f in $PWD/xdg/autostart/*; do
+  ln $OPTS $f $CONFIG_DIR/.config/autostart/`basename $f`
+done

@@ -24,15 +24,11 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'eagletmt/ghcmod-vim'
+NeoBundle 'Twinside/vim-hoogle'
 
 " call unite#filters#matcher_default#use(['matcher_fuzzy'])
 " call unite#filters#sorter_default#use(['sorter_rank'])
 " nnoremap <leader>t :<C-u>Unite  -buffer-name=files -start-insert buffer file_rec<CR>
-
-" Unused
-"set rtp+=~/.vim/bundle/vundle
-"call vundle#rc()
-"Bundle 'gmarik/vundle'
 
 """"" My stuff
 syntax enable
@@ -60,6 +56,7 @@ set shiftwidth=2
 set tabstop=2
 set expandtab
 set shiftround
+set smartindent
 
 set nowrap
 set scrolloff=2
