@@ -14,7 +14,7 @@ fi
 
 for f in *; do
   if [ "$f" = "configmapper.sh" ] || [ "$f" = "bin" ]; then continue; fi
-  ln $OPTS  $f $CONFIG_DIR/.`basename $f`
+  ln $OPTS  $PWD/$f $CONFIG_DIR/.$f
 done
 
 [[ ! -d $CONFIG_DIR/bin ]] && mkdir -p $CONFIG_DIR/bin
