@@ -26,6 +26,7 @@ NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'eagletmt/ghcmod-vim'
 NeoBundle 'Twinside/vim-hoogle'
 NeoBundle 'christoomey/vim-tmux-navigator'
+" NeoBundle 'benmills/vimux'
 
 " call unite#filters#matcher_default#use(['matcher_fuzzy'])
 " call unite#filters#sorter_default#use(['sorter_rank'])
