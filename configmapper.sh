@@ -18,8 +18,9 @@ for f in *; do
 done
 
 [[ ! -d $CONFIG_DIR/bin ]] && mkdir -p $CONFIG_DIR/bin
-for b in $PWD/bin/*; do ln $OPTS $b $CONFIG_DIR/bin/`basename $b`; done
+for b in bin/*; do ln $OPTS $PWD/$b $CONFIG_DIR/$b; done
 
 for f in $PWD/xdg/autostart/*; do
   ln $OPTS $f $CONFIG_DIR/.config/autostart/`basename $f`
 done
+

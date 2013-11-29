@@ -39,10 +39,6 @@ filetype plugin indent on
 
 set background=dark
 let g:solarized_contrast="high"
-if has('gui_running')
-else
-  let g:solarized_termcolors=256
-end
 colorscheme solarized
 
 "let loaded_matchparen=1 " Do not show matching parens
