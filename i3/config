@@ -24,14 +24,14 @@ mode "resize" {
   bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
-exec "rxvt -fg white -bg black"
+exec urxvt
 
 bindsym $mod+Shift+z restart
 bindsym $mod+Shift+q exit
 bindsym $mod+slash exec bash -cl "dmenu_run -i -p run" # run
 bindsym $mod+Shift+K exec bash -cl xkill  # kill
 bindsym $mod+k exec bash -cl "xkill -id `xdotool getactivewindow`"
-bindsym $mod+backslash exec rxvt   # run shell
+bindsym $mod+backslash exec urxvt   # run shell
 
 # focus / move / maximize windows
 bindsym $mod+Left focus left

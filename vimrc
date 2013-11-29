@@ -7,7 +7,7 @@ let g:ctrlp_cmd='CtrlPMixed'
 let g:neobundle#types#git#default_protocol='git'
 let g:unite_source_grep_command='sgrep'
 let g:unite_source_grep_default_opts='-nH'
-let g:unite_source_grep_recursive_opt=''
+let g:unite_source_grep_recursive_opt='-r'
 " let g:unite_enable_start_insert = 1
 " let g:unite_split_rule = "botright"
 " let g:unite_force_overwrite_statusline = 0
@@ -47,6 +47,7 @@ colorscheme solarized
 set nocompatible        " Use Vim defaults (much better!)
 set bs=2                " Allow backspacing over everything in insert mode
 set cursorline
+set complete=.,w,b,u    " Word completion rules
 
 set showmatch
 set shiftwidth=2
@@ -86,6 +87,6 @@ set novisualbell
 
 set grepprg=sgrep\ -nH
 nnoremap <leader>* "zyiw:exe ":Unite -no-quit grep:.:-rnH:\\\\<".@z."\\\\>"<CR>
-nnoremap <leader>/ :Unite -no-quit grep:.<CR>
+nnoremap <leader>/ :Unite -no-quit grep:.:-rnH<CR>
 nnoremap } }zz
 nnoremap { {zz
