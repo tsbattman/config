@@ -9,7 +9,7 @@ function init_path() {
   else
     bins=($HOME/.local/bin $HOME/.cabal/bin)
   fi
-  typeset -gU path; path=($HOME/bin $bins $path)
+  typeset -gU path; path=($HOME/bin $bins $path $HOME/code/prcore)
 }
 function init_aws() {
   local AWS_CONFIG=$HOME/thirdparty/aws-config.ini
@@ -22,9 +22,9 @@ init_aws
 typeset -T -U PYTHONPATH pythonpath
 pythonpath=($HOME/code/prcore $pythonpath)
 export PYTHONPATH
-export PRPATH=file://$HOME/code
 export JAVA_HOME=/usr
 export LANG=en_US.UTF-8
 
 limit coredumpsize unlimited
 
+[[ -s $HOME/.nvm/nvm.sh ]] && source $HOME/.nvm/nvm.sh && nvm use v0.10.21 &> /dev/null

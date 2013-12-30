@@ -42,7 +42,6 @@ else
   export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
 fi
 [[ -n "$DISPLAY" ]] && executable xrdb && xrdb ~/.Xresources
-[[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh
 
 function svndiff() { svn diff "$@" | pygmentize -l diff }
 function gitdiff() { git diff "$@" | pygmentize -l diff }
