@@ -7,7 +7,7 @@ let g:ctrlp_cmd='CtrlPMixed'
 let g:neobundle#types#git#default_protocol='git'
 let g:unite_source_grep_command='sgrep'
 let g:unite_source_grep_default_opts='-nH'
-let g:unite_source_grep_recursive_opt='-r'
+let g:unite_source_grep_recursive_opt=''
 " let g:unite_enable_start_insert = 1
 " let g:unite_split_rule = "botright"
 " let g:unite_force_overwrite_statusline = 0
@@ -34,7 +34,6 @@ NeoBundle 'christoomey/vim-tmux-navigator'
 
 """"" My stuff
 syntax enable
-syntax sync fromstart
 set hlsearch
 
 filetype plugin indent on
@@ -87,7 +86,7 @@ set t_vb=
 set novisualbell
 
 set grepprg=sgrep\ -nH
-nnoremap <leader>* "zyiw:exe ":Unite -no-quit grep:.:-rnH:\\\\<".@z."\\\\>"<CR>
-nnoremap <leader>/ :Unite -no-quit grep:.:-rnH<CR>
+nnoremap <leader>* "zyiw:exe ":Unite -no-quit grep:.::\\\\<".@z."\\\\>"<CR>
+nnoremap <leader>/ :Unite -no-quit grep:.:<CR>
 nnoremap } }zz
 nnoremap { {zz
