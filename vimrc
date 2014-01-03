@@ -11,6 +11,7 @@ let g:unite_source_grep_recursive_opt=''
 " let g:unite_enable_start_insert = 1
 " let g:unite_split_rule = "botright"
 " let g:unite_force_overwrite_statusline = 0
+let g:syntastic_python_python_exe='python3'
 let g:syntastic_python_checkers=['python']
 let g:syntastic_haskell_checkers=['ghc_mod']
 
@@ -26,6 +27,7 @@ NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'eagletmt/ghcmod-vim'
 NeoBundle 'Twinside/vim-hoogle'
 NeoBundle 'christoomey/vim-tmux-navigator'
+NeoBundle 'kchmck/vim-coffee-script'
 " NeoBundle 'benmills/vimux'
 
 " call unite#filters#matcher_default#use(['matcher_fuzzy'])
