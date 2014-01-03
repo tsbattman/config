@@ -1,0 +1,4 @@
+#! /bin/sh
+
+python -c "import sys,csv; c = csv.reader(sys.stdin); [sys.stdout.write(''.join(map(repr,r))+'\n') for r in c];" | column -s '' -t
+
