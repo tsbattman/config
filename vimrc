@@ -26,8 +26,9 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'eagletmt/ghcmod-vim'
 NeoBundle 'Twinside/vim-hoogle'
-NeoBundle 'christoomey/vim-tmux-navigator'
 NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'mxw/vim-jsx'
+" NeoBundle 'christoomey/vim-tmux-navigator'
 " NeoBundle 'benmills/vimux'
 
 " call unite#filters#matcher_default#use(['matcher_fuzzy'])
