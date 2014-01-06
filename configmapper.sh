@@ -6,9 +6,16 @@ else OPTS='-sfT'; fi
 
 mkdir -p $CONFIG_DIR/thirdparty/vim $CONFIG_DIR/thirdparty/style
 if executable git; then
-  #[[ ! -d $CONFIG_DIR/thirdparty/vim/bundle/vundle ]] && git clone https://github.com/gmarik/vundle $CONFIG_DIR/thirdparty/vim/bundle/vundle
-  [[ ! -d $CONFIG_DIR/thirdparty/vim/bundle/neobundle.vim ]] && git clone git://github.com/Shougo/neobundle.vim $CONFIG_DIR/thirdparty/vim/bundle/neobundle.vim
-  [[ ! -d $CONFIG_DIR/.oh-my-zsh ]] && git clone http://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+  if [[ -d $CONFIG_DIR/thirdparty/vim/bundle/neobundle.vim ]]; then
+    pushd $CONFIG_DIR/thirdparty/vim/bundle/neobundle.vim; git pull origin master; popd
+  else
+    git clone git://github.com/Shougo/neobundle.vim $CONFIG_DIR/thirdparty/vim/bundle/neobundle.vim
+  fi
+  if [[ -d $CONFIG_DIR/.oh-my-zsh ]]; then
+    pushd $CONFIG_DIR/.oh-my-zsh; git pull origin master; popd
+  else
+    git clone http://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+  fi
   pushd vim; ln $OPTS $CONFIG_DIR/thirdparty/vim/bundle bundle; popd
 fi
 
