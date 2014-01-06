@@ -1,3 +1,3 @@
 #! /bin/sh
 
-xset -r 250
+xset r rate 250
