@@ -3,6 +3,7 @@
 # oh my zsh
 # git clone http://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 ZSH=$HOME/.oh-my-zsh
+ZSH_THEME="robbyrussell"
 plugins=(git svn cabal colored-man colorize)
 CASE_SENSITIVE="true"
 DISABLE_AUTO_UPDATE="true"
