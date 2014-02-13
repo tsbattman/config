@@ -4,25 +4,25 @@ CONFIG_DIR=$HOME
 if [[ `uname` = 'Darwin' ]]; then OPTS='-sfhF';
 else OPTS='-sfT'; fi
 
+function gitdl() {
+  src=$1; des=$2
+  if [[ -d $des ]]; then
+    pushd $des; git pull origin master; popd
+  else
+    git clone $src $des
+  fi
+}
+
 mkdir -p $CONFIG_DIR/thirdparty/vim $CONFIG_DIR/thirdparty/style
 if executable git; then
-  if [[ -d $CONFIG_DIR/thirdparty/vim/bundle/neobundle.vim ]]; then
-    pushd $CONFIG_DIR/thirdparty/vim/bundle/neobundle.vim; git pull origin master; popd
-  else
-    git clone git://github.com/Shougo/neobundle.vim $CONFIG_DIR/thirdparty/vim/bundle/neobundle.vim
-  fi
-  if [[ -d $CONFIG_DIR/.oh-my-zsh ]]; then
-    pushd $CONFIG_DIR/.oh-my-zsh; git pull origin master; popd
-  else
-    git clone http://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
-  fi
-  pushd vim; ln $OPTS $CONFIG_DIR/thirdparty/vim/bundle bundle; popd
+  gitdl http://github.com/Shougo/neobundle.vim $CONFIG_DIR/thirdparty/vim/bundle/neobundle.vim
+  gitdl http://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+  pushd dot/vim; ln $OPTS $CONFIG_DIR/thirdparty/vim/bundle bundle; popd
 fi
 
-for f in *; do
-  if [ "$f" = "configmapper.sh" ] || [ "$f" = "bin" ]; then continue; fi
-  ln $OPTS  $PWD/$f $CONFIG_DIR/.$f
-done
+pushd dot
+for f in *; do; ln $OPTS  $PWD/$f $CONFIG_DIR/.$f; done
+popd
 
 [[ ! -d $CONFIG_DIR/bin ]] && mkdir -p $CONFIG_DIR/bin
 for b in bin/*; do ln $OPTS $PWD/$b $CONFIG_DIR/$b; done
