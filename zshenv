@@ -12,7 +12,7 @@ function init_path() {
   typeset -gU path; path=($HOME/bin $bins $path $HOME/code/prcore)
 }
 function init_aws() {
-  local AWS_CONFIG=$HOME/thirdparty/aws-config.ini
+  local AWS_CONFIG=$HOME/etc/aws-config.ini
   [[ -f $AWS_CONFIG ]] && export AWS_CONFIG_FILE=$AWS_CONFIG
 }
 
