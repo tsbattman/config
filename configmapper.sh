@@ -27,8 +27,9 @@ popd
 [[ ! -d "$CONFIG_DIR/bin" ]] && mkdir -p "$CONFIG_DIR/bin"
 for b in bin/*; do ln "$OPTS" "$PWD/$b" "$CONFIG_DIR/$b"; done
 
-[[ ! -d $CONFIG_DIR/.config/autostart ]] && mkdir -p "$CONFIG_DIR/.config/autostart"
-for f in $PWD/xdg/autostart/*; do
-  ln "$OPTS" "$f" "$CONFIG_DIR/.config/autostart/$(basename "$f")"
+XDGCONFIG=${XDG_CONFIG_HOME-$HOME/.config}
+echo $XDGCONFIG
+for p in $PWD/xdg/*; do
+  ln "$OPTS" "$p" "$XDGCONFIG/$(basename $p)"
 done
 
