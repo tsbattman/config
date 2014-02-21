@@ -1,6 +1,6 @@
 [user]
-	name = Thayne Batty
-	email = tsbattman@gmail.com
+  name = Thayne Batty
+  email = tsbattman@gmail.com
 [alias]
   logx = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 [color]
