@@ -3,6 +3,7 @@
 CONFIG_DIR=$HOME
 if [[ $(uname) = 'Darwin' ]]; then OPTS='-sfhF';
 else OPTS='-sfT'; fi
+function link() { src=$1; des=$2; ln "$OPTS" "$src" "$des" }
 
 function gitdl() {
   src=$1; des=$2
@@ -12,7 +13,6 @@ function gitdl() {
     git clone "$src" "$des"
   fi
 }
-
 mkdir -p "$CONFIG_DIR/thirdparty/vim" "$CONFIG_DIR/thirdparty/style"
 if executable git; then
   gitdl http://github.com/Shougo/neobundle.vim "$CONFIG_DIR/thirdparty/vim/bundle/neobundle.vim"
@@ -21,15 +21,17 @@ if executable git; then
 fi
 
 pushd dot
-for f in *; do ln "$OPTS"  "$PWD/$f" "$CONFIG_DIR/.$f"; done
+for f in *; do link "$PWD/$f" "$CONFIG_DIR/.$f"; done
 popd
 
 [[ ! -d "$CONFIG_DIR/bin" ]] && mkdir -p "$CONFIG_DIR/bin"
-for b in bin/*; do ln "$OPTS" "$PWD/$b" "$CONFIG_DIR/$b"; done
+for b in bin/*; do link "$PWD/$b" "$CONFIG_DIR/$b"; done
 
 XDGCONFIG=${XDG_CONFIG_HOME-$HOME/.config}
 echo $XDGCONFIG
-for p in $PWD/xdg/*; do
-  ln "$OPTS" "$p" "$XDGCONFIG/$(basename $p)"
-done
+for p in $PWD/xdg/*; do link "$p" "$XDGCONFIG/$(basename $p)"; done
+
+link "$HOME/.Xresources" "$HOME/.Xresources-x2go"
+link "$HOME/.xsession" "$HOME/.xsession-x2go"
+link "$HOME/.xsessionrc" "$HOME/.xsessionrc-x2go"
 

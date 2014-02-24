@@ -10,7 +10,6 @@ DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
 source $ZSH/oh-my-zsh.sh
 
-
 # my stuff
 autoload zmv
 export LESS="-FRSX --tabs=2"
@@ -42,6 +41,5 @@ if executable dircolors && [[ -f $HOME/.dircolors ]]; then
 else
   export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
 fi
-[[ -n "$DISPLAY" ]] && executable xrdb && xrdb ~/.Xresources
 
 function svndiff() { svn diff "$@" | pygmentize -l diff }
