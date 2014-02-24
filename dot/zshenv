@@ -5,7 +5,7 @@ function is_bsd() { [[ `uname` = 'Darwin' ]] }
 function init_path() {
   typeset -a bins
   if is_bsd; then
-    bins=($HOME/Library/Python/2.7/bin $HOME/Library/Haskell/bin)
+    bins=($HOME/Library/Python/2.7/bin $HOME/Library/Haskell/bin /opt/local/bin /opt/local/sbin)
   else
     bins=($HOME/.local/bin $HOME/.cabal/bin)
   fi
