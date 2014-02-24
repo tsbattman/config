@@ -86,7 +86,7 @@ UsePAM yes
 
 Subsystem sftp /usr/lib/openssh/sftp-server
 Match User data
-  ChrootDirectory %h
+  ChrootDirectory /mnt/data
   AllowTCPForwarding no
   X11Forwarding no
   ForceCommand internal-sftp
