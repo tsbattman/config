@@ -43,3 +43,4 @@ else
 fi
 
 function svndiff() { svn diff "$@" | pygmentize -l diff }
+function zle-line-finish() { zle reset-prompt }
