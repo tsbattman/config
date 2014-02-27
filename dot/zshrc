@@ -44,3 +44,6 @@ fi
 
 function svndiff() { svn diff "$@" | pygmentize -l diff }
 function zle-line-finish() { zle reset-prompt }
+
+[[ $HOST = *.perlinrock.com ]] && export GIT_COMMITTER_EMAIL=thayne.batty@perlinrock.com
+[[ $HOST = *.perlinrock.com ]] && export GIT_AUTHOR_EMAIL=thayne.batty@perlinrock.com
