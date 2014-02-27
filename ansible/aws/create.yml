@@ -1,0 +1,19 @@
+
+---
+- name: create machines
+  hosts: localhost
+  gather_facts: false
+  vars_files:
+    - ~/etc/ansible/vars-aws.yml
+  tasks:
+    - name: create dev instance
+      local_action:
+        module: ec2
+        aws_access_key: "{{ aws_access }}"
+        aws_secret_key: "{{ aws_secret }}"
+        region: "{{ aws_region }}"
+        keypair: shuttle
+        group: quicklaunch-1
+        instance_type: m1.small
+        image: "{{aws_image}}"
+        state: present

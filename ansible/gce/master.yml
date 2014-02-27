@@ -1,0 +1,10 @@
+
+---
+- name: gce
+  hosts: localhost
+  gather_facts: no
+  vars:
+    ggdir: ~/thirdparty/google
+  tasks:
+    - file: path={{ggdir}} state=directory
+    - get_url: dest={{ggdir}} url=https://dl.google.com/dl/cloudsdk/release/google-cloud-sdk.zip

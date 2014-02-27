@@ -1,0 +1,27 @@
+
+---
+- name: dynamic inventory
+  hosts: localhost
+  gather_facts: no
+  vars:
+    hostdir: ~/etc/ansible/hosts
+  tasks:
+    - file: path={{ hostdir }} state=directory
+    - get_url: dest={{ hostdir }}/ec2.py url=https://raw.github.com/ansible/ansible/devel/plugins/inventory/ec2.py
+    - file: path={{ hostdir }}/ec2.py owner=thayne mode=755
+    - get_url: dest={{ hostdir }}/ec2.ini url=https://raw.github.com/ansible/ansible/devel/plugins/inventory/ec2.ini
+    - local_action: copy src=hosts dest={{ hostdir }}
+
+- name: aws
+  hosts: localhost
+  gather_facts: no
+  vars_files:
+    - ~/etc/ansible/vars-aws.yml
+  tasks:
+    - pip: name={{item}} state=latest extra_args="--user"
+      with_items: [boto, awscli]
+    - ini_file: dest=~/.boto section=Credentials option=aws_access_key_id value={{ aws_access }}
+    - ini_file: dest=~/.boto section=Credentials option=aws_secret_access_key value={{ aws_secret }}
+    - ini_file: dest=~/etc/aws-config.ini section=default option=aws_access_key_id value={{ aws_access }}
+    - ini_file: dest=~/etc/aws-config.ini section=default option=aws_secret_access_key value={{ aws_secret }}
+    - ini_file: dest=~/etc/aws-config.ini section=default option=region value={{ aws_region }}

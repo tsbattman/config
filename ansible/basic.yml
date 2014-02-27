@@ -1,0 +1,75 @@
+
+---
+- name: user
+  hosts: ec2
+  sudo: yes
+  remote_user: ubuntu
+  gather_facts: no
+  vars_files:
+    - ~/etc/ansible/vars-aws.yml
+  tasks:
+    - apt: pkg=zsh state=latest
+    - group: name=thayne
+    - group: name=data
+    - user: name=thayne password={{tsb_pwd}} group=thayne groups=adm,cdrom,sudo,dip,plugdev,audio,video,data shell=/usr/bin/zsh
+    - authorized_key: key="{{item}}" user=thayne
+      with_file:
+        - ~/.ssh/id_rsa.pub
+
+- name: packages
+  hosts: ec2
+  sudo: yes
+  remote_user: ubuntu
+  gather_facts: no
+  tasks:
+    - apt_repository: repo=ppa:staticfloat/juliareleases
+    - apt_repository: repo=ppa:staticfloat/julia-deps
+    - apt_repository: repo=ppa:x2go/stable
+    - apt: update_cache=yes
+    #- apt: upgrade=yes
+    - apt: pkg={{ item }} state=latest
+      with_items:
+        - x2goserver
+        - x2goserver-xsession
+        - xmonad
+        - suckless-tools # dmenu
+        - vim-athena
+        - rxvt-unicode
+        - make
+        - llvm
+        - clang
+        - libgsl0-dev
+        - liblapack-dev
+        - git
+        - haskell-platform
+        - julia
+    - pip: name={{item}} state=latest extra_args="--user"
+    with_items: [git-up]
+
+- name: user cfg
+  hosts: all
+  gather_facts: no
+  tasks:
+    - git: repo=git://github.com/Shougo/neobundle.vim dest=~/thirdparty/vim/bundle/neobundle.vim
+    - git: repo=git://github.com/robbyrussell/oh-my-zsh.git dest=~/.oh-my-zsh
+    - git: repo=git://github.com/tsbattman/config.git dest=~/config
+    - file: path=~/config/dot/vim/bundle src=~/thirdparty/vim/bundle state=link
+    - command: chdir=~/config ./configmapper.sh
+
+- name: sys cfg
+  hosts: ec2
+  sudo: yes
+  remote_user: ubuntu
+  vars_files:
+    - ~/etc/ansible/vars-aws.yml
+  tasks:
+    - user: name=data group=data password={{data_pwd}}
+    - file: path=/mnt/data owner=root group=root mode=755
+    - file: path=/mnt/data/mkt owner=data group=data mode=775 state=directory
+    - copy: dest=/etc/ssh/sshd_config src=~/config/etc/ssh/sshd_config backup=yes
+      when: ansible_system == "Linux"
+      notify: restart ssh
+  handlers:
+    - name: restart ssh
+      service: name=ssh state=restarted
+
