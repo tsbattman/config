@@ -22,6 +22,7 @@
       with_items: [boto, awscli]
     - ini_file: dest=~/.boto section=Credentials option=aws_access_key_id value={{ aws_access }}
     - ini_file: dest=~/.boto section=Credentials option=aws_secret_access_key value={{ aws_secret }}
+    - lineinfile: dest=~/etc/aws-config.ini line='[default]' create=yes
     - ini_file: dest=~/etc/aws-config.ini section=default option=aws_access_key_id value={{ aws_access }}
     - ini_file: dest=~/etc/aws-config.ini section=default option=aws_secret_access_key value={{ aws_secret }}
     - ini_file: dest=~/etc/aws-config.ini section=default option=region value={{ aws_region }}
