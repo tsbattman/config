@@ -1,9 +1,7 @@
 
 ---
 - name: user
-  hosts: ec2
-  sudo: yes
-  remote_user: ubuntu
+  hosts: all
   gather_facts: no
   vars_files:
     - ~/etc/ansible/vars-aws.yml
@@ -17,11 +15,10 @@
         - ~/.ssh/id_rsa.pub
 
 - name: packages
-  hosts: ec2
-  sudo: yes
-  remote_user: ubuntu
+  hosts: all
   gather_facts: no
   tasks:
+    - apt: pkg="python-pycurl" state=latest
     - apt_repository: repo=ppa:staticfloat/juliareleases
     - apt_repository: repo=ppa:staticfloat/julia-deps
     - apt_repository: repo=ppa:x2go/stable
@@ -43,11 +40,11 @@
         - git
         - haskell-platform
         - julia
-    - pip: name={{item}} state=latest extra_args="--user"
-    with_items: [git-up]
+        - python-pip
 
 - name: user cfg
   hosts: all
+  remote_user: thayne
   gather_facts: no
   tasks:
     - git: repo=git://github.com/Shougo/neobundle.vim dest=~/thirdparty/vim/bundle/neobundle.vim
@@ -55,11 +52,12 @@
     - git: repo=git://github.com/tsbattman/config.git dest=~/config
     - file: path=~/config/dot/vim/bundle src=~/thirdparty/vim/bundle state=link
     - command: chdir=~/config ./configmapper.sh
+    - pip: name={{item}} state=latest extra_args="--user"
+      with_items:
+        - git-up
 
 - name: sys cfg
   hosts: ec2
-  sudo: yes
-  remote_user: ubuntu
   vars_files:
     - ~/etc/ansible/vars-aws.yml
   tasks:

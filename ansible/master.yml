@@ -10,7 +10,7 @@
     - get_url: dest={{ hostdir }}/ec2.py url=https://raw.github.com/ansible/ansible/devel/plugins/inventory/ec2.py
     - file: path={{ hostdir }}/ec2.py owner=thayne mode=755
     - get_url: dest={{ hostdir }}/ec2.ini url=https://raw.github.com/ansible/ansible/devel/plugins/inventory/ec2.ini
-    - local_action: copy src=hosts dest={{ hostdir }}
+    - local_action: copy src=hosts dest={{ hostdir }}/hosts.ini
 
 - name: aws
   hosts: localhost
