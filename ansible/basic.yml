@@ -42,22 +42,8 @@
         - julia
         - python-pip
 
-- name: user cfg
-  hosts: all
-  remote_user: thayne
-  gather_facts: no
-  tasks:
-    - git: repo=git://github.com/Shougo/neobundle.vim dest=~/thirdparty/vim/bundle/neobundle.vim
-    - git: repo=git://github.com/robbyrussell/oh-my-zsh.git dest=~/.oh-my-zsh
-    - git: repo=git://github.com/tsbattman/config.git dest=~/config
-    - file: path=~/config/dot/vim/bundle src=~/thirdparty/vim/bundle state=link
-    - command: chdir=~/config ./configmapper.sh
-    - pip: name={{item}} state=latest extra_args="--user"
-      with_items:
-        - git-up
-
 - name: sys cfg
-  hosts: ec2
+  hosts: sftp
   vars_files:
     - ~/etc/ansible/vars-aws.yml
   tasks:

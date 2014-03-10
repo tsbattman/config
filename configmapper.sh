@@ -28,7 +28,7 @@ popd
 for b in bin/*; do link "$PWD/$b" "$CONFIG_DIR/$b"; done
 
 XDGCONFIG=${XDG_CONFIG_HOME-$HOME/.config}
-echo $XDGCONFIG
+[[ ! -d "$XDGCONFIG" ]] && mkdir -p "$XDGCONFIG"
 for p in $PWD/xdg/*; do link "$p" "$XDGCONFIG/$(basename $p)"; done
 
 link "$HOME/.Xresources" "$HOME/.Xresources-x2go"
