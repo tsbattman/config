@@ -1,7 +1,10 @@
 #! /usr/bin/env zsh
 
+function executable() { which $1 >> /dev/null && [[ -x `which $1` ]] }
+function is_bsd() { [[ `uname` = 'Darwin' ]] }
+
 CONFIG_DIR=$HOME
-if [[ $(uname) = 'Darwin' ]]; then OPTS='-sfhF';
+if is_bsd; then OPTS='-sfhF';
 else OPTS='-sfT'; fi
 function link() { src=$1; des=$2; ln "$OPTS" "$src" "$des" }
 
