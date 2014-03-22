@@ -3,16 +3,12 @@
 function executable() { which $1 >> /dev/null && [[ -x `which $1` ]] }
 function is_bsd() { [[ `uname` = 'Darwin' ]] }
 
-if is_bsd; then OPTS='-sfhF';
-else OPTS='-sfT'; fi
-function link() { src=$1; des=$2; ln "$OPTS" "$src" "$des" }
+if is_bsd; then function link() { src=$1; des=$2; ln -sfhF "$src" "$des" }
+else function link() { src=$1; des=$2; ln -sfT "$src" "$des" } fi
 function gitdl() {
   src=$1; des=$2
-  if [[ -d $des ]]; then
-    pushd "$des"; git pull origin master; popd
-  else
-    git clone "$src" "$des"
-  fi
+  if [[ -d $des ]]; then pushd "$des"; git pull origin master; popd
+  else git clone "$src" "$des"; fi
 }
 
 CONFIG_DIR=$HOME
@@ -20,7 +16,11 @@ mkdir -p "$CONFIG_DIR/thirdparty/vim" "$CONFIG_DIR/thirdparty/style"
 if executable git; then
   gitdl http://github.com/Shougo/neobundle.vim "$CONFIG_DIR/thirdparty/vim/bundle/neobundle.vim"
   gitdl http://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
-  pushd dot/vim; ln $OPTS "$CONFIG_DIR/thirdparty/vim/bundle" bundle; popd
+  link "$CONFIG_DIR/thirdparty/vim/bundle" "dot/vim/bundle"
+  gitdl http://github.com/chriskempson/base16-xresources.git "$CONFIG_DIR/thirdparty/style/base16-xresources"
+  if is_bsd; then
+    gitdl http://github.com/chriskempson/base16-iterm2.git "$CONFIG_DIR/thirdparty/style/base16-iterm2"
+  fi
 fi
 
 pushd dot
