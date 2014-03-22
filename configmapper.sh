@@ -23,9 +23,7 @@ if executable git; then
   fi
 fi
 
-pushd dot
-for f in *; do link "$PWD/$f" "$CONFIG_DIR/.$f"; done
-popd
+for f in dot/*; do link "$PWD/$f" "$CONFIG_DIR/.$(basename $f)"; done
 
 [[ ! -d "$CONFIG_DIR/bin" ]] && mkdir -p "$CONFIG_DIR/bin"
 for b in bin/*; do link "$PWD/$b" "$CONFIG_DIR/$b"; done
