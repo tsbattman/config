@@ -3,11 +3,9 @@
 function executable() { which $1 >> /dev/null && [[ -x `which $1` ]] }
 function is_bsd() { [[ `uname` = 'Darwin' ]] }
 
-CONFIG_DIR=$HOME
 if is_bsd; then OPTS='-sfhF';
 else OPTS='-sfT'; fi
 function link() { src=$1; des=$2; ln "$OPTS" "$src" "$des" }
-
 function gitdl() {
   src=$1; des=$2
   if [[ -d $des ]]; then
@@ -16,6 +14,8 @@ function gitdl() {
     git clone "$src" "$des"
   fi
 }
+
+CONFIG_DIR=$HOME
 mkdir -p "$CONFIG_DIR/thirdparty/vim" "$CONFIG_DIR/thirdparty/style"
 if executable git; then
   gitdl http://github.com/Shougo/neobundle.vim "$CONFIG_DIR/thirdparty/vim/bundle/neobundle.vim"

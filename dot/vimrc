@@ -19,6 +19,7 @@ set rtp+=~/.vim/bundle/neobundle.vim
 call neobundle#rc(expand('~/.vim/bundle'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'chriskempson/base16-vim'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'Shougo/vimproc', { 'build': {'unix': 'make -f make_unix.mak', 'mac': 'make -f make_mac.mak'}, }
@@ -46,7 +47,7 @@ filetype plugin indent on
 
 set background=dark
 let g:solarized_contrast="high"
-colorscheme solarized
+colorscheme base16-default
 
 "let loaded_matchparen=1 " Do not show matching parens
 
