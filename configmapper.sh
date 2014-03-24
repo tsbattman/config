@@ -11,22 +11,21 @@ function gitdl() {
   else git clone "$src" "$des"; fi
 }
 
-CONFIG_DIR=$HOME
-mkdir -p "$CONFIG_DIR/thirdparty/vim" "$CONFIG_DIR/thirdparty/style"
+mkdir -p "$HOME/thirdparty/vim" "$HOME/thirdparty/style"
 if executable git; then
-  gitdl http://github.com/Shougo/neobundle.vim "$CONFIG_DIR/thirdparty/vim/bundle/neobundle.vim"
+  gitdl http://github.com/Shougo/neobundle.vim "$HOME/thirdparty/vim/bundle/neobundle.vim"
   gitdl http://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
-  link "$CONFIG_DIR/thirdparty/vim/bundle" "dot/vim/bundle"
-  gitdl http://github.com/chriskempson/base16-xresources.git "$CONFIG_DIR/thirdparty/style/base16-xresources"
+  link "$HOME/thirdparty/vim/bundle" "dot/vim/bundle"
+  gitdl http://github.com/chriskempson/base16-xresources.git "$HOME/thirdparty/style/base16-xresources"
   if is_bsd; then
-    gitdl http://github.com/chriskempson/base16-iterm2.git "$CONFIG_DIR/thirdparty/style/base16-iterm2"
+    gitdl http://github.com/chriskempson/base16-iterm2.git "$HOME/thirdparty/style/base16-iterm2"
   fi
 fi
 
-for f in dot/*; do link "$PWD/$f" "$CONFIG_DIR/.$(basename $f)"; done
+for f in dot/*; do link "$PWD/$f" "$HOME/.$(basename $f)"; done
 
-[[ ! -d "$CONFIG_DIR/bin" ]] && mkdir -p "$CONFIG_DIR/bin"
-for b in bin/*; do link "$PWD/$b" "$CONFIG_DIR/$b"; done
+[[ ! -d "$HOME/bin" ]] && mkdir -p "$HOME/bin"
+for b in bin/*; do link "$PWD/$b" "$HOME/$b"; done
 
 XDGCONFIG=${XDG_CONFIG_HOME-$HOME/.config}
 [[ ! -d "$XDGCONFIG" ]] && mkdir -p "$XDGCONFIG"
@@ -36,3 +35,4 @@ link "$HOME/.Xresources" "$HOME/.Xresources-x2go"
 link "$HOME/.xsession" "$HOME/.xsession-x2go"
 link "$HOME/.xsessionrc" "$HOME/.xsessionrc-x2go"
 
+link "$HOME/thirdparty/style/base16-xresources/base16-default.dark.xresources" "$HOME/.Xresources"
