@@ -47,7 +47,7 @@ filetype plugin indent on
 
 set background=dark
 let g:solarized_contrast="high"
-colorscheme base16-default
+colorscheme solarized
 
 "let loaded_matchparen=1 " Do not show matching parens
 
