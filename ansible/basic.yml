@@ -30,7 +30,7 @@
         - x2goserver-xsession
         - xmonad
         - suckless-tools # dmenu
-        - vim-athena
+        - vim-gtk
         - rxvt-unicode
         - make
         - llvm
