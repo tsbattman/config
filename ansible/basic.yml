@@ -44,6 +44,7 @@
 
 - name: sys cfg
   hosts: sftp
+  gather_facts: no
   vars_files:
     - ~/etc/ansible/vars-aws.yml
   tasks:
@@ -51,7 +52,6 @@
     - file: path=/mnt/data owner=root group=root mode=755
     - file: path=/mnt/data/mkt owner=data group=data mode=775 state=directory
     - copy: dest=/etc/ssh/sshd_config src=~/config/etc/ssh/sshd_config backup=yes
-      when: ansible_system == "Linux"
       notify: restart ssh
   handlers:
     - name: restart ssh
