@@ -19,7 +19,6 @@ done
 tools=${tools:1}
 
 ign=$(_gi $tools)
-
 if ( ! $show ); then
   source $(git --exec-path)/git-sh-setup
   cd_to_toplevel
