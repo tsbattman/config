@@ -16,10 +16,12 @@ if executable git; then
   gitdl http://github.com/Shougo/neobundle.vim "$HOME/thirdparty/vim/bundle/neobundle.vim"
   gitdl http://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
   gitdl http://github.com/solarized/xresources.git "$HOME/thirdparty/style/solarized-xresources"
-  gitdl http://github.com/chriskempson/base16-xresources.git "$HOME/thirdparty/style/base16-xresources"
+  #gitdl http://github.com/chriskempson/base16-xresources.git "$HOME/thirdparty/style/base16-xresources"
   if is_bsd; then
-    gitdl http://github.com/chriskempson/base16-iterm2.git "$HOME/thirdparty/style/base16-iterm2"
+    #gitdl http://github.com/chriskempson/base16-iterm2.git "$HOME/thirdparty/style/base16-iterm2"
+    curl -G --create-dirs -o "$HOME/thirdparty/style/solarized-iterm2/#1" 'https://raw.githubusercontent.com/altercation/solarized/master/iterm2-colors-solarized/{Solarized%20Dark.itermcolors}'
   fi
+  gitdl http://github.com/creationix/nvm.git "$HOME/thirdparty/nvm"
 fi
 
 for f in dot/*; do link "$PWD/$f" "$HOME/.$(basename $f)"; done
