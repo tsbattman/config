@@ -1,11 +1,30 @@
-#! /bin/sh
+#! /bin/zsh
 
-source $(git --exec-path)/git-sh-setup
+dashless=$(basename "$0" | sed -e 's/-/ /')
+USAGE="[--show] list|<csv tools>"
+function _gi() { curl -s http://www.gitignore.io/api/$@ }
+function usage() { echo "usage: $dashless $USAGE"; exit 1 }
 
-USAGE="list | <csv ignore type>"
-function _gi() {
-  curl -s http://www.gitignore.io/api/$@
-}
+show=false
+tools=
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    --help|-h) usage ;;
+    list) _gi list; exit 1 ;;
+    --show) show=true ;;
+    *) tools="$tools,$1"
+  esac
+  shift
+done
+tools=${tools:1}
 
-cd_to_toplevel
-_gi $@
+ign=$(_gi $tools)
+
+if ( ! $show ); then
+  source $(git --exec-path)/git-sh-setup
+  cd_to_toplevel
+  echo $ign >> .gitignore
+else
+  echo $ign
+fi
+
