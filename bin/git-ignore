@@ -1,0 +1,11 @@
+#! /bin/sh
+
+source $(git --exec-path)/git-sh-setup
+
+USAGE="list | <csv ignore type>"
+function _gi() {
+  curl -s http://www.gitignore.io/api/$@
+}
+
+cd_to_toplevel
+_gi $@
