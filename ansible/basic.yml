@@ -38,7 +38,7 @@
         - libgsl0-dev
         - liblapack-dev
         - git
-        - haskell-platform
+        - ghc
         - julia
         - python-pip
 
