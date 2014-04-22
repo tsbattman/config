@@ -31,7 +31,11 @@ setopt NO_HIST_BEEP
 
 function cd () { builtin cd $1; ls; }
 function pd () { builtin pushd $1; ls; }
-function myproc() { ps -aef | grep "^$USER" }
+if isosx; then
+  alias myproc='ps -u $USER -f'
+else
+  alias myproc='ps -u $USER uf'
+fi
 
 executable lesspipe && eval $(lesspipe)
 executable aws_zsh_completer.sh && source `which aws_zsh_completer.sh`
