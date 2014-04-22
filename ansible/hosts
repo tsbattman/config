@@ -1,3 +1,9 @@
 
-localhost
+# example:
+# somehost ansible_ssh_host=<ip> ansible_connection=<local|ssh> ansible_ssh_user=<...>
+# ansible_ssh_pass is poorly supported on osx, use keys
+
+# current groups
+[sftp]
+[docker]
 
