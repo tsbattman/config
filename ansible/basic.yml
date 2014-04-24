@@ -18,7 +18,6 @@
   hosts: all
   gather_facts: no
   tasks:
-    - apt: pkg="python-pycurl" state=latest
     - apt_repository: repo={{item}}
       with_items:
         - ppa:staticfloat/juliareleases

@@ -33,6 +33,8 @@ function cd () { builtin cd $1; ls; }
 function pd () { builtin pushd $1; ls; }
 if isosx; then
   alias myproc='ps -u $USER -f'
+  alias showHidden='defaults write com.apple.finder AppleShowAllFiles YES'
+  alias hideHidden='defaults write com.apple.finder AppleShowAllFiles NO'
 else
   alias myproc='ps -u $USER uf'
 fi

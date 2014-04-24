@@ -27,6 +27,7 @@ export LANG=en_US.UTF-8
 
 limit coredumpsize unlimited
 limit datasize 1024m
+limit addressspace 2048m
 
 NVM_DIR=$HOME/thirdparty/nvm
 [[ -s $NVM_DIR/nvm.sh ]] && source $NVM_DIR/nvm.sh && nvm use v0.10.21 &> /dev/null
