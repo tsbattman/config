@@ -13,6 +13,7 @@ source $ZSH/oh-my-zsh.sh
 # my stuff
 autoload zmv
 export LESS="-FRSX --tabs=2"
+export EDITOR="vim"
 
 # use  oh-my-zsh for now
 #bindkey -v
@@ -20,17 +21,8 @@ export LESS="-FRSX --tabs=2"
 PROMPT="%{$fg[blue]%}%D{[%I:%M:%S]} %{$fg[white]%}%2~ $RPROMPT%{$fg_bold[blue]%}%#%{$reset_color%} "
 RPS1="%{$fg_bold[green]%}%n@%m %{$reset_color%}"
 
-export EDITOR="vim"
 alias lt='ll -rt'
 alias ccat='colorize'
-setopt NO_BEEP
-setopt EXTENDED_GLOB
-setopt CORRECT
-setopt HIST_IGNORE_ALL_DUPS
-setopt NO_HIST_BEEP
-
-function cd () { builtin cd $1; ls; }
-function pd () { builtin pushd $1; ls; }
 if isosx; then
   alias myproc='ps -u $USER -f'
   alias showHidden='defaults write com.apple.finder AppleShowAllFiles YES'
@@ -38,6 +30,20 @@ if isosx; then
 else
   alias myproc='ps -u $USER uf'
 fi
+
+# unset from oh-my-zsh
+unsetopt inc_append_history
+unsetopt share_history
+# my opts
+setopt NO_BEEP
+setopt EXTENDED_GLOB
+setopt CORRECT
+setopt HIST_IGNORE_ALL_DUPS
+setopt NO_HIST_BEEP
+setopt append_history
+
+function cd () { builtin cd $1; ls; }
+function pd () { builtin pushd $1; ls; }
 
 executable lesspipe && eval $(lesspipe)
 executable aws_zsh_completer.sh && source `which aws_zsh_completer.sh`

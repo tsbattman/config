@@ -10,18 +10,19 @@ function gitdl() {
   if [[ -d $des ]]; then pushd "$des"; git pull origin master; popd
   else git clone "$src" "$des"; fi
 }
+function extern() { echo "$HOME/thirdparty/$1" }
 
-mkdir -p "$HOME/thirdparty/vim" "$HOME/thirdparty/style"
+mkdir -p "$(extern vim)" "$(extern style)"
 if executable git; then
-  gitdl http://github.com/Shougo/neobundle.vim "$HOME/thirdparty/vim/bundle/neobundle.vim"
-  gitdl http://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
-  gitdl http://github.com/solarized/xresources.git "$HOME/thirdparty/style/solarized-xresources"
+  gitdl http://github.com/Shougo/neobundle.vim "$(extern vim/bundle/neobundle.vim)"
+  gitdl http://github.com/robbyrussell/oh-my-zsh.git "$(extern oh-my-zsh)"
+  gitdl http://github.com/solarized/xresources.git "$(extern style/solarized-xresources)"
   #gitdl http://github.com/chriskempson/base16-xresources.git "$HOME/thirdparty/style/base16-xresources"
   if is_bsd; then
     #gitdl http://github.com/chriskempson/base16-iterm2.git "$HOME/thirdparty/style/base16-iterm2"
-    curl -G --create-dirs -o "$HOME/thirdparty/style/solarized-iterm2/#1" 'https://raw.githubusercontent.com/altercation/solarized/master/iterm2-colors-solarized/{Solarized%20Dark.itermcolors}'
+    curl -G --create-dirs -o "$(extern style/solarized-iterm2/#1)" 'https://raw.githubusercontent.com/altercation/solarized/master/iterm2-colors-solarized/{Solarized%20Dark.itermcolors}'
   fi
-  gitdl http://github.com/creationix/nvm.git "$HOME/thirdparty/nvm"
+  gitdl http://github.com/creationix/nvm.git "$(extern nvm)"
 fi
 
 for f in dot/*; do link "$PWD/$f" "$HOME/.$(basename $f)"; done
@@ -33,8 +34,8 @@ XDGCONFIG=${XDG_CONFIG_HOME-$HOME/.config}
 [[ ! -d "$XDGCONFIG" ]] && mkdir -p "$XDGCONFIG"
 for p in $PWD/xdg/*; do link "$p" "$XDGCONFIG/$(basename $p)"; done
 
-link "$HOME/thirdparty/vim/bundle" "$PWD/dot/vim/bundle"
-link "$HOME/thirdparty/style/solarized-xresources/solarized" "$HOME/.Xresources"
+link "$(extern vim/bundle)" "$PWD/dot/vim/bundle"
+link "$(extern style/solarized-xresources/solarized)" "$HOME/.Xresources"
 
 link "$HOME/.Xresources" "$HOME/.Xresources-x2go"
 link "$HOME/.xsession" "$HOME/.xsession-x2go"
