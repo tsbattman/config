@@ -5,11 +5,11 @@ function isosx() { [[ `uname` = 'Darwin' ]] }
 function init_path() {
   typeset -a bins
   if isosx; then
-    bins=($HOME/Library/Python/2.7/bin $HOME/Library/Haskell/bin /usr/local/sbin)
+    bins=($HOME/Library/Python/2.7/bin /usr/local/sbin)
   else
-    bins=($HOME/.local/bin $HOME/.cabal/bin)
+    bins=($HOME/.local/bin)
   fi
-  typeset -gU path; path=($HOME/bin $bins $path $HOME/code/prcore)
+  typeset -gU path; path=($HOME/bin $bins $HOME/.cabal/bin $path $HOME/code/prcore)
 }
 function init_aws() {
   local AWS_CONFIG=$HOME/etc/aws-config.ini
@@ -27,7 +27,7 @@ export LANG=en_US.UTF-8
 
 limit coredumpsize unlimited
 limit datasize 1024m
-limit addressspace 8192m
+limit addressspace "$(( 16 * 1024 ))m"
 
 NVM_DIR=$HOME/thirdparty/nvm
 [[ -s $NVM_DIR/nvm.sh ]] && source $NVM_DIR/nvm.sh && nvm use v0.10.21 &> /dev/null
