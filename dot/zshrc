@@ -18,7 +18,7 @@ export EDITOR="vim"
 # use  oh-my-zsh for now
 #bindkey -v
 #bindkey '^R' history-incremental-pattern-search-backward
-function _wrap_sp() { if [[ -z $1 ]] then echo ''; else echo "$1 "; fi }
+function _wrap_sp() { [[ -n $1 ]] && echo "$1 " }
 PROMPT='%{$fg[blue]%}%D{[%I:%M:%S]} %{$fg[white]%}%2~ $(_wrap_sp $(prompt_git_info))%{$fg_bold[blue]%}%#%{$reset_color%} '
 RPS1="%{$fg_bold[green]%}%n@%m %{$reset_color%}"
 
