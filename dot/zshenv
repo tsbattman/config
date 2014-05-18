@@ -29,5 +29,6 @@ limit coredumpsize unlimited
 limit datasize 1024m
 limit addressspace "$(( 16 * 1024 ))m"
 
-NVM_DIR=$HOME/thirdparty/nvm
-[[ -s $NVM_DIR/nvm.sh ]] && source $NVM_DIR/nvm.sh && nvm use v0.10.21 &> /dev/null
+NVM_DIR=$HOME/thirdparty/js/nvm
+NVM_VER=v0.10.28
+[[ -s $NVM_DIR/nvm.sh ]] && source $NVM_DIR/nvm.sh && nvm use "$NVM_VER" &> /dev/null

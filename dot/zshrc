@@ -1,10 +1,11 @@
 #! /usr/bin/env
 
+fpath=($HOME/thirdparty/zsh/zsh-completions/src $fpath)
+
 # oh my zsh
-# git clone http://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
-ZSH=$HOME/thirdparty/oh-my-zsh
+ZSH=$HOME/thirdparty/zsh/oh-my-zsh
 ZSH_THEME="robbyrussell"
-plugins=(git git-prompt svn cabal colored-man colorize brew)
+plugins=(git-prompt colored-man colorize)
 CASE_SENSITIVE="true"
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
