@@ -98,6 +98,6 @@ set grepprg=sgrep\ -nH
 nnoremap <leader>* "zyiw:exe ":Unite -no-quit grep:.::\\\\<".@z."\\\\>"<CR>
 nnoremap <leader>/ :Unite -no-quit grep:.:<CR>
 " reload as china encoding
-nnoremap <leader>cn :edit ++enc=gb2312<CR>
+nnoremap <leader>cn :edit ++enc=gb18030<CR>
 nnoremap } }zz
 nnoremap { {zz
