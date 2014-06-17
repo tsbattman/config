@@ -31,5 +31,5 @@ limit datasize 1024m
 limit addressspace "$(( 16 * 1024 ))m"
 
 NVM_DIR=$HOME/thirdparty/js/nvm
-NVM_VER=v0.10.28
+NVM_VER=v0.10.21
 [[ -s $NVM_DIR/nvm.sh ]] && source $NVM_DIR/nvm.sh && nvm use "$NVM_VER" &> /dev/null
