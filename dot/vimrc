@@ -48,7 +48,7 @@ set hlsearch
 filetype plugin indent on
 
 set background=dark
-let g:solarized_contrast="high"
+let g:solarized_contrast="low"
 colorscheme solarized
 
 "let loaded_matchparen=1 " Do not show matching parens
