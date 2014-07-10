@@ -29,6 +29,14 @@ if isosx; then
   alias myproc='ps -u $USER -f'
   alias showHidden='defaults write com.apple.finder AppleShowAllFiles YES'
   alias hideHidden='defaults write com.apple.finder AppleShowAllFiles NO'
+
+  # Use AirDrop over every interface. srsly this should be a default.
+  defaults write com.apple.NetworkBrowser BrowseAllInterfaces 1
+  # Always open everything in Finder's list view. This is important.
+  defaults write com.apple.Finder FXPreferredViewStyle clmv # Nlsv – List View, icnv – Icon View, clmv – Column View, Flwv – Cover Flow View
+  # Set the Finder prefs for showing a few different volumes on the Desktop.
+  defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
+  defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
 else
   alias myproc='ps -u $USER uf'
 fi

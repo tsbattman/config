@@ -98,6 +98,8 @@ set t_te=
 set t_vb=
 set novisualbell
 
+set guifont=Source\ Code\ Pro
+
 set grepprg=sgrep\ -nH
 nnoremap <leader>* "zyiw:exe ":Unite -no-quit grep:.::\\\\<".@z."\\\\>"<CR>
 nnoremap <leader>/ :Unite -no-quit grep:.:<CR>
