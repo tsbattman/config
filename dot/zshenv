@@ -33,7 +33,7 @@ limit addressspace "$(( 16 * 1024 ))m"
 NVM_DIR=$HOME/thirdparty/js/nvm
 NVM_VER=v0.10.21
 [[ -s $NVM_DIR/nvm.sh ]] && source $NVM_DIR/nvm.sh && { nvm use "$NVM_VER" || nvm install "$NVM_VER" } &> /dev/null
-if [[ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]]; then
-  source $HOME/.nix-profile/etc/profile.d/nix.sh
-  manpath=($HOME/.nix-profile/share/man $manpath)
-fi
+# if [[ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]]; then
+#   source $HOME/.nix-profile/etc/profile.d/nix.sh
+#   manpath=($HOME/.nix-profile/share/man $manpath)
+# fi
