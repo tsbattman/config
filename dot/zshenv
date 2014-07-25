@@ -1,16 +1,26 @@
 #! /usr/bin/env zsh
 
+function extern() { echo "$HOME/thirdparty/$1" }
+
 function executable() { which $1 >> /dev/null && [[ -x `which $1` ]] }
 function isosx() { [[ `uname` = 'Darwin' ]] }
-function init_path() {
+
+typeset -gU path
+function init_path_base() {
   typeset -a bins
   if isosx; then
     bins=($HOME/Library/Python/2.7/bin /usr/local/sbin)
   else
     bins=($HOME/.local/bin)
   fi
-  typeset -gU path; path=($HOME/bin $bins $HOME/.cabal/bin $path $HOME/code/prcore)
+  path=($HOME/bin $bins $HOME/.cabal/bin $path $HOME/code/prcore)
 }
+function init_path_cabal() {
+  for prj in elm ghc-mod hoogle; do
+    [[ -e $(extern haskell/$prj/.cabal-sandbox) ]] && path=($(extern haskell/$prj/.cabal-sandbox/bin) $path)
+  done
+}
+function init_path() { init_path_base; init_path_cabal; }
 function init_aws() {
   local AWS_CONFIG=$HOME/etc/aws-config.ini
   [[ -f $AWS_CONFIG ]] && export AWS_CONFIG_FILE=$AWS_CONFIG
