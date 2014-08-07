@@ -17,10 +17,17 @@ function init_path_base() {
 }
 function init_path_cabal() {
   for prj in elm ghc-mod hoogle; do
-    [[ -e $(extern haskell/$prj/.cabal-sandbox) ]] && path=($(extern haskell/$prj/.cabal-sandbox/bin) $path)
+    [[ -d $(extern haskell/$prj/.cabal-sandbox) ]] && path=($(extern haskell/$prj/.cabal-sandbox/bin) $path)
   done
 }
-function init_path() { init_path_base; init_path_cabal; }
+function init_path_extern() {
+  init_path_cabal
+  [[ -d $(extern julia/julia) ]] && path=($(extern julia/julia) $path)
+}
+function init_path() {
+  init_path_base
+  init_path_extern
+}
 function init_aws() {
   local AWS_CONFIG=$HOME/etc/aws-config.ini
   [[ -f $AWS_CONFIG ]] && export AWS_CONFIG_FILE=$AWS_CONFIG
