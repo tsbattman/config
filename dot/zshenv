@@ -16,7 +16,7 @@ function init_path_base() {
   path=($HOME/bin $bins $HOME/.cabal/bin $path $HOME/code/prcore)
 }
 function init_path_cabal() {
-  for prj in elm ghc-mod hoogle; do
+  for prj in elm ghc-mod hoogle ihaskell; do
     [[ -d $(extern haskell/$prj/.cabal-sandbox) ]] && path=($(extern haskell/$prj/.cabal-sandbox/bin) $path)
   done
 }
