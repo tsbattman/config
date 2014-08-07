@@ -26,7 +26,14 @@ if executable git; then
   gitdl http://github.com/creationix/nvm.git "$(extern js/nvm)"
 fi
 
-for f in dot/*; do link "$PWD/$f" "$HOME/.$(basename $f)"; done
+for f in dot/*; do
+  tgt="$HOME/.$(basename $f)"
+  if [[ -d "$tgt" && ! -L "$tgt" ]]; then
+    for f2 in $f/*; do link "$PWD/$f2" "$tgt/$(basename $f2)"; done
+  else
+    link "$PWD/$f" "$tgt"
+  fi
+done
 
 [[ ! -d "$HOME/bin" ]] && mkdir -p "$HOME/bin"
 for b in bin/*; do link "$PWD/$b" "$HOME/$b"; done
