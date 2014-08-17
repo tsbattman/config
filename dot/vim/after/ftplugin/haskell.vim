@@ -1,0 +1,2 @@
+
+set makeprg=cabal\ build
