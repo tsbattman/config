@@ -16,6 +16,9 @@ let g:syntastic_python_python_exec='python3'
 let g:syntastic_haskell_checkers=['ghc_mod']
 let g:syntastic_javascript_checkers=['jsxhint']
 let g:syntastic_javascript_jsxhint_args='--config ~/.config/jsxhint/config'
+let g:syntastic_cpp_compiler = 'clang++'
+let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
+
 
 set rtp+=~/.vim/bundle/neobundle.vim
 call neobundle#rc(expand('~/.vim/bundle'))
@@ -35,6 +38,7 @@ NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'mxw/vim-jsx'
 NeoBundle 'derekwyatt/vim-scala'
 NeoBundle 'JuliaLang/julia-vim'
+NeoBundle 'enomsg/vim-haskellConcealPlus'
 " NeoBundle 'christoomey/vim-tmux-navigator'
 " NeoBundle 'benmills/vimux'
 

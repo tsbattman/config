@@ -1,3 +1,3 @@
 
-set cindent
+setlocal cindent
 syntax sync fromstart
