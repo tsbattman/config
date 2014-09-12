@@ -1,5 +1,7 @@
 #! /usr/bin/env zsh
 
+skip_global_compinit=1
+
 function extern() { echo "$HOME/thirdparty/$1" }
 
 function executable() { which $1 >> /dev/null && [[ -x `which $1` ]] }
@@ -49,7 +51,7 @@ limit addressspace "$(( 16 * 1024 ))m"
 
 NVM_DIR=$HOME/thirdparty/js/nvm
 NVM_VER=v0.10.21
-[[ -s $NVM_DIR/nvm.sh ]] && source $NVM_DIR/nvm.sh && { nvm use "$NVM_VER" || nvm install "$NVM_VER" } &> /dev/null
+[[ -s $NVM_DIR/nvm.sh ]] && source $NVM_DIR/nvm.sh &> /dev/null
 # if [[ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]]; then
 #   source $HOME/.nix-profile/etc/profile.d/nix.sh
 #   manpath=($HOME/.nix-profile/share/man $manpath)
