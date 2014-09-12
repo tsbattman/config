@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /usr/bin/env zsh
 
 fnm=Anonymous-Pro.zip
 pth="$HOME/thirdparty/style/fonts/$fnm"

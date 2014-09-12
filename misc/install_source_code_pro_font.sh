@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /usr/bin/env zsh
 
 fnm=SourceCodePro_FontsOnly-1.017.zip
 pth="$HOME/thirdparty/style/fonts/$fnm"
