@@ -4,7 +4,7 @@
 [alias]
   logx = log --graph --pretty=format:'%C(auto)%h %C(bold blue)%<(12,mtrunc)%an%C(reset) - %Cblue%>(12)%cd%Creset%C(auto) - %s %d' --abbrev-commit --date=relative
   graph = log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short
-  missing = "!f() { git rev-list ..$1 --oneline | sed -e '1 iOnly in other:'; git rev-list $1.. --oneline | sed -e '1 iOnly in HEAD:'; }; f"
+  missing = "!f() { git cherry -v HEAD $1 | sed -e \"1 iOnly in $1:\"; git cherry -v $1 HEAD | sed -e '1 iOnly in HEAD:'; }; f"
 [color]
   ui = true
 [push]
