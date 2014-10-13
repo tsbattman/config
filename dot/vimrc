@@ -95,6 +95,11 @@ set shortmess=aTI
 set splitbelow
 set splitright
 
+" Load matchit.vim, but only if the user hasn't installed a newer version.
+if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
+  runtime! macros/matchit.vim
+endif
+
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
