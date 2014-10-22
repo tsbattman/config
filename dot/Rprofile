@@ -1,0 +1,7 @@
+
+# getCRANMirrors()
+local({
+  r <- getOption('repos')
+  r['CRAN'] <- 'http://mirror.bjtu.edu.cn/cran'
+  options(repos = r)
+})
