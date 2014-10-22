@@ -38,7 +38,7 @@ NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'mxw/vim-jsx'
 NeoBundle 'derekwyatt/vim-scala'
 NeoBundle 'JuliaLang/julia-vim'
-NeoBundle 'enomsg/vim-haskellConcealPlus'
+" NeoBundle 'enomsg/vim-haskellConcealPlus'
 " NeoBundle 'christoomey/vim-tmux-navigator'
 " NeoBundle 'benmills/vimux'
 
