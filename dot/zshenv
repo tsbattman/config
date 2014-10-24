@@ -36,12 +36,8 @@ function init_aws() {
 }
 
 init_path
-init_aws
+#init_aws
 
-typeset -T -U PYTHONPATH pythonpath
-pythonpath=($HOME/code/prcore $pythonpath)
-export PYTHONPATH
-export JAVA_HOME=/usr
 export LANG=en_US.UTF-8
 export HISTSIZE=10000
 
@@ -51,7 +47,7 @@ limit addressspace "$(( 16 * 1024 ))m"
 
 NVM_DIR=$HOME/thirdparty/js/nvm
 NVM_VER=v0.10.21
-[[ -s $NVM_DIR/nvm.sh ]] && source $NVM_DIR/nvm.sh && nvm use "$NVM_DIR" &> /dev/null
+#[[ -s $NVM_DIR/nvm.sh ]] && source $NVM_DIR/nvm.sh && nvm use "$NVM_DIR" &> /dev/null
 # if [[ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]]; then
 #   source $HOME/.nix-profile/etc/profile.d/nix.sh
 #   manpath=($HOME/.nix-profile/share/man $manpath)
