@@ -5,3 +5,4 @@ local({
   r['CRAN'] <- 'http://mirror.bjtu.edu.cn/cran'
   options(repos = r)
 })
+options(digits.secs = 6)

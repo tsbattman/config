@@ -2,7 +2,7 @@
 
 dashless=$(basename "$0" | sed -e 's/-/ /')
 USAGE="[--show] list|<csv tools>"
-function _gi() { curl -s http://www.gitignore.io/api/$@ }
+function _gi() { curl -s https://www.gitignore.io/api/$@ }
 function usage() { echo "usage: $dashless $USAGE"; exit 1 }
 
 show=false

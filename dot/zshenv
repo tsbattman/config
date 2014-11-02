@@ -25,6 +25,7 @@ function init_path_cabal() {
 function init_path_extern() {
   init_path_cabal
   [[ -d $(extern julia/julia) ]] && path=($(extern julia/julia) $path)
+  [[ -d /usr/local/MATLAB/R2011a ]] && path=($path /usr/local/MATLAB/R2011a/bin)
 }
 function init_path() {
   init_path_base
