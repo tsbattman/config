@@ -4,23 +4,14 @@ let mapleader='-'
 " Thirdparty stuff
 let g:ctrlp_map='<leader>t'
 let g:ctrlp_cmd='CtrlPMixed'
-let g:neobundle#types#git#default_protocol='git'
-let g:unite_source_grep_command='sgrep'
-let g:unite_source_grep_default_opts='-nH'
-let g:unite_source_grep_recursive_opt=''
-" let g:unite_enable_start_insert = 1
-" let g:unite_split_rule = "botright"
-" let g:unite_force_overwrite_statusline = 0
-let g:syntastic_python_checkers=['python']
-let g:syntastic_python_python_exec='python3'
+let g:ctrlp_custom_ignore='dist/build'
+let g:unite_source_grep_command = 'ag'
+let g:unite_source_grep_default_opts = '-i --line-numbers --nocolor --nogroup --hidden'
+let g:unite_source_grep_recursive_opt = ''
 let g:syntastic_haskell_checkers=['ghc_mod']
-let g:syntastic_javascript_checkers=['jsxhint']
-let g:syntastic_javascript_jsxhint_args='--config ~/.config/jsxhint/config'
-let g:syntastic_cpp_compiler = 'clang++'
-let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
-
 
 set rtp+=~/.vim/bundle/neobundle.vim
+let g:neobundle#types#git#default_protocol='git'
 call neobundle#begin(expand('~/.vim/bundle'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'altercation/vim-colors-solarized'

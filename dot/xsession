@@ -1,2 +1,2 @@
 
-ibus-daemon -d -x -r -n kde
+xmonad
