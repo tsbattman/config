@@ -100,7 +100,7 @@ set t_te=
 set t_vb=
 set novisualbell
 
-set guifont=Source\ Code\ Pro
+" set guifont=Source\ Code\ Pro
 "set guifont=Anonymous\ Pro
 
 set grepprg=sgrep\ -nH
