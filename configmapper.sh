@@ -7,8 +7,13 @@ if is_bsd; then function link() { src=$1; des=$2; ln -sfhF "$src" "$des" }
 else function link() { src=$1; des=$2; ln -sfT "$src" "$des" } fi
 function gitdl() {
   src=$1; des=$2
-  if [[ -d $des ]]; then pushd "$des"; git pull origin master; popd
-  else git clone "$src" "$des"; fi
+  if [[ -d $des ]]; then
+    pushd "$des"
+    git pull origin master
+    popd
+  else
+    git clone "$src" "$des"
+  fi
 }
 function extern() { echo "$HOME/thirdparty/$1" }
 
@@ -17,13 +22,13 @@ if executable git; then
   gitdl http://github.com/Shougo/neobundle.vim "$(extern vim/bundle/neobundle.vim)"
   gitdl http://github.com/robbyrussell/oh-my-zsh.git "$(extern zsh/oh-my-zsh)"
   gitdl http://github.com/zsh-users/zsh-completions.git "$(extern zsh/zsh-completions)"
-  gitdl http://github.com/solarized/xresources.git "$(extern style/solarized-xresources)"
-  #gitdl http://github.com/chriskempson/base16-xresources.git "$HOME/thirdparty/style/base16-xresources"
+  #gitdl http://github.com/solarized/xresources.git "$(extern style/solarized-xresources)"
   if is_bsd; then
     #gitdl http://github.com/chriskempson/base16-iterm2.git "$HOME/thirdparty/style/base16-iterm2"
     #curl -G --create-dirs -o "$(extern style/solarized-iterm2/#1)" 'https://raw.githubusercontent.com/altercation/solarized/master/iterm2-colors-solarized/{Solarized%20Dark.itermcolors}'
   fi
-  gitdl http://github.com/creationix/nvm.git "$(extern js/nvm)"
+  #gitdl http://github.com/chriskempson/base16-xresources.git "$HOME/thirdparty/style/base16-xresources"
+  #gitdl http://github.com/creationix/nvm.git "$(extern js/nvm)"
 fi
 
 for f in dot/*; do
