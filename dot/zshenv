@@ -2,6 +2,9 @@
 
 skip_global_compinit=1
 
+GHC_VER=7.8.3
+CABAL_VER=1.20
+
 function extern() { echo "$HOME/thirdparty/$1" }
 
 function executable() { which $1 >> /dev/null && [[ -x `which $1` ]] }
@@ -17,15 +20,11 @@ function init_path_base() {
   fi
   path=($HOME/bin $bins $HOME/.cabal/bin $path $HOME/code/prcore)
 }
-function init_path_cabal() {
-  for prj in alex happy haddock ghc-mod hoogle dbmigrations; do
-    [[ -d $(extern haskell/$prj/.cabal-sandbox) ]] && path=($(extern haskell/$prj/.cabal-sandbox/bin) $path)
-  done
-}
 function init_path_extern() {
-  init_path_cabal
   [[ -d $(extern julia/julia) ]] && path=($(extern julia/julia) $path)
   [[ -d /usr/local/MATLAB/R2011a ]] && path=($path /usr/local/MATLAB/R2011a/bin)
+  [[ -d /opt/ghc/$GHC_VER/bin ]] && path=(/opt/ghc/$GHC_VER/bin $path)
+  [[ -d /opt/cabal/$CABAL_VER/bin ]] && path=(/opt/cabal/$CABAL_VER/bin $path)
 }
 function init_path() {
   init_path_base
