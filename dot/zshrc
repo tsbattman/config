@@ -40,17 +40,14 @@ if isosx; then
 else
   alias myproc='ps -u $USER uf'
 fi
+alias hp2ps='hp2ps -c'
 
-# unset from oh-my-zsh
-unsetopt inc_append_history
-unsetopt share_history
 # my opts
 setopt NO_BEEP
 setopt EXTENDED_GLOB
 setopt CORRECT
 setopt HIST_IGNORE_ALL_DUPS
 setopt NO_HIST_BEEP
-setopt append_history
 
 function cd () { builtin cd $1; ls; }
 function pd () { builtin pushd $1; ls; }
