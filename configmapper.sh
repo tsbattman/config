@@ -22,6 +22,7 @@ UPDATE_EXTERNAL=false
 while [[ $# -gt 0 ]]; do
   case $1 in
     '-update-external') UPDATE_EXTERNAL=true ;;
+    *) echo "Unknown option '$1'"; exit ;;
   esac
   shift
 done
