@@ -18,10 +18,10 @@ NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'Shougo/vimproc', { 'build': {
-    'unix': 'make -f make_unix.mak'
-  , 'mac': 'make -f make_mac.mak'
-  , 'windows': 'nmake -f make_msvc.mak nodebug=1'
-  }}
+      \   'unix': 'make -f make_unix.mak'
+      \ , 'mac': 'make -f make_mac.mak'
+      \ , 'windows': 'nmake -f make_msvc.mak nodebug=1'
+      \ }}
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'kien/ctrlp.vim'
