@@ -1,5 +1,6 @@
 
-C:\Windows\System32\MKLINK /D %HOMEPATH%\vimfiles %HOMEPATH%\Documents\dev\config\dot\vim
-C:\Windows\System32\MKLINK %HOMEPATH%\_vimrc %HOMEPATH%\Documents\dev\config\dot\vimrc
+MKLINK /D %HOMEPATH%\vimfiles %HOMEPATH%\Documents\dev\config\dot\vim
+MKLINK %HOMEPATH%\_vimrc %HOMEPATH%\Documents\dev\config\dot\vimrc
 
-C:\Windows\System32\MKLINK %HOMEPATH%\.gitconfig %HOMEPATH%\Documents\dev\config\config\git\config
+MKLINK %HOMEPATH%\.gitconfig %HOMEPATH%\Documents\dev\config\xdg\git\config
+MKLINK %HOMEPATH%\Documents\.Rprofile %HOMEPATH%\Documents\dev\config\dot\Rprofile
