@@ -85,7 +85,7 @@ set nobackup            " Do not keep a backup file
 set viminfo='20,<500,"500   " read/write a .viminfo file -- limit regs to 500 lines
 set history=50          " keep 50 lines of command history
 set ruler               " Show the cursor position all the time
-set guioptions=
+set guioptions=c
 set autoread
 set shortmess=aTI
 set splitbelow
@@ -104,8 +104,13 @@ set t_te=
 set t_vb=
 set novisualbell
 
-" set guifont=Source\ Code\ Pro
-"set guifont=Anonymous\ Pro
+if has("windows")
+  set encoding=utf-16
+  set guifont=FangSong:h12
+else
+  " set guifont=Source\ Code\ Pro
+  " set guifont=Anonymous\ Pro
+end
 
 set grepprg=sgrep\ -nH
 nnoremap <leader>* "zyiw:exe ":Unite -no-quit grep:.::\\\\<".@z."\\\\>"<CR>
