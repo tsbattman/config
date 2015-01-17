@@ -3,8 +3,19 @@
 function executable() { which $1 >> /dev/null && [[ -x `which $1` ]] }
 function is_bsd() { [[ `uname` = 'Darwin' ]] }
 
-if is_bsd; then function link() { src=$1; des=$2; ln -sfhF "$src" "$des" }
-else function link() { src=$1; des=$2; ln -sfT "$src" "$des" } fi
+function link() {
+  src=$1; des=$2
+  if [[ -e "$src" ]]; then
+    if is_bsd; then
+      ln -sfhF "$src" "$des"
+    else
+      ln -sfT "$src" "$des"
+    fi
+  else
+    [[ -h "$des" ]] && rm "$des"
+  fi
+}
+
 function gitdl() {
   src=$1; des=$2
   if [[ -d $des ]]; then
@@ -68,6 +79,7 @@ hask_link dbmigrations moo
 hask_link ghc-mod ghc-mod ghc-modi hlint
 hask_link hoogle hoogle
 hask_link xmonad xmonad
+hask_link xmobar xmobar
 
 XDGCONFIG=${XDG_CONFIG_HOME-$HOME/.config}
 [[ ! -d "$XDGCONFIG" ]] && mkdir -p "$XDGCONFIG"
