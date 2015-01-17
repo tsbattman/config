@@ -12,12 +12,14 @@ brightness = Map.fromList [
   ]
 
 main :: IO ()
-main = xmonad $ defaultConfig {
-    borderWidth = 1
-  , terminal = "urxvt"
-  , keys = liftA Map.unions . sequenceA $ [
-        keys defaultConfig
-      , const brightness
-      ]
-  }
+main = do
+  spawn "$HOME/bin/xmobar"
+  xmonad $ defaultConfig {
+      borderWidth = 1
+    , terminal = "urxvt"
+    , keys = liftA Map.unions . sequenceA $ [
+          keys defaultConfig
+        , const brightness
+        ]
+    }
 
