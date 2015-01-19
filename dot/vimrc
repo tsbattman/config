@@ -20,25 +20,25 @@ let g:ctrlp_custom_ignore='dist/build'
 let g:unite_source_grep_command = 'ag'
 let g:unite_source_grep_default_opts = '-i --line-numbers --nocolor --nogroup --hidden'
 let g:unite_source_grep_recursive_opt = ''
-let g:syntastic_haskell_checkers=['ghc_mod']
+let g:syntastic_haskell_checkers=['hlint']
 
 set rtp+=~/thirdparty/vim/bundle/neobundle.vim
 let g:neobundle#types#git#default_protocol='git'
 call neobundle#begin(expand('~/.vim/bundle'))
 NeoBundleFetch 'Shougo/neobundle.vim'
-NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'bling/vim-airline'
 NeoBundle 'Shougo/vimproc', { 'build': {
       \   'unix': 'make -f make_unix.mak'
       \ , 'mac': 'make -f make_mac.mak'
       \ , 'windows': 'nmake -f make_msvc.mak nodebug=1'
       \ }}
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'bling/vim-airline'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'eagletmt/ghcmod-vim'
 NeoBundle 'Twinside/vim-hoogle'
+" NeoBundle 'eagletmt/ghcmod-vim'
 " NeoBundle 'JuliaLang/julia-vim'
 " NeoBundle 'mxw/vim-jsx'
 " NeoBundle 'derekwyatt/vim-scala'
