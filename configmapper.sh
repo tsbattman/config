@@ -75,6 +75,7 @@ function hask_link () {
   }
 }
 
+hask_link happy happy alex
 hask_link dbmigrations moo
 hask_link ghc-mod ghc-mod ghc-modi hlint
 hask_link hoogle hoogle
