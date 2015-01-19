@@ -68,11 +68,9 @@ for b in bin/*; do link "$PWD/$b" "$HOME/$b"; done
 
 function hask_link () {
   dir="$(extern haskell/$1/.cabal-sandbox/bin)"; shift
-  [[ -d "$dir" ]] && {
-    for f in "$@"; do
-      link "$dir/$f" "$HOME/bin/$f"
-    done
-  }
+  for f in "$@"; do
+    link "$dir/$f" "$HOME/bin/$f"
+  done
 }
 
 hask_link happy happy alex

@@ -53,6 +53,7 @@ function cd () { builtin cd $1; ls; }
 function pd () { builtin pushd $1; ls; }
 
 executable lesspipe && eval $(lesspipe)
+executable lesspipe.sh && eval $(lesspipe.sh)
 executable aws_zsh_completer.sh && source `which aws_zsh_completer.sh`
 if executable dircolors && [[ -f $HOME/.dircolors ]]; then
   eval $(dircolors $HOME/.dircolors)
