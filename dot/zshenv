@@ -1,9 +1,10 @@
 #! /usr/bin/env zsh
 
-skip_global_compinit=1
+# don't want global settings
+unsetopt GLOBAL_RCS
 
-GHC_VER=7.8.3
-CABAL_VER=1.20
+# zshrc does compinit, so don't do it twice
+skip_global_compinit=1
 
 function extern() { echo "$HOME/thirdparty/$1" }
 
@@ -18,13 +19,11 @@ function init_path_base() {
   else
     bins=($HOME/.local/bin)
   fi
-  path=($HOME/bin $bins $HOME/.cabal/bin $path $HOME/code/prcore)
+  path=($HOME/bin $bins $HOME/.cabal/bin $path)
 }
 function init_path_extern() {
   [[ -d $(extern julia/julia) ]] && path=($(extern julia/julia) $path)
   [[ -d /usr/local/MATLAB/R2011a ]] && path=($path /usr/local/MATLAB/R2011a/bin)
-  [[ -d /opt/ghc/$GHC_VER/bin ]] && path=(/opt/ghc/$GHC_VER/bin $path)
-  [[ -d /opt/cabal/$CABAL_VER/bin ]] && path=(/opt/cabal/$CABAL_VER/bin $path)
 }
 function init_path() {
   init_path_base
@@ -44,11 +43,3 @@ export HISTSIZE=10000
 limit coredumpsize unlimited
 limit datasize 1024m
 limit addressspace "$(( 16 * 1024 ))m"
-
-NVM_DIR=$HOME/thirdparty/js/nvm
-NVM_VER=v0.10.21
-#[[ -s $NVM_DIR/nvm.sh ]] && source $NVM_DIR/nvm.sh && nvm use "$NVM_DIR" &> /dev/null
-# if [[ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]]; then
-#   source $HOME/.nix-profile/etc/profile.d/nix.sh
-#   manpath=($HOME/.nix-profile/share/man $manpath)
-# fi
