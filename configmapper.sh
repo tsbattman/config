@@ -57,14 +57,18 @@ fi
 for f in dot/*; do
   tgt="$HOME/.$(basename $f)"
   if [[ -d "$tgt" && ! -L "$tgt" ]]; then
-    for f2 in $f/*; do link "$PWD/$f2" "$tgt/$(basename $f2)"; done
+    for f2 in $f/*; do
+      link "$PWD/$f2" "$tgt/$(basename $f2)";
+    done
   else
     link "$PWD/$f" "$tgt"
   fi
 done
 
 [[ ! -d "$HOME/bin" ]] && mkdir -p "$HOME/bin"
-for b in bin/*; do link "$PWD/$b" "$HOME/$b"; done
+for b in bin/*; do
+  link "$PWD/$b" "$HOME/$b"
+done
 
 function hask_link () {
   dir="$(extern haskell/$1/.cabal-sandbox/bin)"; shift
@@ -88,7 +92,6 @@ XDGCONFIG=${XDG_CONFIG_HOME-$HOME/.config}
 for p in $PWD/xdg/*; do link "$p" "$XDGCONFIG/$(basename $p)"; done
 
 link "$(extern vim/bundle)" "$PWD/dot/vim/bundle"
-link "$(extern style/solarized-xresources/solarized)" "$HOME/.Xresources"
 
 link "$HOME/.Xresources" "$HOME/.Xresources-x2go"
 link "$HOME/.xsession" "$HOME/.xsession-x2go"
