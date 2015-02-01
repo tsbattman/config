@@ -11,6 +11,11 @@ brightness = Map.fromList [
   , ((noModMask, xF86XK_MonBrightnessDown), spawn "xbacklight -dec 10")
   ]
 
+volume = Map.fromList [
+    ((noModMask, xF86XK_AudioRaiseVolume), spawn "amixer sset Master,0 5%+")
+  , ((noModMask, xF86XK_AudioLowerVolume), spawn "amixer sset Master,0 5%-")
+  ]
+
 main :: IO ()
 main = do
   spawn "$HOME/bin/xmobar"
@@ -20,6 +25,7 @@ main = do
     , keys = liftA Map.unions . sequenceA $ [
           keys defaultConfig
         , const brightness
+        , const volume
         ]
     }
 
