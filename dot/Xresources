@@ -1,5 +1,5 @@
 
-URxvt.font: xft:DejaVuSansMono,\
+URxvt.font: xft:Monaco,\
             xft:AR PL UMing CN
 
 ! Solarized color scheme for the X Window System

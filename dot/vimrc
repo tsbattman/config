@@ -123,6 +123,7 @@ if WINDOWS()
 else
   " set guifont=Source\ Code\ Pro
   " set guifont=Anonymous\ Pro
+  set guifont=Monaco
 end
 
 set grepprg=sgrep\ -nH
