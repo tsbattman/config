@@ -119,7 +119,7 @@ set novisualbell
 if WINDOWS()
   set encoding=utf-16
   set fileencoding=utf-8
-  set guifont=FangSong:h12
+  set guifont=Source\ Code\ Pro
 else
   " set guifont=Source\ Code\ Pro
   " set guifont=Anonymous\ Pro
