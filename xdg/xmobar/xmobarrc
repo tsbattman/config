@@ -1,5 +1,5 @@
 Config {
-    font = "-misc-fixed-*-*-*-*-10-*-*-*-*-*-*-*"
+    font = "xft:Monaco"
   -- , addtionalFonts = []
   , borderColor = "black"
   , border = TopB
