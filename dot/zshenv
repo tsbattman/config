@@ -15,7 +15,7 @@ typeset -gU path
 function init_path_base() {
   typeset -a bins
   if isosx; then
-    bins=($HOME/Library/Python/2.7/bin /usr/local/sbin /usr/local/bin)
+    bins=($HOME/Library/Python/2.7/bin /usr/local/sbin /usr/local/bin /usr/texbin)
   else
     bins=($HOME/.local/bin)
   fi
