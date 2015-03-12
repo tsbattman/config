@@ -41,5 +41,5 @@ Config {
                ]
   , sepChar = "%"
   , alignSep = "}{"
-  , template = "%cpu% | %memory% * %swap% | %enp0s25% - %wlp3s0wi% | %battery% } { <fc=#ee9a00>%date%</fc>| %ZSSS% | %uname%"
+  , template = "%cpu% | %memory% * %swap% | %enp0s25% - %wlp3s0wi% | %battery% } { %ZSSS% | %uname% | <fc=#ee9a00>%date%</fc>"
   }
