@@ -113,8 +113,8 @@ map Q gq
 
 set t_ti=
 set t_te=
+set visualbell
 set t_vb=
-set novisualbell
 
 if WINDOWS()
   set encoding=utf-16
