@@ -116,6 +116,7 @@ set t_te=
 set t_vb=
 
 if WINDOWS()
+  set visualbell
   set encoding=utf-16
   set fileencoding=utf-8
   set guifont=Source\ Code\ Pro
