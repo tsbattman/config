@@ -113,7 +113,6 @@ map Q gq
 
 set t_ti=
 set t_te=
-set visualbell
 set t_vb=
 
 if WINDOWS()
@@ -121,6 +120,7 @@ if WINDOWS()
   set fileencoding=utf-8
   set guifont=Source\ Code\ Pro
 else
+  set novisualbell
   " set guifont=Source\ Code\ Pro
   " set guifont=Anonymous\ Pro
   set guifont=Monaco
