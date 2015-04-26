@@ -1,0 +1,11 @@
+#! /bin/sh
+
+JDIR=$HOME/thirdparty/j/j64-803/
+
+export LD_LIBRARY_PATH="$JDIR/bin":$LD_LIBRARY_PATH
+
+if [[ "$1" = "--qt" ]]; then
+  exec $JDIR/bin/jqt
+else
+  exec $JDIR/bin/jconsole
+fi
