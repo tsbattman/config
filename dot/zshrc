@@ -44,11 +44,9 @@ fi
 alias hp2ps='hp2ps -c'
 
 # my opts
-setopt NO_BEEP
-setopt EXTENDED_GLOB
-setopt CORRECT
-setopt HIST_IGNORE_ALL_DUPS
-setopt NO_HIST_BEEP
+setopt no_beep
+setopt no_hist_beep
+setopt no_share_history
 
 function cd () { builtin cd $1; ls; }
 function pd () { builtin pushd $1; ls; }

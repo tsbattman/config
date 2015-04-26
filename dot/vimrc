@@ -126,7 +126,7 @@ else
   set guifont=Monaco
 end
 
-set grepprg=sgrep\ -nH
+set grepprg=ag
 nnoremap <leader>* "zyiw:exe ":Unite -no-quit grep:.::\\\\<".@z."\\\\>"<CR>
 nnoremap <leader>/ :Unite -no-quit grep:.:<CR>
 " reload as china encoding
