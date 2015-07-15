@@ -9,3 +9,8 @@ local({
 
 options(digits.secs = 6)
 options(devtools.desc.author = "person(c('Thayne', 'S.'), 'Batty', email = 'tsbattman@gmail.com', role = c('aut', 'cre'))")
+
+if (interactive()) utils::loadhistory('~/.Rhistory')
+.Last <- function () {
+  if (interactive()) utils::savehistory('~/.Rhistory')
+}
