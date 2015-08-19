@@ -92,7 +92,7 @@ set laststatus=2
 
 set foldmethod=indent   " Set folding method
 set foldlevelstart=99   " Do not fold by default
-set wildignore=*.fasl,*.o,*.class,*.hi,*.pyc
+set wildignore=*.fasl,*.o,*.class,*.hi,*.pyc,*.so
 
 set formatoptions=tcroq " Formatting options
 set nobackup            " Do not keep a backup file

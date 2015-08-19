@@ -1,0 +1,4 @@
+#! /bin/sh
+
+export RSTUDIO_PANDOC=$HOME/bin/pandoc
+/usr/lib/rstudio/bin/rstudio

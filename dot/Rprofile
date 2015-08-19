@@ -3,14 +3,10 @@
 local({
   r <- getOption('repos')
   #r['CRAN'] <- 'http://mirror.bjtu.edu.cn/cran'
-  r[['CRAN']] <- 'http://mirrors.ustc.edu.cn/CRAN'
+  #r[['CRAN']] <- 'http://mirrors.ustc.edu.cn/CRAN'
+  r[['CRAN']] <- 'https://mirrors.tuna.tsinghua.edu.cn/CRAN/'
   options(repos = r)
 })
 
 options(digits.secs = 6)
 options(devtools.desc.author = "person(c('Thayne', 'S.'), 'Batty', email = 'tsbattman@gmail.com', role = c('aut', 'cre'))")
-
-if (interactive()) utils::loadhistory('~/.Rhistory')
-.Last <- function () {
-  if (interactive()) utils::savehistory('~/.Rhistory')
-}
