@@ -92,7 +92,7 @@ set laststatus=2
 
 set foldmethod=indent   " Set folding method
 set foldlevelstart=99   " Do not fold by default
-set wildignore=*.fasl,*.o,*.class,*.hi,*.pyc,*.so
+set wildignore=*.fasl,*.o,*.class,*.hi,*.pyc,*.so,*.exe
 
 set formatoptions=tcroq " Formatting options
 set nobackup            " Do not keep a backup file
@@ -117,13 +117,12 @@ set t_ti=
 set t_te=
 set t_vb=
 
+set novisualbell
 if WINDOWS()
-  set visualbell
   set encoding=utf-16
   set fileencoding=utf-8
   set guifont=Source\ Code\ Pro
 else
-  set novisualbell
   " set guifont=Source\ Code\ Pro
   " set guifont=Anonymous\ Pro
   set guifont=Monaco
