@@ -1,6 +1,6 @@
 #! /usr/bin/env
 
-fpath=($HOME/thirdparty/zsh/zsh-completions/src $fpath)
+fpath=($HOME/thirdparty/zsh/zsh-completions/src $fpath /usr/local/share/zsh/site-functions)
 
 # oh my zsh
 ZSH=$HOME/thirdparty/zsh/oh-my-zsh
