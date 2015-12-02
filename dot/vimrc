@@ -113,11 +113,14 @@ endif
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
+set noerrorbells
+set visualbell
+set t_vb=
+autocmd GUIEnter * set visualbell t_vb=
+
 set t_ti=
 set t_te=
-set t_vb=
 
-set novisualbell
 if WINDOWS()
   set encoding=utf-16
   set fileencoding=utf-8
