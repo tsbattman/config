@@ -78,9 +78,6 @@ function hask_link () {
 }
 
 hask_link happy happy alex
-hask_link dbmigrations moo
-hask_link ghc-mod ghc-mod ghc-modi hlint
-hask_link pointfree pointfree
 hask_link hlint hlint
 hask_link hoogle hoogle
 hask_link xmonad xmonad
@@ -89,7 +86,9 @@ hask_link pandoc pandoc
 
 XDGCONFIG=${XDG_CONFIG_HOME-$HOME/.config}
 [[ ! -d "$XDGCONFIG" ]] && mkdir -p "$XDGCONFIG"
-for p in $PWD/xdg/*; do link "$p" "$XDGCONFIG/$(basename $p)"; done
+for p in $PWD/xdg/*; do
+  link "$p" "$XDGCONFIG/$(basename $p)"
+done
 
 link "$(extern vim/bundle)" "$PWD/dot/vim/bundle"
 
