@@ -1,3 +1,2 @@
 
-URxvt.font: xft:Monaco,\
-            xft:AR PL UMing CN
+URxvt.font: xft:Monaco, xft:Noto Sans CJK SC
