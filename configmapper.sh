@@ -77,7 +77,6 @@ function hask_link () {
   done
 }
 
-hask_link happy happy alex
 hask_link hlint hlint
 hask_link hoogle hoogle
 hask_link xmonad xmonad
@@ -92,7 +91,7 @@ done
 
 link "$(extern vim/bundle)" "$PWD/dot/vim/bundle"
 
-link "$HOME/.Xresources" "$HOME/.Xresources-x2go"
-link "$HOME/.xsession" "$HOME/.xsession-x2go"
-link "$HOME/.xsessionrc" "$HOME/.xsessionrc-x2go"
+# link "$HOME/.Xresources" "$HOME/.Xresources-x2go"
+# link "$HOME/.xsession" "$HOME/.xsession-x2go"
+# link "$HOME/.xsessionrc" "$HOME/.xsessionrc-x2go"
 
