@@ -104,8 +104,8 @@ function etc_copy () {
   else
     USR=$2
   fi
-  echo "$USR -> $ETC"
-  # sudo cp $USR $ETC
+  # echo "$USR -> $ETC"
+  sudo cp $USR $ETC
 }
 
 if $SYSTEM; then
