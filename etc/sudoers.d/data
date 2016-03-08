@@ -1,4 +1,4 @@
 
 Defaults>data umask = 0002
 Defaults>data umask_override
-%data ALL = (data) ALL
+%data ALL = (data) NOPASSWD: ALL

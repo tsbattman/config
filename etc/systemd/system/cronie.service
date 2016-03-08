@@ -1,0 +1,12 @@
+# /usr/lib/systemd/system/cronie.service
+[Unit]
+Description=Periodic Command Scheduler
+
+[Service]
+ExecStart=/usr/bin/crond -n -m "/usr/bin/msmtp -t"
+ExecReload=/usr/bin/kill -HUP $MAINPID
+KillMode=process
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

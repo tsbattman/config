@@ -29,10 +29,12 @@ function gitdl() {
 function extern() { echo "$HOME/thirdparty/$1" }
 
 UPDATE_EXTERNAL=false
+SYSTEM=false
 
 while [[ $# -gt 0 ]]; do
   case $1 in
     '-update-external') UPDATE_EXTERNAL=true ;;
+    '-system') SYSTEM=true ;;
     *) echo "Unknown option '$1'"; exit ;;
   esac
   shift
@@ -95,3 +97,23 @@ link "$(extern vim/bundle)" "$PWD/dot/vim/bundle"
 # link "$HOME/.xsession" "$HOME/.xsession-x2go"
 # link "$HOME/.xsessionrc" "$HOME/.xsessionrc-x2go"
 
+function etc_copy () {
+  ETC=/etc/$1
+  if [[ $# -lt 2 ]]; then
+    USR=etc/$1
+  else
+    USR=$2
+  fi
+  echo "$USR -> $ETC"
+  # sudo cp $USR $ETC
+}
+
+if $SYSTEM; then
+  etc_copy suders.d/data
+  etc_copy systemd/system/cronie.service
+  etc_copy msmtprc
+
+  openssl enc -des3 -in etc/aliases.enc -out etc/aliases -d
+  etc_copy aliases
+  rm etc/aliases
+fi
