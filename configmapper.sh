@@ -109,11 +109,11 @@ function etc_copy () {
 }
 
 if $SYSTEM; then
-  etc_copy suders.d/data
+  etc_copy sudoers.d/data
   etc_copy systemd/system/cronie.service
-  etc_copy msmtprc
+  # etc_copy msmtprc
 
-  openssl enc -des3 -in etc/aliases.enc -out etc/aliases -d
-  etc_copy aliases
-  rm etc/aliases
+  # openssl enc -des3 -in etc/aliases.enc -out etc/aliases -d
+  # etc_copy aliases
+  # rm etc/aliases
 fi
