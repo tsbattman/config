@@ -72,18 +72,18 @@ for b in bin/*; do
   link "$PWD/$b" "$HOME/$b"
 done
 
-function hask_link () {
-  dir="$(extern haskell/$1/.cabal-sandbox/bin)"; shift
-  for f in "$@"; do
-    link "$dir/$f" "$HOME/bin/$f"
-  done
-}
-
-hask_link hlint hlint
-hask_link hoogle hoogle
-hask_link xmonad xmonad
-hask_link xmobar xmobar
-hask_link pandoc pandoc
+# XXX: Prefer stack install to cabal sandbox installs
+# function hask_link () {
+#   dir="$(extern haskell/$1/.cabal-sandbox/bin)"; shift
+#   for f in "$@"; do
+#     link "$dir/$f" "$HOME/bin/$f"
+#   done
+# }
+# hask_link hlint hlint
+# hask_link hoogle hoogle
+# hask_link pandoc pandoc
+# hask_link xmonad xmonad
+# hask_link xmobar xmobar
 
 XDGCONFIG=${XDG_CONFIG_HOME-$HOME/.config}
 [[ ! -d "$XDGCONFIG" ]] && mkdir -p "$XDGCONFIG"
