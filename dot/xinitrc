@@ -29,4 +29,4 @@ export QT_IM_MODULE=ibus
 
 ibus-daemon -dr --xim
 
-exec $HOME/bin/xmonad
+exec xmonad

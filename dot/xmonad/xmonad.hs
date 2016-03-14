@@ -18,12 +18,12 @@ volume = Map.fromList [
 
 main :: IO ()
 main = do
-  spawn "$HOME/bin/xmobar"
-  xmonad $ defaultConfig {
+  spawn "xmobar"
+  xmonad $ def {
       borderWidth = 1
     , terminal = "urxvt"
     , keys = liftA Map.unions . sequenceA $ [
-          keys defaultConfig
+          keys def
         , const brightness
         , const volume
         ]
