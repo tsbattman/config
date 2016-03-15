@@ -79,9 +79,11 @@ done
 #     link "$dir/$f" "$HOME/bin/$f"
 #   done
 # }
+# stack install hlint hoogle pandoc
 # hask_link hlint hlint
 # hask_link hoogle hoogle
 # hask_link pandoc pandoc
+# stack install xmonad xmobar --flag xmobar:with_xft --flag xmobar:with_iwlib
 # hask_link xmonad xmonad
 # hask_link xmobar xmobar
 
