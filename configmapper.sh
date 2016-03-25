@@ -56,6 +56,9 @@ if $UPDATE_EXTERNAL; then
   fi
 fi
 
+# Ensure vnc directory is there so to not make it a link
+[[ ! -d "$HOME/.vnc" ]] && mkdir "$HOME/.vnc"
+
 for f in dot/*; do
   tgt="$HOME/.$(basename $f)"
   if [[ -d "$tgt" && ! -L "$tgt" ]]; then
