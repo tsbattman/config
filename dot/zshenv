@@ -10,6 +10,7 @@ function extern() { echo "$HOME/thirdparty/$1" }
 
 function executable() { which $1 >> /dev/null && [[ -x `which $1` ]] }
 function isosx() { [[ `uname` = 'Darwin' ]] }
+function isbsd() { [[ `uname` = 'FreeBSD' ]] }
 
 typeset -gU path
 function init_path_base() {
@@ -43,4 +44,6 @@ export HISTSIZE=10000
 
 limit coredumpsize unlimited
 limit datasize 1024m
-limit addressspace "$(( 16 * 1024 ))m"
+if [[ ! isbsd ]]; then
+  limit addressspace "$(( 16 * 1024 ))m"
+fi
