@@ -1,7 +1,7 @@
 #! /usr/bin/env zsh
 
 function executable() { which $1 >> /dev/null && [[ -x `which $1` ]] }
-function is_bsd() { [[ `uname` = 'Darwin' ]] }
+function is_bsd() { [[ `uname` = 'Darwin' || `uname` = 'FreeBSD' ]] }
 
 function link() {
   src=$1; des=$2
