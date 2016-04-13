@@ -55,7 +55,7 @@ fi
 
 function svndiff() { svn diff "$@" | pygmentize -l diff }
 function zle-line-finish() { zle reset-prompt }
-executable iconv && function convcn() { iconv -f gb2312 "$@" }
+executable iconv && function convcn() { iconv -f gb18030 "$@" }
 
 autoload insert-unicode-char
 zle -N insert-unicode-char
