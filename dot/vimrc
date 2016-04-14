@@ -29,7 +29,13 @@ let g:syntastic_enable_r_lintr_checker=1
 
 set rtp+=~/thirdparty/vim/bundle/neobundle.vim
 let g:neobundle#types#git#default_protocol='https'
-call neobundle#begin(expand('~/.vim/bundle'))
+if WINDOWS()
+  let g:neobundle_path = expand('~/vimfiles/bundle')
+else
+  let g:neobundle_path = expand('~/.vim/bundle')
+endif
+
+call neobundle#begin(g:neobundle_path)
 NeoBundleFetch 'Shougo/neobundle.vim'
 " NeoBundle 'Shougo/vimproc', {
 "       \ 'build': {
