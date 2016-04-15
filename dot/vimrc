@@ -30,7 +30,11 @@ let g:syntastic_r_lintr_linters="with_defaults(line_length_linter(120))"
 let g:syntastic_enable_r_lintr_checker=1
 
 filetype off
-set rtp+=~/thirdparty/vim/bundle/Vundle.vim
+if WINDOWS()
+  set rtp+=~/vimfiles/bundle/Vundle.vim
+else
+  set rtp+=~/.vim/bundle/Vundle.vim
+endif
 
 call vundle#begin()
 Plugin 'altercation/vim-colors-solarized'
