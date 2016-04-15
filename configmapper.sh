@@ -90,10 +90,9 @@ done
 # hask_link xmonad xmonad
 # hask_link xmobar xmobar
 
-XDGCONFIG=${XDG_CONFIG_HOME-$HOME/.config}
-[[ ! -d "$XDGCONFIG" ]] && mkdir -p "$XDGCONFIG"
+[[ ! -d "${XDG_CONFIG_HOME=$HOME/.config}" ]] && mkdir -p "$XDG_CONFIG_HOME"
 for p in $PWD/xdg/*; do
-  link "$p" "$XDGCONFIG/$(basename $p)"
+  link "$p" "$XDG_CONFIG_HOME/$(basename $p)"
 done
 
 link "$(extern vim/bundle)" "$PWD/dot/vim/bundle"

@@ -12,6 +12,12 @@ function executable() { which $1 >> /dev/null && [[ -x `which $1` ]] }
 function isosx() { [[ `uname` = 'Darwin' ]] }
 function isbsd() { [[ `uname` = 'FreeBSD' ]] }
 
+echo ${XDG_CONFIG_HOME:=$HOME/.config} >> /dev/null
+echo ${XDG_CACHE_HOME:=$HOME/.cache} >> /dev/null
+echo ${XDG_DATA_HOME:=$HOME/.local/share} >> /dev/null
+echo ${XDG_DATA_DIRS:=/usr/local/share:/usr/share} >> /dev/null
+echo ${XDG_CONFIG_DIRS:=/etc/xdg} >> /dev/null
+
 typeset -gU path
 function init_path_base() {
   typeset -a bins
@@ -44,6 +50,4 @@ export HISTSIZE=10000
 
 limit coredumpsize unlimited
 limit datasize 1024m
-if [[ ! isbsd ]]; then
-  limit addressspace "$(( 16 * 1024 ))m"
-fi
+[[ ! isbsd ]] && limit addressspace "$(( 16 * 1024 ))m"
