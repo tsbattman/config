@@ -60,3 +60,6 @@ executable iconv && function convcn() { iconv -f gb18030 "$@" }
 autoload insert-unicode-char
 zle -N insert-unicode-char
 bindkey '^Xi' insert-unicode-char
+
+autoload -U +X bashcompinit && bashcompinit
+executable stack && eval "$(stack --bash-completion-script stack)"
