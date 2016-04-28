@@ -70,23 +70,25 @@ for f in dot/*; do
   fi
 done
 
-[[ ! -d "$HOME/bin" ]] && mkdir -p "$HOME/bin"
+LOCAL="$HOME/.local"
+
+[[ ! -d "$LOCAL/bin" ]] && mkdir -p "$LOCAL/bin"
 for b in bin/*; do
-  link "$PWD/$b" "$HOME/$b"
+  link "$PWD/$b" "$LOCAL/$b"
 done
 
 # XXX: Prefer stack install to cabal sandbox installs
+# stack install hlint hoogle pandoc
+# stack install xmonad xmobar --flag xmobar:with_xft --flag xmobar:with_iwlib
 # function hask_link () {
 #   dir="$(extern haskell/$1/.cabal-sandbox/bin)"; shift
 #   for f in "$@"; do
 #     link "$dir/$f" "$HOME/bin/$f"
 #   done
 # }
-# stack install hlint hoogle pandoc
 # hask_link hlint hlint
 # hask_link hoogle hoogle
 # hask_link pandoc pandoc
-# stack install xmonad xmobar --flag xmobar:with_xft --flag xmobar:with_iwlib
 # hask_link xmonad xmonad
 # hask_link xmobar xmobar
 
