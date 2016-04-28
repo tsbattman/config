@@ -56,8 +56,9 @@ if $UPDATE_EXTERNAL; then
   fi
 fi
 
-# Ensure vnc directory is there so to not make it a link
+# Ensure certain directories are not made into links
 [[ ! -d "$HOME/.vnc" ]] && mkdir "$HOME/.vnc"
+[[ ! -d "$HOME/.stack" ]] && mkdir "$HOME/.stack"
 
 for f in dot/*; do
   tgt="$HOME/.$(basename $f)"
@@ -71,7 +72,6 @@ for f in dot/*; do
 done
 
 LOCAL="$HOME/.local"
-
 [[ ! -d "$LOCAL/bin" ]] && mkdir -p "$LOCAL/bin"
 for b in bin/*; do
   link "$PWD/$b" "$LOCAL/$b"
