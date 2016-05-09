@@ -1,0 +1,11 @@
+
+127.0.0.1 localhost
+::1 localhost ip6-localhost
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+
+
+192.168.123.1 alihub
+192.168.123.2 changshou
+192.168.123.3 wanhangdu
+192.168.123.4 kangding
