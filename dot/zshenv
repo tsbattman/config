@@ -26,7 +26,7 @@ function init_path_base() {
   else
     bins=($HOME/.local/bin)
   fi
-  path=($HOME/bin $bins $HOME/.cabal/bin $path)
+  path=($bins $path)
 }
 function init_path_extern() {
   [[ -d $(extern julia/julia) ]] && path=($(extern julia/julia) $path)
