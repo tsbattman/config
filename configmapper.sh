@@ -110,12 +110,13 @@ function etc_copy () {
   else
     USR=$2
   fi
-  # echo "$USR -> $ETC"
+  echo "copying system file $USR -> $ETC"
   sudo cp $USR $ETC
 }
 
 if $SYSTEM; then
   etc_copy sudoers.d/data
+  etc_copy sudoers.d/wheel
   etc_copy systemd/system/cronie.service
   # etc_copy msmtprc
 
