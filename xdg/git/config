@@ -3,7 +3,7 @@
   email = tsbattman@gmail.com
 [alias]
   logx = log --graph --pretty=format:'%C(auto)%h %C(bold blue)%<(12,mtrunc)%an%C(reset) - %Cblue%>(12)%cd%Creset%C(auto) - %s %d' --abbrev-commit --date=relative
-  graph = log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short
+  graph = log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=relative
 [color]
   ui = true
 [push]
