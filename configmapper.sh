@@ -115,8 +115,9 @@ function etc_copy () {
 }
 
 if $SYSTEM; then
-  etc_copy sudoers.d/data
-  etc_copy sudoers.d/wheel
+  for s in etc/sudoers.d/*; do
+    etc_copy ${s#etc/}
+  done
   etc_copy systemd/system/cronie.service
   # etc_copy msmtprc
 
