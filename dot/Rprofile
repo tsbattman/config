@@ -10,15 +10,16 @@ local({
 options(digits.secs = 6)
 options(devtools.desc.author = "person(c('Thayne', 'S.'), 'Batty', email = 'tsbattman@gmail.com', role = c('aut', 'cre'))")
 
+local({
+  isWindows <- function () Sys.info()["sysname"] == "Windows"
+  isMacOS <- function () Sys.info()["sysname"] == "Darwin"
 
-isWindows <- function () Sys.info()["sysname"] == "Windows"
-isMacOS <- function () Sys.info()["sysname"] == "Darwin"
-
-options(endurance.base_path =
-  if (isWindows()) {
-    "C:/data"
-  } else if (isMacOS()) {
-    "/Volumes/data"
-  } else {
-    "/home/data"
-  })
+  options(endurance.base_path =
+    if (isWindows()) {
+      "C:/data"
+    } else if (isMacOS()) {
+      "/Volumes/data"
+    } else {
+      "/home/data"
+    })
+})
