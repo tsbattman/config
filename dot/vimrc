@@ -19,9 +19,6 @@ let mapleader="\<Space>"
 let g:ctrlp_map='<leader>t'
 let g:ctrlp_cmd='CtrlPMixed'
 let g:ctrlp_custom_ignore='dist/build'
-" let g:unite_source_grep_command = 'ag'
-" let g:unite_source_grep_default_opts = '-i --line-numbers --nocolor --nogroup --hidden'
-" let g:unite_source_grep_recursive_opt = ''
 let g:syntastic_haskell_checkers=['hlint']
 let g:syntastic_cpp_checkers=['clang_check']
 let g:syntastic_cpp_clang_check_post_args=''
@@ -37,29 +34,31 @@ else
 endif
 
 call vundle#begin()
+" Theme
 Plugin 'altercation/vim-colors-solarized'
+" Plugin 'chriskempson/base16-vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'bling/vim-airline'
-Plugin 'scrooloose/syntastic'
+" Searching
 Plugin 'kien/ctrlp.vim'
+Plugin 'rking/ag.vim'
+" Languages
+Plugin 'scrooloose/syntastic'
 Plugin 'kongo2002/fsharp-vim'
-" Plugin 'Twinside/vim-hoogle'
-" Plugin 'Shougo/unite.vim'
-" Plugin 'eagletmt/ghcmod-vim'
 " Plugin 'JuliaLang/julia-vim'
-" Plugin 'mxw/vim-jsx'
 " Plugin 'derekwyatt/vim-scala'
 " Plugin 'kchmck/vim-coffee-script'
 " Plugin 'pangloss/vim-javascript'
-" Plugin 'chriskempson/base16-vim'
+" Plugin 'mxw/vim-jsx'
+" Plugin 'Shougo/unite.vim'
+" Haskell
+" Plugin 'Twinside/vim-hoogle'
+" Plugin 'eagletmt/ghcmod-vim'
 " Plugin 'enomsg/vim-haskellConcealPlus'
+" tmux integration
 " Plugin 'christoomey/vim-tmux-navigator'
 " Plugin 'benmills/vimux'
 call vundle#end()
-
-" call unite#filters#matcher_default#use(['matcher_fuzzy'])
-" call unite#filters#sorter_default#use(['sorter_rank'])
-" nnoremap <leader>t :<C-u>Unite  -buffer-name=files -start-insert buffer file_rec<CR>
 
 """"" My stuff
 syntax enable
@@ -136,10 +135,10 @@ else
   set guifont=Monaco
 end
 
-set grepprg=ag
-nnoremap <leader>* "zyiw:exe ":Unite -no-quit grep:.::\\\\<".@z."\\\\>"<CR>
-nnoremap <leader>/ :Unite -no-quit grep:.:<CR>
+set grepprg=ag\ --vimgrep\ $*
+set grepformat=%f:%l:%c:%m
 " reload as china encoding
 nnoremap <leader>cn :edit ++enc=gb18030<CR>
 nnoremap } }zz
 nnoremap { {zz
+nnoremap <leader>ag :Ag 
