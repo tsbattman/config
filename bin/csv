@@ -1,4 +1,4 @@
 #! /bin/sh
 
-csv2asv | column -s '' -t
+csv2asv "$@" | tr '' '\n' | column -s '' -t
 

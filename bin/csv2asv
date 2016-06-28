@@ -1,3 +1,20 @@
-#! /bin/sh
+#! /bin/env python
 
-python -c "import sys,csv; c = csv.reader(sys.stdin); [sys.stdout.write('\x1f'.join(map(repr,r))+'\n') for r in c];"
+import sys,csv
+
+def file_open (fname):
+    if fname == "-":
+        return sys.stdin
+    elif fname.endswith("bz2"):
+        import bz2
+        return bz2.open(fname, "rt")
+    elif fname.endswith("gz"):
+        import gzip
+        return gzip.open(fname, "rt")
+    else:
+        return open(fname)
+
+for fi in sys.argv[1:] or ["-"]:
+    c = csv.reader(file_open(fi))
+    for r in c:
+        sys.stdout.write("\x1f".join(map(lambda s: s or " ", r)) + "\x1e")

@@ -16,8 +16,9 @@ endfunction
 let mapleader="\<Space>"
 
 " Thirdparty stuff
-let g:ctrlp_map='<leader>t'
-let g:ctrlp_cmd='CtrlPMixed'
+let g:ctrlp_map='<leader>o'
+let g:ctrlp_cmd='CtrlP'
+let g:ctrlp_working_path_mode='rwa'
 let g:ctrlp_custom_ignore='dist/build'
 let g:syntastic_haskell_checkers=['hlint']
 let g:syntastic_cpp_checkers=['clang_check']
@@ -41,7 +42,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'bling/vim-airline'
 " Searching
 Plugin 'kien/ctrlp.vim'
-Plugin 'rking/ag.vim'
+Plugin 'mileszs/ack.vim'
 " Languages
 Plugin 'scrooloose/syntastic'
 Plugin 'kongo2002/fsharp-vim'
@@ -135,10 +136,11 @@ else
   set guifont=Monaco
 end
 
-set grepprg=ag\ --vimgrep\ $*
+set grepprg="ag --vimgrep"
+let g:ackprg="ag --vimgrep"
 set grepformat=%f:%l:%c:%m
 " reload as china encoding
 nnoremap <leader>cn :edit ++enc=gb18030<CR>
 nnoremap } }zz
 nnoremap { {zz
-nnoremap <leader>ag :Ag 
+nnoremap <leader>ag :Ack 
