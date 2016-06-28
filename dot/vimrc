@@ -18,7 +18,7 @@ let mapleader="\<Space>"
 " Thirdparty stuff
 let g:ctrlp_map='<leader>o'
 let g:ctrlp_cmd='CtrlP'
-let g:ctrlp_working_path_mode='rwa'
+let g:ctrlp_working_path_mode=''
 let g:ctrlp_custom_ignore='dist/build'
 let g:syntastic_haskell_checkers=['hlint']
 let g:syntastic_cpp_checkers=['clang_check']
