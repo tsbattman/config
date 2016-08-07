@@ -119,6 +119,8 @@ if $SYSTEM; then
     etc_copy ${s#etc/}
   done
   etc_copy systemd/system/cronie.service
+  etc_copy hosts
+  etc_copy rsyncd.conf
   # etc_copy msmtprc
 
   # openssl enc -des3 -in etc/aliases.enc -out etc/aliases -d
