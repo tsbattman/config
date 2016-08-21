@@ -4,7 +4,7 @@
 ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
 
-192.168.1.129 battnas
+192.168.1.124 battnas
 
 192.168.123.1 alihub
 192.168.123.2 changshou
