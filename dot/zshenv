@@ -50,7 +50,7 @@ export LC_ALL=en_US.UTF-8
 export HISTSIZE=10000
 
 limit coredumpsize unlimited
-limit datasize 1024m
+limit datasize 8192m
 ! isbsd && limit addressspace "$(( 16 * 1024 ))m"
 
 [[ -d $HOME/.zshenv.d ]] && for script in $HOME/.zshenv.d/*; do
