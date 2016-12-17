@@ -118,9 +118,17 @@ if $SYSTEM; then
   for s in etc/sudoers.d/*; do
     etc_copy ${s#etc/}
   done
-  etc_copy systemd/system/cronie.service
   etc_copy hosts
-  etc_copy rsyncd.conf
+
+  case $HOST in
+    kangding)
+      etc_copy systemd/system/cronie.service
+      etc_copy rsyncd.conf
+      ;;
+    caine)
+      etc_copy systemd/system/netctl-auto-resume@.service
+      ;;
+  esac
   # etc_copy msmtprc
 
   # openssl enc -des3 -in etc/aliases.enc -out etc/aliases -d
