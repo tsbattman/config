@@ -1,2 +1,2 @@
 
-setlocal makeprg=cabal\ build
+setlocal makeprg=cabal\ new-build
