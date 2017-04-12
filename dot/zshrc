@@ -4,8 +4,8 @@ fpath=($HOME/thirdparty/zsh/zsh-completions/src $fpath /usr/local/share/zsh/site
 
 # oh my zsh
 ZSH=$HOME/thirdparty/zsh/oh-my-zsh
-ZSH_THEME="robbyrussell"
-plugins=(colored-man colorize)
+ZSH_THEME=""
+plugins=(colored-man colorize git-prompt)
 CASE_SENSITIVE="true"
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
@@ -22,7 +22,8 @@ export EDITOR="vim"
 function _wrap_sp() { [[ -n $1 ]] && echo "$1 " }
 #PROMPT='%{$fg[blue]%}%D{[%I:%M:%S]} %{$fg[white]%}%2~ $(_wrap_sp $(prompt_git_info))%{$fg_bold[blue]%}%#%{$reset_color%} '
 PROMPT='%{$fg[blue]%}%D{[%I:%M:%S]} %{$fg[white]%}%2~ %{$fg_bold[blue]%}%#%{$reset_color%} '
-RPS1="%{$fg_bold[green]%}%n@%m %{$reset_color%}"
+# RPS1='%{$fg_bold[green]%}%n@%m %{$reset_color%}'
+RPS1='$(git_super_status)'
 
 alias lt='ll -rt'
 alias ccat='colorize'
