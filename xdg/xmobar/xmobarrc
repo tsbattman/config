@@ -1,14 +1,14 @@
 Config {
     font = "xft:Monaco:size=10"
-  -- , addtionalFonts = []
+  , additionalFonts = []
   , borderColor = "black"
   , border = TopB
   , bgColor = "black"
   , fgColor = "grey"
-  -- , alpha = 255
+  , alpha = 255
   , position = Top
-  -- , textOffset = -1
-  -- , iconOffset = -1
+  , textOffset = -1
+  , iconOffset = -1
   , lowerOnStart = True
   , pickBroadest = False
   , persistent = False
