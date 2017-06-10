@@ -86,6 +86,11 @@ done
 #     link "$dir/$f" "$HOME/bin/$f"
 #   done
 # }
+pushd "$PWD/dot/xmonad"
+cabal new-build
+cp ./dist-newstyle/build/xmonconf-0.1.0.0/build/xmonconf/xmonconf $HOME/.local/bin/xmonad
+popd
+
 # hask_link hlint hlint
 # hask_link hoogle hoogle
 # hask_link pandoc pandoc
