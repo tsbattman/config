@@ -1,0 +1,3 @@
+packages: ./
+package xmobar
+  flags: -with_xft -with_iwlib

@@ -14,6 +14,7 @@ brightness = Map.fromList [
 volume = Map.fromList [
     ((noModMask, xF86XK_AudioRaiseVolume), spawn "amixer sset Master,0 5%+")
   , ((noModMask, xF86XK_AudioLowerVolume), spawn "amixer sset Master,0 5%-")
+  , ((noModMask, xF86XK_AudioMute), spawn "amixer sset Master,0 toggle")
   ]
 
 main :: IO ()
