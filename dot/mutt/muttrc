@@ -1,0 +1,8 @@
+
+set header_cache=~/.cache/mutt
+set sendmail=/usr/bin/msmtp
+
+set mbox_type=Maildir
+set folder=~/maildir/icloud
+set spoolfile=+/inbox
+set from=tsbattman@icloud.com

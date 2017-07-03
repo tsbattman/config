@@ -1,0 +1,29 @@
+
+IMAPAccount icloud
+Host imap.mail.me.com
+User tsbattman
+PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.local/icloud.pass.asc"
+Port 993
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+SSLVersions TLSv1.2
+AuthMechs Plain
+
+IMAPStore icloud-remote
+Account icloud
+
+MaildirStore icloud-local
+Path ~/maildir/icloud/
+Inbox ~/maildir/icloud/inbox
+Trash Trash
+
+Channel icloud-folders
+Master :icloud-remote:
+Slave :icloud-local:
+Patterns "INBOX" "Saved" "Drafts" "Archive" "Sent" "Trash"
+Create Both
+Expunge Both
+SyncState *
+
+Group icloud
+Channel icloud-folders
