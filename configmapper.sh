@@ -78,7 +78,7 @@ for b in bin/*; do
 done
 
 # XXX: Prefer stack install to cabal sandbox installs
-# stack install hlint hoogle pandoc
+# stack install hlint hoogle pandoc packdeps
 # stack install xmonad xmobar --flag xmobar:with_xft --flag xmobar:with_iwlib
 # function hask_link () {
 #   dir="$(extern haskell/$1/.cabal-sandbox/bin)"; shift

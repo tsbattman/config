@@ -81,7 +81,7 @@ colorscheme solarized
 
 set bs=2                " Allow backspacing over everything in insert mode
 set cursorline
-set complete=.,w,b,u    " Word completion rules
+" set complete=.,w,b,u    " Word completion rules
 set relativenumber      " Relative line numbers
 
 set showmatch
