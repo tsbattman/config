@@ -70,6 +70,7 @@ for f in dot/*; do
     link "$PWD/$f" "$tgt"
   fi
 done
+[[ ! -d "$HOME/.cache/mutt" ]] && mkdir -p "$HOME/.cache/mutt"
 
 LOCAL="$HOME/.local"
 [[ ! -d "$LOCAL/bin" ]] && mkdir -p "$LOCAL/bin"

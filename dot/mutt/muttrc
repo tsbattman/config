@@ -1,8 +1,21 @@
 
 set header_cache=~/.cache/mutt
-set sendmail=/usr/bin/msmtp
-
 set mbox_type=Maildir
+
+set mailcap_path=~/.mutt/mailcap
+auto_view text/csv text/html
+alternative_order text/plain text/html
+
+bind pager j next-line
+bind pager k previous-line
+bind attach,index,pager \CD next-page
+bind attach,index,pager \CU previous-page
+bind pager g top
+bind pager G bottom
+bind attach,index g first-entry
+bind attach,index G last-entry
+
 set folder=~/maildir/icloud
 set spoolfile=+/inbox
 set from=tsbattman@icloud.com
+set sendmail="/usr/bin/msmtp -a icloud"

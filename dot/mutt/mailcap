@@ -1,0 +1,5 @@
+
+text/csv; csv %s
+text/html; elinks -dump; copiousoutput;
+text/*; less
+image/*; display %s
