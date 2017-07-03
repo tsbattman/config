@@ -26,6 +26,7 @@ let g:syntastic_cpp_clang_check_post_args=''
 let g:syntastic_r_checkers=['lintr']
 let g:syntastic_r_lintr_linters="with_defaults(line_length_linter(120))"
 let g:syntastic_enable_r_lintr_checker=1
+let g:ledger_bin="hledger"
 
 filetype off
 if WINDOWS()
@@ -46,6 +47,7 @@ Plugin 'mileszs/ack.vim'
 " Languages
 Plugin 'scrooloose/syntastic'
 Plugin 'kongo2002/fsharp-vim'
+Plugin 'ledger/vim-ledger'
 " Plugin 'JuliaLang/julia-vim'
 " Plugin 'derekwyatt/vim-scala'
 " Plugin 'kchmck/vim-coffee-script'

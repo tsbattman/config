@@ -65,3 +65,5 @@ bindkey '^Xi' insert-unicode-char
 autoload -U +X bashcompinit && bashcompinit
 executable stack && eval "$(stack --bash-completion-script stack)"
 executable pandoc && eval "$(pandoc --bash-completion)"
+
+export LEDGER_FILE=$HOME/notes/unified.ldg
