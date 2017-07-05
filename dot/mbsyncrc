@@ -14,7 +14,7 @@ Account icloud
 
 MaildirStore icloud-local
 Path ~/maildir/icloud/
-Inbox ~/maildir/icloud/inbox
+Inbox ~/maildir/icloud/INBOX
 Trash Trash
 
 Channel icloud-folders

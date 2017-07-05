@@ -16,6 +16,6 @@ bind attach,index g first-entry
 bind attach,index G last-entry
 
 set folder=~/maildir/icloud
-set spoolfile=+/inbox
+set spoolfile=+/INBOX
 set from=tsbattman@icloud.com
 set sendmail="/usr/bin/msmtp -a icloud"
