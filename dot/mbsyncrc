@@ -85,3 +85,8 @@ SyncState *
 
 Group gmail
 Channel gmail-folders
+
+Group all
+Channel icloud-folders
+Channel yahoo-folders
+Channel gmail-folders
