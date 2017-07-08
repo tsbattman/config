@@ -90,3 +90,7 @@ Group all
 Channel icloud-folders
 Channel yahoo-folders
 Channel gmail-folders
+
+Group cn
+Channel icloud-folders
+Channel yahoo-folders
