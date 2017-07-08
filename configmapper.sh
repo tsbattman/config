@@ -57,8 +57,9 @@ if $UPDATE_EXTERNAL; then
 fi
 
 # Ensure certain directories are not made into links
-[[ ! -d "$HOME/.vnc" ]] && mkdir "$HOME/.vnc"
-[[ ! -d "$HOME/.stack" ]] && mkdir "$HOME/.stack"
+for dir in ".vnc" ".stack" ".gnupg"; do
+  [[ ! -d "$HOME/$dir" ]] && mkdir "$HOME/$dir"
+done
 
 for f in dot/*; do
   tgt="$HOME/.$(basename $f)"
