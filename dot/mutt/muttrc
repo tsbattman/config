@@ -13,12 +13,23 @@ bind pager j next-line
 bind pager k previous-line
 bind attach,index,pager \CD next-page
 bind attach,index,pager \CU previous-page
-bind pager g top
+bind pager gg top
 bind pager G bottom
-bind attach,index g first-entry
+bind attach,index gg first-entry
 bind attach,index G last-entry
 
+bind index J next-unread
+bind index w toggle-new
+
+bind generic H help
+bind generic,index ? search-reverse
+bind generic,index N search-opposite
+bind generic n search-next
+
 set folder=~/maildir/icloud
-set spoolfile=+/INBOX
+set spoolfile=+INBOX
+set mbox=+Archive
+set record=+Sent
+set postponed=+Drafts
 set from=tsbattman@icloud.com
 set sendmail="/usr/bin/msmtp -a icloud"
