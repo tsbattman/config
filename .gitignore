@@ -1,6 +1,8 @@
 dot/vim/bundle
 xmonad.errors
 xmonad-*-linux
+.ghc.environment.*
+
 # Created by http://www.gitignore.io
 
 ### Linux ###
