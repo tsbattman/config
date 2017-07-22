@@ -1,6 +1,5 @@
 
 set nocompatible
-
 silent function! OSX()
   return has('macunix')
 endfunction
