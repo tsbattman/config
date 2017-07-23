@@ -1,5 +1,5 @@
 Config {
-    font = "xft:Monaco:size=10"
+    font = "xft:Droid Sans Mono:size=10"
   , additionalFonts = []
   , borderColor = "black"
   , border = TopB
