@@ -79,15 +79,21 @@ for b in bin/*; do
   link "$PWD/$b" "$LOCAL/$b"
 done
 
-# stack install hlint hoogle pandoc
-# stack install xmonad xmobar --flag xmobar:with_xft --flag xmobar:with_iwlib
 function hask_link () {
   BASE=$1
   PKG=$2
   EXEC=$3
   TGT=${4-$3}
-  echo "$BASE/$PKG/$EXEC/$TGT"
-  link "$BASE/dist-newstyle/build/x86_64-linux/ghc-8.0.2/$PKG/c/$EXEC/build/$EXEC/$EXEC" $HOME/.local/bin/$TGT
+
+  SRCPATH1="$BASE/dist-newstyle/build/x86_64-linux/ghc-8.0.2/$PKG/build/$EXEC/$EXEC"
+  SRCPATH2="$BASE/dist-newstyle/build/x86_64-linux/ghc-8.0.2/$PKG/c/$EXEC/build/$EXEC/$EXEC"
+  if [[ -e "$SRCPATH1" ]]; then
+    link "$SRCPATH1" $HOME/.local/bin/$TGT
+  elif [[ -e "$SRCPATH2" ]]; then
+    link "$SRCPATH2" $HOME/.local/bin/$TGT
+  else
+    echo "\x1b[31m$SRCPATH does not exist\x1b[0m"
+  fi
 }
 function hask_build () {
   PKG=$1
@@ -106,25 +112,13 @@ if which cabal >> /dev/null ; then
   hask_build hledger-1.3     hledger
   hask_build pandoc-1.19.2.1 pandoc
   hask_build hlint-2.0.9     hlint
-  hask_build xmobar-0.24.5   xmobar "with_xft"
+  hask_build xmobar-0.24.5   xmobar "with_xft with_alsa"
 
   pushd "$PWD/dot/xmonad"
   cabal new-build
   hask_link $PWD xmonconf-0.1.0.0 xmonconf xmonad
   popd
 fi
-
-# function hask_link () {
-#   dir="$(extern haskell/$1/.cabal-sandbox/bin)"; shift
-#   for f in "$@"; do
-#     link "$dir/$f" "$HOME/bin/$f"
-#   done
-# }
-# hask_link hlint hlint
-# hask_link hoogle hoogle
-# hask_link pandoc pandoc
-# hask_link xmonad xmonad
-# hask_link xmobar xmobar
 
 [[ ! -d "${XDG_CONFIG_HOME=$HOME/.config}" ]] && mkdir -p "$XDG_CONFIG_HOME"
 for p in $PWD/xdg/*; do
