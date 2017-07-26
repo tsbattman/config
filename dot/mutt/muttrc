@@ -8,6 +8,10 @@ alternative_order text/plain text/html
 
 set sort=threads
 set sort_aux=last-date-received
+set menu_scroll
+set pager_context=3
+set pager_index_lines=10
+set pager_stop
 
 bind pager j next-line
 bind pager k previous-line
@@ -33,3 +37,4 @@ set record=+Sent
 set postponed=+Drafts
 set from=tsbattman@icloud.com
 set sendmail="/usr/bin/msmtp -a icloud"
+set sendmail_wait=0
