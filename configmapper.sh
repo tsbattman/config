@@ -131,35 +131,31 @@ link "$(extern vim/bundle)" "$PWD/dot/vim/bundle"
 # link "$HOME/.xsession" "$HOME/.xsession-x2go"
 # link "$HOME/.xsessionrc" "$HOME/.xsessionrc-x2go"
 
-function etc_copy () {
-  ETC=/etc/$1
-  if [[ $# -lt 2 ]]; then
-    USR=etc/$1
-  else
-    USR=$2
-  fi
+function sys_install () {
+  is_bsd && PREFIX=/usr/local
+  MODE=$1
+  ETC=$PREFIX/$2
+  USR=$2
+
   echo "copying system file $USR -> $ETC"
-  sudo cp $USR $ETC
+  sudo install -o root -g wheel -m $MODE $USR $ETC
 }
 
 if $SYSTEM; then
   for s in etc/sudoers.d/*; do
-    etc_copy ${s#etc/}
+    sys_install 644 $s
   done
-  etc_copy hosts
+  sys_install 644 etc/hosts
 
   case $HOST in
     kangding)
-      etc_copy systemd/system/cronie.service
-      etc_copy rsyncd.conf
+      sys_install 644 etc/systemd/system/cronie.service
+      sys_install 644 etc/rsyncd.conf
       ;;
     caine)
-      etc_copy systemd/system/netctl-auto-resume@.service
+      sys_install 644 etc/systemd/system/netctl-auto-resume@.service
+      sys_install 644 etc/X11/xorg.conf.d/20-intel.conf
+      sys_install 644 etc/X11/xorg.conf.d/50-libinput.conf
       ;;
   esac
-  # etc_copy msmtprc
-
-  # openssl enc -des3 -in etc/aliases.enc -out etc/aliases -d
-  # etc_copy aliases
-  # rm etc/aliases
 fi
