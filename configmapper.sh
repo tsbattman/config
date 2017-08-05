@@ -113,6 +113,7 @@ if which cabal >> /dev/null ; then
   hask_build pandoc-1.19.2.1 pandoc
   hask_build hlint-2.0.9     hlint
   hask_build xmobar-0.24.5   xmobar "with_xft with_alsa"
+  hask_build hpack-0.18.1    hpack
 
   pushd "$PWD/dot/xmonad"
   cabal new-build
