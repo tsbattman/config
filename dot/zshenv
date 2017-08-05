@@ -45,8 +45,8 @@ function init_aws() {
 init_path
 #init_aws
 
-export DOCKER_HOST=tcp://seymour:2376
-export DOCKER_TLS_VERIFY=1
+# export DOCKER_HOST=tcp://seymour:2376
+# export DOCKER_TLS_VERIFY=1
 
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
