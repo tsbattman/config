@@ -2,7 +2,7 @@
 IMAPAccount icloud
 Host imap.mail.me.com
 User tsbattman
-PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.local/icloud.pass.asc"
+PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.local/icloud.pass.gpg"
 Port 993
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
