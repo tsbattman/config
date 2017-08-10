@@ -3,3 +3,4 @@ text/csv; csv %s
 text/html; elinks -dump; copiousoutput;
 text/*; less
 image/*; display %s
+application/pdf; chromium %s & sleep 5; test=test -n "$DISPLAY"
