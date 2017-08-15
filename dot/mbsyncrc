@@ -29,12 +29,14 @@ Group icloud
 Channel icloud-folders
 
 IMAPAccount yahoo
-Host imap.mail.yahoo.com
+Host imap.mail.att.net
+# Host imap.mail.yahoo.com
 User tsbattman@yahoo.com
 PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.local/yahoo.pwd.gpg"
 Port 993
 SSLType IMAPS
-CertificateFile /etc/ssl/certs/ca-certificates.crt
+# CertificateFile /etc/ssl/certs/ca-certificates.crt
+CertificateFile ~/.local/yahoo.pem
 SSLVersions TLSv1.2
 AuthMechs Plain
 
