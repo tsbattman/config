@@ -43,10 +43,10 @@ done
 if $UPDATE_EXTERNAL; then
   mkdir -p "$(extern vim)" "$(extern style)"
   if executable git; then
-    gitdl http://github.com/VundleVim/Vundle.vim.git "$(extern vim/bundle/Vundle.vim)"
-    gitdl http://github.com/robbyrussell/oh-my-zsh.git "$(extern zsh/oh-my-zsh)"
-    gitdl http://github.com/zsh-users/zsh-completions.git "$(extern zsh/zsh-completions)"
-    gitdl http://github.com/solarized/xresources.git "$(extern style/solarized-xresources)"
+    gitdl https://github.com/VundleVim/Vundle.vim.git "$(extern vim/bundle/Vundle.vim)"
+    gitdl https://github.com/robbyrussell/oh-my-zsh.git "$(extern zsh/oh-my-zsh)"
+    gitdl https://github.com/zsh-users/zsh-completions.git "$(extern zsh/zsh-completions)"
+    gitdl https://github.com/solarized/xresources.git "$(extern style/solarized-xresources)"
     if is_bsd; then
       #gitdl http://github.com/chriskempson/base16-iterm2.git "$HOME/thirdparty/style/base16-iterm2"
       #curl -G --create-dirs -o "$(extern style/solarized-iterm2/#1)" 'https://raw.githubusercontent.com/altercation/solarized/master/iterm2-colors-solarized/{Solarized%20Dark.itermcolors}'
