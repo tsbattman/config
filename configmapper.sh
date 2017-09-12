@@ -152,11 +152,13 @@ if $SYSTEM; then
     kangding)
       sys_install 644 etc/systemd/system/cronie.service
       sys_install 644 etc/rsyncd.conf
+      sys_install 644 etc/docker/daemon.json
       ;;
     caine)
       sys_install 644 etc/systemd/system/netctl-auto-resume@.service
       sys_install 644 etc/X11/xorg.conf.d/20-intel.conf
       sys_install 644 etc/X11/xorg.conf.d/50-libinput.conf
+      sys_install 644 etc/docker/daemon.json
       ;;
   esac
 fi
