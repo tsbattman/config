@@ -85,14 +85,15 @@ function hask_link () {
   EXEC=$3
   TGT=${4-$3}
 
-  SRCPATH1="$BASE/dist-newstyle/build/x86_64-linux/ghc-8.0.2/$PKG/build/$EXEC/$EXEC"
-  SRCPATH2="$BASE/dist-newstyle/build/x86_64-linux/ghc-8.0.2/$PKG/c/$EXEC/build/$EXEC/$EXEC"
+  GHC_VER=$(ghc --numeric-version)
+  SRCPATH1="$BASE/dist-newstyle/build/x86_64-linux/ghc-$GHC_VER/$PKG/build/$EXEC/$EXEC"
+  SRCPATH2="$BASE/dist-newstyle/build/x86_64-linux/ghc-$GHC_VER/$PKG/c/$EXEC/build/$EXEC/$EXEC"
   if [[ -e "$SRCPATH1" ]]; then
     link "$SRCPATH1" $HOME/.local/bin/$TGT
   elif [[ -e "$SRCPATH2" ]]; then
     link "$SRCPATH2" $HOME/.local/bin/$TGT
   else
-    echo "\x1b[31m$SRCPATH does not exist\x1b[0m"
+    echo "\x1b[31m$SRCPATH2 does not exist\x1b[0m"
   fi
 }
 function hask_build () {
@@ -109,11 +110,11 @@ function hask_build () {
   popd
 }
 if which cabal >> /dev/null ; then
-  hask_build hledger-1.3     hledger
+  hask_build hledger-1.4     hledger
   hask_build pandoc-1.19.2.1 pandoc
   hask_build hlint-2.0.9     hlint
   hask_build xmobar-0.24.5   xmobar "with_xft with_alsa"
-  hask_build hpack-0.18.1    hpack
+  hask_build hpack-0.19.3    hpack
 
   pushd "$PWD/dot/xmonad"
   cabal new-build
