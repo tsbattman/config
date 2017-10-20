@@ -20,7 +20,7 @@ executable xmonconf
   -- other-modules:
   -- other-extensions:
   build-depends:
-      base >=4.9 && <4.10
+      base >=4.9 && <5.0
     , containers >= 0.5
     , xmonad >= 0.13
     , X11 >= 1.8

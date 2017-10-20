@@ -22,7 +22,7 @@ main = do
   spawn "xmobar"
   xmonad $ def {
       borderWidth = 1
-    , terminal = "urxvt"
+    , terminal = "st"
     , keys = liftA Map.unions . sequenceA $ [
           keys def
         , const brightness
