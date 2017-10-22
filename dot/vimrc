@@ -19,12 +19,24 @@ let g:ctrlp_map='<leader>o'
 let g:ctrlp_cmd='CtrlP'
 let g:ctrlp_working_path_mode=''
 let g:ctrlp_custom_ignore='dist/ dist-newstyle/'
-let g:syntastic_haskell_checkers=['hlint']
-let g:syntastic_cpp_checkers=['clang_check']
-let g:syntastic_cpp_clang_check_post_args=''
-let g:syntastic_r_checkers=['lintr']
-let g:syntastic_r_lintr_linters="with_defaults(line_length_linter(120))"
-let g:syntastic_enable_r_lintr_checker=1
+
+let g:ale_lint_on_text_changed = 'normal'
+let g:ale_linters = {
+      \ 'haskell': ['hlint'],
+      \}
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
+
+let g:airline#extensions#ale#enabled = 1
+
+" let g:syntastic_haskell_checkers=['hlint']
+" let g:syntastic_cpp_checkers=['clang_check']
+" let g:syntastic_cpp_clang_check_post_args=''
+" let g:syntastic_r_checkers=['lintr']
+" let g:syntastic_r_lintr_linters="with_defaults(line_length_linter(120))"
+" let g:syntastic_enable_r_lintr_checker=1
+
+let g:polyglot_disabled = ['haskell']
 let g:ledger_bin="hledger"
 
 filetype off
@@ -38,16 +50,21 @@ call vundle#begin()
 " Theme
 Plugin 'altercation/vim-colors-solarized'
 " Plugin 'chriskempson/base16-vim'
-Plugin 'tpope/vim-fugitive'
 Plugin 'bling/vim-airline'
+" Git helpers
+Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
 " Searching
 Plugin 'kien/ctrlp.vim'
 Plugin 'mileszs/ack.vim'
+" Linters
+" Plugin 'scrooloose/syntastic'
+Plugin 'w0rp/ale'
 " Languages
-Plugin 'scrooloose/syntastic'
-Plugin 'kongo2002/fsharp-vim'
-Plugin 'ledger/vim-ledger'
-Plugin 'maverickg/stan.vim'
+Plugin 'sheerun/vim-polyglot'
+" Plugin 'kongo2002/fsharp-vim'
+" Plugin 'ledger/vim-ledger'
+" Plugin 'maverickg/stan.vim'
 " Plugin 'JuliaLang/julia-vim'
 " Plugin 'derekwyatt/vim-scala'
 " Plugin 'kchmck/vim-coffee-script'
