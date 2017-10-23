@@ -1,11 +1,11 @@
 #! /bin/bash
 
-BASE="$HOME/thirdparty/tmp"
+BASE="$HOME/thirdparty"
 mkdir -p "$BASE/suckless"
 
 cd "$BASE/suckless"
 
-git clone https://git.suckless.org/st.git
+[[ -d "st" ]] || git clone https://git.suckless.org/st
 
 # patches are applied in order
 patches=(solarized/st-no_bold_colors-20170623-b331da5.diff
@@ -16,12 +16,17 @@ patches=(solarized/st-no_bold_colors-20170623-b331da5.diff
   )
 
 for pi in "${patches[@]}"; do
-  wget "https://st.suckless.org/patches/$pi"
+  [[ -e "$(basename $pi)" ]] || wget "https://st.suckless.org/patches/$pi"
 done
 
 cd st
 for pi in "${patches[@]}"; do
-  git apply "../$(basename pi)"
+  git apply "../$(basename $pi)"
 done
+
+# in config.def.h
+#  - change font (currently uses Droid Sans Mono with pixelsize=15)
+#  - cahnge config.mk: PREFIX = $(HOME)/.local
+
 
 make
