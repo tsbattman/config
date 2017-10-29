@@ -4,8 +4,9 @@
 ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
 
-192.168.100.118 kangding.local
-192.168.100.123 seymour battnas
+192.168.100.134 kangding.local
+192.168.100.140 battnas
+192.168.100.143 pgdb
 
 192.168.123.1 alihub
 192.168.123.2 changshou
