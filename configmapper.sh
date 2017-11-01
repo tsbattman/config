@@ -86,8 +86,12 @@ function hask_link () {
   TGT=${4-$3}
 
   GHC_VER=$(ghc --numeric-version)
-  SRCPATH1="$BASE/dist-newstyle/build/x86_64-linux/ghc-$GHC_VER/$PKG/build/$EXEC/$EXEC"
-  SRCPATH2="$BASE/dist-newstyle/build/x86_64-linux/ghc-$GHC_VER/$PKG/c/$EXEC/build/$EXEC/$EXEC"
+  case $(uname) in
+    FreeBSD) OS=freebsd ;;
+    Linux | * ) OS=linux ;;
+  esac
+  SRCPATH1="$BASE/dist-newstyle/build/x86_64-$OS/ghc-$GHC_VER/$PKG/build/$EXEC/$EXEC"
+  SRCPATH2="$BASE/dist-newstyle/build/x86_64-$OS/ghc-$GHC_VER/$PKG/c/$EXEC/build/$EXEC/$EXEC"
   if [[ -e "$SRCPATH1" ]]; then
     link "$SRCPATH1" $HOME/.local/bin/$TGT
   elif [[ -e "$SRCPATH2" ]]; then
