@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /usr/bin/env bash
 
 BASE="$HOME/thirdparty"
 mkdir -p "$BASE/suckless"
@@ -26,7 +26,8 @@ done
 
 # in config.def.h
 #  - change font (currently uses Droid Sans Mono with pixelsize=15)
-#  - cahnge config.mk: PREFIX = $(HOME)/.local
+#  - change config.mk: PREFIX = $(HOME)/.local
+#  - on freebsd install ncurses, use infotocap to st.info into st.cap run cap_mkdb /usr/share/misc/termcap st.cap
 
 
 make
