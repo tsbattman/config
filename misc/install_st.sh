@@ -24,10 +24,9 @@ for pi in "${patches[@]}"; do
   git apply "../$(basename $pi)"
 done
 
-# in config.def.h
-#  - change font (currently uses Droid Sans Mono with pixelsize=15)
-#  - change config.mk: PREFIX = $(HOME)/.local
-#  - on freebsd install ncurses, use infotocap to st.info into st.cap run cap_mkdb /usr/share/misc/termcap st.cap
-
-
-make
+echo <<HERE
+in config.def.h
+  - change font (currently uses Droid Sans Mono with pixelsize=15)
+  - change config.mk: PREFIX = $(HOME)/.local
+  - on freebsd, need to use infotocap to convert st.info into cap file and import that
+HERE

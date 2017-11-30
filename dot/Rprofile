@@ -21,9 +21,9 @@ local({
     } else if (isMacOS()) {
       "/Volumes/data"
     } else if (file.exists("/nfs/data")) {
-        "/nfs/data"
+      "/nfs/data"
     } else {
       "/home/data"
     })
-  options(endurance.dbconn = list(host = "battnas", port = "32768", dbname = "endurance"))
+  options(endurance.dbconn = list(dbname = "endurance", host = "pgdb"))
 })
