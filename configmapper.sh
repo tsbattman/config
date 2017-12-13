@@ -91,7 +91,7 @@ function hask_link () {
     Linux | * ) OS=linux ;;
   esac
   SRCPATH1="$BASE/dist-newstyle/build/x86_64-$OS/ghc-$GHC_VER/$PKG/build/$EXEC/$EXEC"
-  SRCPATH2="$BASE/dist-newstyle/build/x86_64-$OS/ghc-$GHC_VER/$PKG/c/$EXEC/build/$EXEC/$EXEC"
+  SRCPATH2="$BASE/dist-newstyle/build/x86_64-$OS/ghc-$GHC_VER/$PKG/x/$EXEC/build/$EXEC/$EXEC"
   if [[ -e "$SRCPATH1" ]]; then
     link "$SRCPATH1" $HOME/.local/bin/$TGT
   elif [[ -e "$SRCPATH2" ]]; then
