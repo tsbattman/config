@@ -2,7 +2,7 @@
 IMAPAccount icloud
 Host imap.mail.me.com
 User tsbattman
-PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.local/icloud.pass.gpg"
+PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.local/icloud.pwd.gpg"
 Port 993
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
@@ -29,8 +29,7 @@ Group icloud
 Channel icloud-folders
 
 IMAPAccount yahoo
-Host imap.mail.att.net
-# Host imap.mail.yahoo.com
+Host imap.mail.yahoo.com
 User tsbattman@yahoo.com
 PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.local/yahoo.pwd.gpg"
 Port 993
@@ -88,10 +87,40 @@ SyncState *
 Group gmail
 Channel gmail-folders
 
+IMAPAccount outlook
+Host imap.outlook.com
+User tsbattman@outlook.com
+PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.local/outlook.pwd.gpg"
+Port 993
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+SSLVersions TLSv1.2
+AuthMechs Plain
+
+IMAPStore outlook-remote
+Account outlook
+
+MaildirStore outlook-local
+Path ~/maildir/outlook/
+Inbox ~/maildir/outlook/INBOX
+Trash Trash
+
+Channel outlook-folders
+Master :outlook-remote:
+Slave :outlook-local:
+Patterns "INBOX" "Saved" "Drafts" "Archive" "Sent" "Trash"
+Create Both
+Expunge Both
+SyncState *
+
+Group outlook
+Channel outlook-folders
+
 Group all
 Channel icloud-folders
 Channel yahoo-folders
 Channel gmail-folders
+Channel outlook-folders
 
 Group cn
 Channel icloud-folders

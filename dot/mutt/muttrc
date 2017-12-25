@@ -38,3 +38,8 @@ set postponed=+Drafts
 set from=tsbattman@icloud.com
 set sendmail="/usr/bin/msmtp -a icloud"
 set sendmail_wait=0
+
+set alias_file = "~/.mutt/aliases"
+set sort_alias = alias
+set reverse_alias = yes
+source $alias_file
