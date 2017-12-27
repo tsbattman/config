@@ -6,7 +6,7 @@ ff02::2 ip6-allrouters
 
 192.168.100.113 kangding.local
 192.168.100.140 battnas
-192.168.100.143 pgdb
+192.168.100.146 pgdb
 192.168.100.55  gitlab
 192.168.100.57  dockreg
 
