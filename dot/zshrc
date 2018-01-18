@@ -66,4 +66,5 @@ autoload -U +X bashcompinit && bashcompinit
 # executable stack && eval "$(stack --bash-completion-script stack)"
 # executable pandoc && eval "$(pandoc --bash-completion)"
 
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 export LEDGER_FILE=$HOME/notes/unified.ldg
