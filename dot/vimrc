@@ -95,7 +95,6 @@ endif
 colorscheme solarized
 
 "let loaded_matchparen=1 " Do not show matching parens
-let r_indent_align_args = 0
 
 set bs=2                " Allow backspacing over everything in insert mode
 set cursorline
