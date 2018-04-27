@@ -113,12 +113,15 @@ function hask_build () {
   popd
   popd
 }
-if which cabal >> /dev/null ; then
-  hask_build hledger-1.4     hledger
-  hask_build pandoc-1.19.2.1 pandoc
-  hask_build hlint-2.0.9     hlint
-  hask_build xmobar-0.24.5   xmobar "with_xft with_alsa"
-  hask_build hpack-0.19.3    hpack
+if which cabal >> /dev/null ;
+then
+  hask_build hledger-1.5      hledger
+  hask_build pandoc-2.1.3     pandoc
+  hask_build hlint-2.1.3      hlint
+  hask_build xmobar-0.26      xmobar "with_xft with_alsa"
+  hask_build hpack-0.28.2     hpack
+  # hask_build packunused-0.1.2 packunused
+  hask_build threadscope-0.2.10 threadscope
 
   pushd "$PWD/dot/xmonad"
   cabal new-build
