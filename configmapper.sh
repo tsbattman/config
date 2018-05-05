@@ -87,6 +87,7 @@ function hask_link () {
 
   GHC_VER=$(ghc --numeric-version)
   case $(uname) in
+    Darwin) OS=osx ;;
     FreeBSD) OS=freebsd ;;
     Linux | * ) OS=linux ;;
   esac
@@ -123,10 +124,13 @@ then
   # hask_build packunused-0.1.2 packunused
   hask_build threadscope-0.2.10 threadscope
 
-  pushd "$PWD/dot/xmonad"
-  cabal new-build
-  hask_link $PWD xmonconf-0.1.0.0 xmonconf xmonad
-  popd
+  if [[ "$(uname)" != "Darwin" ]]; then
+    hask_build xmobar-0.24.5   xmobar "with_xft with_alsa"
+    pushd "$PWD/dot/xmonad"
+    cabal new-build
+    hask_link $PWD xmonconf-0.1.0.0 xmonconf xmonad
+    popd
+  fi
 fi
 
 [[ ! -d "${XDG_CONFIG_HOME=$HOME/.config}" ]] && mkdir -p "$XDG_CONFIG_HOME"
