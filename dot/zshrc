@@ -66,6 +66,7 @@ autoload -U +X bashcompinit && bashcompinit
 # executable stack && eval "$(stack --bash-completion-script stack)"
 # executable pandoc && eval "$(pandoc --bash-completion)"
 
+export GPG_TTY=$(tty)
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles
 export LEDGER_FILE=$HOME/notes/unified.ldg
