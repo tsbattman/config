@@ -39,6 +39,8 @@ let g:airline#extensions#ale#enabled = 1
 let g:polyglot_disabled = ['haskell']
 let g:ledger_bin="hledger"
 
+let g:rainbow_active=1
+
 filetype off
 if WINDOWS()
   set rtp+=~/vimfiles/bundle/Vundle.vim
@@ -49,6 +51,7 @@ endif
 call vundle#begin()
 " Theme
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'luochen1990/rainbow'
 " Plugin 'chriskempson/base16-vim'
 Plugin 'bling/vim-airline'
 " Git helpers
@@ -61,10 +64,11 @@ Plugin 'mileszs/ack.vim'
 " Plugin 'scrooloose/syntastic'
 Plugin 'w0rp/ale'
 " Languages
-Plugin 'sheerun/vim-polyglot'
+" Plugin 'sheerun/vim-polyglot'
 Plugin 'ledger/vim-ledger'
 " Plugin 'kongo2002/fsharp-vim'
-" Plugin 'maverickg/stan.vim'
+Plugin 'maverickg/stan.vim'
+Plugin 'wlangstroth/vim-racket'
 " Plugin 'JuliaLang/julia-vim'
 " Plugin 'derekwyatt/vim-scala'
 " Plugin 'kchmck/vim-coffee-script'
