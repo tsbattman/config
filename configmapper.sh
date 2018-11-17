@@ -43,7 +43,8 @@ done
 if $UPDATE_EXTERNAL; then
   mkdir -p "$(extern vim)" "$(extern style)"
   if executable git; then
-    gitdl https://github.com/VundleVim/Vundle.vim.git "$(extern vim/bundle/Vundle.vim)"
+    # gitdl https://github.com/VundleVim/Vundle.vim.git "$(extern vim/bundle/Vundle.vim)"
+    gitdl https://github.com/junegunn/vim-plug.git "$(extern vim/bundle/vim-plug)"
     gitdl https://github.com/robbyrussell/oh-my-zsh.git "$(extern zsh/oh-my-zsh)"
     gitdl https://github.com/zsh-users/zsh-completions.git "$(extern zsh/zsh-completions)"
     gitdl https://github.com/solarized/xresources.git "$(extern style/solarized-xresources)"

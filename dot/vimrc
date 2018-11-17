@@ -42,47 +42,49 @@ let g:ledger_bin="hledger"
 let g:rainbow_active=1
 
 filetype off
+
+runtime! bundle/vim-plug/plug.vim
 if WINDOWS()
-  set rtp+=~/vimfiles/bundle/Vundle.vim
+  call plug#begin('~/vimfiles/bundle')
 else
-  set rtp+=~/.vim/bundle/Vundle.vim
+  call plug#begin('~/.vim/bundle')
 endif
 
-call vundle#begin()
 " Theme
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'luochen1990/rainbow'
-" Plugin 'chriskempson/base16-vim'
-Plugin 'bling/vim-airline'
+Plug 'altercation/vim-colors-solarized'
+Plug 'luochen1990/rainbow'
+" Plug 'chriskempson/base16-vim'
+Plug 'bling/vim-airline'
 " Git helpers
-Plugin 'tpope/vim-fugitive'
-Plugin 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 " Searching
-Plugin 'kien/ctrlp.vim'
-Plugin 'mileszs/ack.vim'
+Plug 'kien/ctrlp.vim'
+Plug 'mileszs/ack.vim'
 " Linters
-" Plugin 'scrooloose/syntastic'
-Plugin 'w0rp/ale'
+" Plug 'scrooloose/syntastic'
+Plug 'w0rp/ale'
 " Languages
-" Plugin 'sheerun/vim-polyglot'
-Plugin 'ledger/vim-ledger'
-" Plugin 'kongo2002/fsharp-vim'
-Plugin 'maverickg/stan.vim'
-Plugin 'wlangstroth/vim-racket'
-" Plugin 'JuliaLang/julia-vim'
-" Plugin 'derekwyatt/vim-scala'
-" Plugin 'kchmck/vim-coffee-script'
-" Plugin 'pangloss/vim-javascript'
-" Plugin 'mxw/vim-jsx'
-" Plugin 'Shougo/unite.vim'
+" Plug 'sheerun/vim-polyglot'
+Plug 'ledger/vim-ledger'
+" Plug 'kongo2002/fsharp-vim'
+Plug 'maverickg/stan.vim'
+Plug 'wlangstroth/vim-racket'
+Plug 'pprovost/vim-ps1'
+" Plug 'JuliaLang/julia-vim'
+" Plug 'derekwyatt/vim-scala'
+" Plug 'kchmck/vim-coffee-script'
+" Plug 'pangloss/vim-javascript'
+" Plug 'mxw/vim-jsx'
+" Plug 'Shougo/unite.vim'
 " Haskell
-" Plugin 'Twinside/vim-hoogle'
-" Plugin 'eagletmt/ghcmod-vim'
-" Plugin 'enomsg/vim-haskellConcealPlus'
+" Plug 'Twinside/vim-hoogle'
+" Plug 'eagletmt/ghcmod-vim'
+" Plug 'enomsg/vim-haskellConcealPlus'
 " tmux integration
-" Plugin 'christoomey/vim-tmux-navigator'
-" Plugin 'benmills/vimux'
-call vundle#end()
+" Plug 'christoomey/vim-tmux-navigator'
+" Plug 'benmills/vimux'
+call plug#end()
 
 """"" My stuff
 syntax enable
