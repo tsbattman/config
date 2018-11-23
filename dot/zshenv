@@ -27,6 +27,7 @@ function init_path_base() {
     bins=($HOME/.local/bin)
   fi
   [[ -d /opt/endurance/bin ]] && bins+=(/opt/endurance/bin)
+  [[ -d $HOME/.cargo/bin ]] && bins+=($HOME/.cargo/bin)
   path=($bins $path)
 }
 function init_path_extern() {
