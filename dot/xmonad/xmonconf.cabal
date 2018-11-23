@@ -22,7 +22,7 @@ executable xmonconf
   build-depends:
       base >=4.9 && <5.0
     , containers >= 0.5
-    , xmonad >= 0.13
+    , xmonad >= 0.14.1
     , X11 >= 1.8
     -- , xmobar == 0.24.4
   -- hs-source-dirs:

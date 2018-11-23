@@ -7,8 +7,8 @@ import XMonad
 import Graphics.X11.ExtraTypes.XF86
 
 brightness = Map.fromList [
-    ((noModMask, xF86XK_MonBrightnessUp), spawn "xbacklight -inc 10")
-  , ((noModMask, xF86XK_MonBrightnessDown), spawn "xbacklight -dec 10")
+    ((noModMask, xF86XK_MonBrightnessUp), spawn "xbacklight -inc 1")
+  , ((noModMask, xF86XK_MonBrightnessDown), spawn "xbacklight -dec 1")
   ]
 
 volume = Map.fromList [
