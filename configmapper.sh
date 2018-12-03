@@ -123,7 +123,7 @@ then
   hask_build hpack-0.28.2     hpack
   # hask_build packunused-0.1.2 packunused
   hask_build threadscope-0.2.11 threadscope
-  hask_build darcs-2.14.0     darcs
+  hask_build darcs-2.14.1     darcs
 
   if [[ "$(uname)" != "Darwin" ]]; then
     hask_build xmobar-0.26      xmobar "with_xft with_alsa"
