@@ -122,11 +122,11 @@ then
   hask_build hlint-2.1.3      hlint
   hask_build hpack-0.28.2     hpack
   # hask_build packunused-0.1.2 packunused
-  hask_build threadscope-0.2.11 threadscope
+  hask_build threadscope-0.2.11.1 threadscope
   hask_build darcs-2.14.1     darcs
 
   if [[ "$(uname)" != "Darwin" ]]; then
-    hask_build xmobar-0.26      xmobar "with_xft with_alsa"
+    hask_build xmobar-0.29.4      xmobar "with_xft with_alsa"
     pushd "$PWD/dot/xmonad"
     cabal new-build
     hask_link $PWD xmonconf-0.1.0.0 xmonconf xmonad
