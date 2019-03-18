@@ -2,3 +2,4 @@
 URxvt.font: xft:Droid Sans Mono, xft:Noto Sans CJK SC
 URxvt.inputMethod: ibus
 URxvt.preeditType: OverTheSpot
+URxvt.scrollBar: false
