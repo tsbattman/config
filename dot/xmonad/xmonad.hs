@@ -18,15 +18,12 @@ volume = Map.fromList [
   ]
 
 main :: IO ()
-main = do
-  spawn "xmobar"
-  xmonad $ def {
-      borderWidth = 1
-    , terminal = "urxvt"
-    , keys = liftA Map.unions . sequenceA $ [
-          keys def
-        , const brightness
-        , const volume
-        ]
-    }
-
+main = xmonad def {
+    borderWidth = 1
+  , terminal = "urxvt"
+  , keys = Map.unions <$> sequenceA [
+      keys def
+    , const brightness
+    , const volume
+    ]
+  }
