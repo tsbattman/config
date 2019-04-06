@@ -5,7 +5,7 @@ fpath=($HOME/thirdparty/zsh/zsh-completions/src $fpath /usr/local/share/zsh/site
 # oh my zsh
 ZSH=$HOME/thirdparty/zsh/oh-my-zsh
 ZSH_THEME=""
-plugins=(colored-man colorize git-prompt)
+plugins=(colored-man-pages colorize git-prompt)
 CASE_SENSITIVE="true"
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
