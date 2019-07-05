@@ -32,4 +32,4 @@ export XMODIFIERS=@im=ibus
 # dbus-launch --sh-syntax --exit-with-session > /dev/null
 ibus-daemon -drx
 
-exec xmonad
+exec $HOME/.local/bin/xmonad-x86_64-linux

@@ -34,16 +34,14 @@ function init_path_extern() {
   [[ -d $(extern julia/julia) ]] && path=($(extern julia/julia) $path)
   [[ -d /usr/local/MATLAB/R2011a ]] && path=($path /usr/local/MATLAB/R2011a/bin)
 }
-function init_path() {
-  init_path_base
-  init_path_extern
-}
 function init_aws() {
   local AWS_CONFIG=$HOME/etc/aws-config.ini
   [[ -f $AWS_CONFIG ]] && export AWS_CONFIG_FILE=$AWS_CONFIG
 }
 
-init_path
+init_path_base
+init_path_extern
+[[ -d /opt/haskell/bin ]] && path+=/opt/haskell/bin
 #init_aws
 
 # export DOCKER_HOST=tcp://seymour:2376
