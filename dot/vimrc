@@ -15,11 +15,6 @@ endfunction
 let mapleader="\<Space>"
 
 " Thirdparty stuff
-let g:ctrlp_map='<leader>o'
-let g:ctrlp_cmd='CtrlP'
-let g:ctrlp_working_path_mode=''
-let g:ctrlp_custom_ignore='dist/ dist-newstyle/'
-
 let g:ale_lint_on_text_changed = 'normal'
 let g:ale_linters = {
       \ 'haskell': ['hlint'],
@@ -59,8 +54,9 @@ Plug 'bling/vim-airline'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 " Searching
-Plug 'kien/ctrlp.vim'
 Plug 'mileszs/ack.vim'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 " Linters
 " Plug 'scrooloose/syntastic'
 Plug 'w0rp/ale'
@@ -173,3 +169,5 @@ nnoremap <leader>cn :edit ++enc=gb18030<CR>
 nnoremap } }zz
 nnoremap { {zz
 nnoremap <leader>ag :Ack<Space>
+
+nnoremap <leader>o :FZF<CR>
