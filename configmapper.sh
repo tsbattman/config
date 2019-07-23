@@ -117,8 +117,8 @@ function hask_build () {
 }
 if which cabal >> /dev/null ;
 then
-  hask_build hledger-1.14      hledger
-  hask_build pandoc-2.1.3     pandoc
+  hask_build hledger-1.14.2   hledger
+  hask_build pandoc-2.7.3     pandoc
   hask_build hlint-2.1.3      hlint
   hask_build hpack-0.28.2     hpack
   # hask_build packunused-0.1.2 packunused
