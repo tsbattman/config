@@ -92,8 +92,8 @@ function hask_link () {
     FreeBSD) OS=freebsd ;;
     Linux | * ) OS=linux ;;
   esac
-  SRCPATH1="$BASE/dist-newstyle/build/x86_64-$OS/ghc-$GHC_VER/$PKG/build/$EXEC/$EXEC"
-  SRCPATH2="$BASE/dist-newstyle/build/x86_64-$OS/ghc-$GHC_VER/$PKG/x/$EXEC/build/$EXEC/$EXEC"
+  SRCPATH1="$BASE/dist-newstyle/build/$(uname -m)-$OS/ghc-$GHC_VER/$PKG/build/$EXEC/$EXEC"
+  SRCPATH2="$BASE/dist-newstyle/build/$(uname -m)-$OS/ghc-$GHC_VER/$PKG/x/$EXEC/build/$EXEC/$EXEC"
   if [[ -e "$SRCPATH1" ]]; then
     link "$SRCPATH1" $HOME/.local/bin/$TGT
   elif [[ -e "$SRCPATH2" ]]; then
@@ -129,7 +129,7 @@ then
     hask_build xmobar-0.29.5      xmobar "with_xft with_alsa"
     pushd "$PWD/dot/xmonad"
     cabal new-build
-    hask_link $PWD xmonconf-0.1.0.0 xmonconf xmonad
+    hask_link $PWD xmonconf-0.1.0.0 xmonconf xmonad-$(uname -m)-$(uname -s | tr 'A-Z' 'a-z')
     popd
   fi
 fi

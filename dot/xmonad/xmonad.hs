@@ -26,4 +26,5 @@ main = xmonad def {
     , const brightness
     , const volume
     ]
+  , startupHook = spawn "xmobar"
   }
