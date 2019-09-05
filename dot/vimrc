@@ -158,7 +158,7 @@ if WINDOWS()
 else
   " set guifont=Source\ Code\ Pro
   " set guifont=Anonymous\ Pro
-  set guifont=Droid\ Sans\ Mono
+  " set guifont=Droid\ Sans\ Mono
 end
 
 set grepprg="ag --vimgrep"
