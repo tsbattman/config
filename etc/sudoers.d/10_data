@@ -1,4 +1,6 @@
 
 Defaults>data umask = 0002
 Defaults>data umask_override
+Defaults>data !secure_path
+
 %data ALL = (data) NOPASSWD: ALL
