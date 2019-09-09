@@ -2,7 +2,7 @@
 IMAPAccount icloud
 Host imap.mail.me.com
 User tsbattman
-PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/.local/icloud.pwd.gpg"
+PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/.config/passwd/icloud.pwd.gpg"
 Port 993
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
@@ -31,7 +31,7 @@ Channel icloud-folders
 IMAPAccount yahoo
 Host imap.mail.yahoo.com
 User tsbattman@yahoo.com
-PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/.local/yahoo.pwd.gpg"
+PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/.config/passwd/yahoo.pwd.gpg"
 Port 993
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
@@ -60,7 +60,7 @@ Channel yahoo-folders
 IMAPAccount gmail
 Host imap.gmail.com
 User tsbattman@gmail.com
-PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/.local/gmail.pwd.gpg"
+PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/.config/passwd/gmail.pwd.gpg"
 Port 993
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
@@ -89,7 +89,7 @@ Channel gmail-folders
 IMAPAccount outlook
 Host imap.outlook.com
 User tsbattman@outlook.com
-PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/.local/outlook.pwd.gpg"
+PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/.config/passwd/outlook.pwd.gpg"
 Port 993
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
