@@ -137,7 +137,13 @@ fi
 
 [[ ! -d "${XDG_CONFIG_HOME=$HOME/.config}" ]] && mkdir -p "$XDG_CONFIG_HOME"
 for p in $PWD/xdg/*; do
-  link "$p" "$XDG_CONFIG_HOME/$(basename $p)"
+  if [[ $(basename $p) == "msmtp" ]]; then
+    local XDGCFG="$XDG_CONFIG_HOME/$(basename $p)"
+    rm -r "$XDGCFG"
+    cp -R "$p" "$XDGCFG"
+  else
+    link "$p" "$XDG_CONFIG_HOME/$(basename $p)"
+  fi
 done
 
 link "$(extern vim/bundle)" "$PWD/dot/vim/bundle"
