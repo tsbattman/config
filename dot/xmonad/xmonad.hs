@@ -20,11 +20,11 @@ volume = Map.fromList [
 main :: IO ()
 main = xmonad def {
     borderWidth = 1
-  , terminal = "urxvt"
+  , terminal = "exec urxvt"
   , keys = Map.unions <$> sequenceA [
       keys def
     , const brightness
     , const volume
     ]
-  , startupHook = spawn "xmobar"
+  , startupHook = spawn "exec xmobar"
   }
