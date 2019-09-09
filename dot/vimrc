@@ -162,8 +162,8 @@ else
   " set guifont=Droid\ Sans\ Mono
 end
 
-set grepprg="ag --vimgrep"
-let g:ackprg="ag --vimgrep"
+set grepprg="rg --vimgrep"
+let g:ackprg="rg --vimgrep"
 set grepformat=%f:%l:%c:%m
 " reload as china encoding
 nnoremap <leader>cn :edit ++enc=gb18030<CR>
