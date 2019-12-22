@@ -36,7 +36,7 @@ bind generic n search-next
 set folder=~/maildir/icloud
 set spoolfile=+INBOX
 set mbox=+Archive
-set record=+Sent
+set record="+Sent Messages"
 set postponed=+Drafts
 set from=tsbattman@icloud.com
 set sendmail="/usr/bin/msmtp -a icloud"

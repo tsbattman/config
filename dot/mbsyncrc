@@ -4,9 +4,10 @@ Host imap.mail.me.com
 User tsbattman
 PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/.config/passwd/icloud.pwd.gpg"
 Port 993
+Timeout 0
 SSLType IMAPS
-CertificateFile /etc/ssl/certs/ca-certificates.crt
 SSLVersions TLSv1.2
+SystemCertificates yes
 AuthMechs Plain
 
 IMAPStore icloud-remote
@@ -15,12 +16,12 @@ Account icloud
 MaildirStore icloud-local
 Path ~/maildir/icloud/
 Inbox ~/maildir/icloud/INBOX
-Trash Trash
+Trash "Deleted Messages"
 
 Channel icloud-folders
 Master :icloud-remote:
 Slave :icloud-local:
-Patterns "INBOX" "Saved" "Drafts" "Archive" "Sent" "Trash"
+Patterns "INBOX" "Drafts" "Sent Messages" "Deleted Messages" "Archive"
 Create Both
 Expunge Both
 SyncState *
