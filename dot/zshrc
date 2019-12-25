@@ -62,14 +62,6 @@ autoload insert-unicode-char
 zle -N insert-unicode-char
 bindkey '^Xi' insert-unicode-char
 
-if [[ -f "/etc/debian_version" ]]; then
-  export FZF_DEFAULT_COMMAND='fdfind --type f'
-  export FZF_ALT_C_COMMAND="fdfind -t d . $HOME"
-else
-  export FZF_DEFAULT_COMMAND='fd --type f'
-  export FZF_ALT_C_COMMAND="fd -t d . $HOME"
-fi
-
 autoload -U +X bashcompinit && bashcompinit
 # executable stack && eval "$(stack --bash-completion-script stack)"
 # executable pandoc && eval "$(pandoc --bash-completion)"

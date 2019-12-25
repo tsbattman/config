@@ -55,6 +55,14 @@ limit coredumpsize unlimited
 limit datasize 8192m
 ! isbsd && limit addressspace "$(( 16 * 1024 ))m"
 
+if [[ -f "/etc/debian_version" ]]; then
+  export FZF_DEFAULT_COMMAND='fdfind --type f'
+  export FZF_ALT_C_COMMAND="fdfind -t d . $HOME"
+else
+  export FZF_DEFAULT_COMMAND='fd --type f'
+  export FZF_ALT_C_COMMAND="fd -t d . $HOME"
+fi
+
 [[ -d $HOME/.zshenv.d ]] && for script in $HOME/.zshenv.d/*; do
   [[ -r "$script" ]] && source "$script"
 done
