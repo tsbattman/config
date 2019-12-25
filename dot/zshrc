@@ -44,7 +44,7 @@ setopt no_share_history
 function cd () { builtin cd $1; ls; }
 function pd () { builtin pushd $1; ls; }
 
-executable lesspipe && eval export LESSOPEN="| lesspipe %s"
+executable lesspipe && eval $(lesspipe)
 executable lesspipe.sh && export LESSOPEN="| lesspipe.sh %s" # XXX: Why has eval $(lesspipe.sh) stopped working???
 executable aws_zsh_completer.sh && source `which aws_zsh_completer.sh`
 if executable dircolors && [[ -f $HOME/.dircolors ]]; then
