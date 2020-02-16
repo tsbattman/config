@@ -1,0 +1,12 @@
+[Unit]
+Description=Media directory on battnas
+After=network-online.target
+
+[Mount]
+What=battnas:/Multimedia
+Where=/nfs/media
+Type=nfs
+Options=auto
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,12 @@
+[Unit]
+Description=Data directory on battnas
+After=network-online.target
+
+[Mount]
+What=battnas:/data
+Where=/nfs/data
+Type=nfs
+Options=auto
+
+[Install]
+WantedBy=multi-user.target

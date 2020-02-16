@@ -1,0 +1,12 @@
+[Unit]
+Description=Home directories on battnas
+After=network-online.target
+
+[Mount]
+What=battnas:/homes
+Where=/nfs/homes
+Type=nfs
+Options=auto
+
+[Install]
+WantedBy=multi-user.target
