@@ -56,7 +56,6 @@ fi
 
 function svndiff() { svn diff "$@" | pygmentize -l diff }
 function zle-line-finish() { zle reset-prompt }
-alias convcn='iconv -f gb18030'
 
 autoload insert-unicode-char
 zle -N insert-unicode-char
@@ -65,8 +64,3 @@ bindkey '^Xi' insert-unicode-char
 autoload -U +X bashcompinit && bashcompinit
 # executable stack && eval "$(stack --bash-completion-script stack)"
 # executable pandoc && eval "$(pandoc --bash-completion)"
-
-export GPG_TTY=$(tty)
-export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles
-export LEDGER_FILE=$HOME/notes/unified.ldg
