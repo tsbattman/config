@@ -80,6 +80,12 @@ for b in bin/*; do
   link "$PWD/$b" "$LOCAL/$b"
 done
 
+if is_bsd; then
+  for pl in mac/*.plist; do
+    link "$PWD/$pl" "$HOME/Library/LaunchAgents/$(basename $pl)"
+  done
+fi
+
 function hask_link () {
   BASE=$1
   PKG=$2
