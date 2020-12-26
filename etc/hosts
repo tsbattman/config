@@ -4,11 +4,11 @@
 ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
 
-192.168.100.113 kangding.local
-192.168.100.140 battnas
-192.168.100.146 pgdb
-192.168.100.55  gitlab
-192.168.100.57  dockreg
+192.168.0.11 kangding.local
+192.168.0.10 battnas
+192.168.0.53 pgdb
+192.168.0.59 gitea
+192.168.0.60 plex
 
 192.168.123.1 alihub
 192.168.123.2 changshou

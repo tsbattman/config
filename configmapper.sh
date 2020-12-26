@@ -180,8 +180,10 @@ if $SYSTEM; then
       sys_install 644 etc/rsyncd.conf
       sys_install 644 etc/docker/daemon.json
       ;;
-    caine)
-      sys_install 644 etc/systemd/system/netctl-auto-resume@.service
+    wanhangdu)
+      sys_install 644 etc/systemd/system/nfs-data.mount
+      sys_install 644 etc/systemd/system/nfs-homes.mount
+      sys_install 644 etc/systemd/system/nfs-media.mount
       sys_install 644 etc/X11/xorg.conf.d/20-intel.conf
       sys_install 644 etc/X11/xorg.conf.d/50-libinput.conf
       sys_install 644 etc/docker/daemon.json
