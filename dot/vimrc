@@ -24,6 +24,7 @@ let g:ale_set_quickfix = 0
 let g:ale_set_balloons = 1
 
 let g:airline#extensions#ale#enabled = 1
+let g:airline_powerline_fonts = 1
 
 " let g:syntastic_haskell_checkers=['hlint']
 " let g:syntastic_cpp_checkers=['clang_check']
@@ -50,7 +51,7 @@ endif
 Plug 'altercation/vim-colors-solarized'
 Plug 'luochen1990/rainbow'
 " Plug 'chriskempson/base16-vim'
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
 " Git helpers
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
@@ -68,7 +69,7 @@ Plug 'ledger/vim-ledger'
 Plug 'maverickg/stan.vim'
 Plug 'wlangstroth/vim-racket'
 Plug 'pprovost/vim-ps1'
-" Plug 'JuliaLang/julia-vim'
+Plug 'JuliaLang/julia-vim'
 " Plug 'derekwyatt/vim-scala'
 " Plug 'kchmck/vim-coffee-script'
 " Plug 'pangloss/vim-javascript'
