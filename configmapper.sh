@@ -2,6 +2,7 @@
 
 function executable() { which $1 >> /dev/null && [[ -x `which $1` ]] }
 function is_bsd() { [[ `uname` = 'Darwin' || `uname` = 'FreeBSD' ]] }
+function is_linux() { [[ `uname` = 'Linux' ]] }
 
 function link() {
   src=$1; des=$2
@@ -54,6 +55,10 @@ if $UPDATE_EXTERNAL; then
     fi
     #gitdl http://github.com/chriskempson/base16-xresources.git "$HOME/thirdparty/style/base16-xresources"
     #gitdl http://github.com/creationix/nvm.git "$(extern js/nvm)"
+  fi
+
+  if is_linux && ! which ghcup >> /dev/null; then
+    curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
   fi
 fi
 
@@ -124,7 +129,8 @@ function hask_build () {
 if which cabal >> /dev/null ;
 then
   mkdir -p $(extern hs)
-  if [[ "$(uname)" != "Darwin" ]]; then
+  # Not Mac and not WSL
+  if [[ "$(uname)" != "Darwin" ]] && [[ -z "$WSLENV" ]]; then
     hask_build xmobar-0.29.5      xmobar "with_xft with_alsa"
     pushd "$PWD/dot/xmonad"
     cabal new-build
@@ -138,7 +144,7 @@ then
   hask_build hpack-0.28.2     hpack
   # hask_build packunused-0.1.2 packunused
   hask_build threadscope-0.2.11.1 threadscope
-  hask_build darcs-2.14.2     darcs
+  # hask_build darcs-2.14.2     darcs
 fi
 
 [[ ! -d "${XDG_CONFIG_HOME=$HOME/.config}" ]] && mkdir -p "$XDG_CONFIG_HOME"
@@ -153,6 +159,14 @@ for p in $PWD/xdg/*; do
 done
 
 link "$(extern vim/bundle)" "$PWD/dot/vim/bundle"
+
+if [[ -n "$WSLENV" ]]; then
+  SSHPAGENT=$HOME/.local/bin/wsl2-ssh-pageant.exe
+  if ! [[ -e "$SSHPAGEANT" ]]; then
+    curl -L https://github.com/BlackReloaded/wsl2-ssh-pageant/releases/download/v1.2.0/wsl2-ssh-pageant.exe -o "$SSHPAGEANT"
+    chmod 775 "$SSHPAGEANT"
+  fi
+fi
 
 # link "$HOME/.Xresources" "$HOME/.Xresources-x2go"
 # link "$HOME/.xsession" "$HOME/.xsession-x2go"

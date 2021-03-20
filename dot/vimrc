@@ -37,6 +37,7 @@ let g:polyglot_disabled = ['haskell']
 let g:ledger_bin="hledger"
 
 let g:rainbow_active=1
+let g:coc_disable_startup_warning=1
 
 filetype off
 
@@ -70,6 +71,7 @@ Plug 'maverickg/stan.vim'
 Plug 'wlangstroth/vim-racket'
 Plug 'pprovost/vim-ps1'
 Plug 'JuliaLang/julia-vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'derekwyatt/vim-scala'
 " Plug 'kchmck/vim-coffee-script'
 " Plug 'pangloss/vim-javascript'

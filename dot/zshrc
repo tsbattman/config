@@ -57,6 +57,10 @@ fi
 function svndiff() { svn diff "$@" | pygmentize -l diff }
 function zle-line-finish() { zle reset-prompt }
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 autoload insert-unicode-char
 zle -N insert-unicode-char
 bindkey '^Xi' insert-unicode-char
@@ -64,3 +68,15 @@ bindkey '^Xi' insert-unicode-char
 autoload -U +X bashcompinit && bashcompinit
 # executable stack && eval "$(stack --bash-completion-script stack)"
 # executable pandoc && eval "$(pandoc --bash-completion)"
+export GHCUP_USE_XDG_DIRS=1
+
+if [[ -n "$WSLENV" ]]; then
+  # Replace default ssh sock and gpg-agent sock with wsl2-ssh-pageant
+  # rm -f $SSH_AUTH_SOCK $HOME/.gnupg/S.gpg-agent
+  if ! [[ -e "$SSH_AUTH_SOCK" ]]; then
+    setsid nohup socat UNIX-LISTEN:$SSH_AUTH_SOCK,fork EXEC:$HOME/.local/bin/wsl2-ssh-pageant.exe
+  fi
+  if ! [[ -e "$HOME/.gnupg/S.gpg-agent" ]]; then
+    setsid nohup socat UNIX-LISTEN:$HOME/.gnupg/S.gpg-agent,fork EXEC:"$HOME/.local/bin/wsl2-ssh-pageant.exe --gpg S.gpg-agent"
+  fi
+fi
