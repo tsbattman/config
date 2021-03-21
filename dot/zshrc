@@ -70,7 +70,8 @@ autoload -U +X bashcompinit && bashcompinit
 # executable pandoc && eval "$(pandoc --bash-completion)"
 export GHCUP_USE_XDG_DIRS=1
 
-if [[ -n "$WSLENV" ]]; then
+if [[ -v WSLENV ]]; then
+  export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2> /dev/null):0
   # Replace default ssh sock and gpg-agent sock with wsl2-ssh-pageant
   # rm -f $SSH_AUTH_SOCK $HOME/.gnupg/S.gpg-agent
   if ! [[ -e "$SSH_AUTH_SOCK" ]]; then

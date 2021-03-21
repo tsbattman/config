@@ -165,6 +165,17 @@ else
   " set guifont=Droid\ Sans\ Mono
 end
 
+if &term =~ '^screen'
+  " 0,1 -> blinking block
+  " 2 -> solid block
+  " 3 -> blinking underscore
+  " 4 -> solid underscore
+  " normal mode
+  let &t_EI .= "\<Esc>[0 q"
+  " insert mode
+  let &t_SI .= "\<Esc>[6 q"
+endif
+
 set grepprg="rg --vimgrep"
 let g:ackprg="rg --vimgrep"
 set grepformat=%f:%l:%c:%m

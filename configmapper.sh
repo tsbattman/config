@@ -130,7 +130,7 @@ if which cabal >> /dev/null ;
 then
   mkdir -p $(extern hs)
   # Not Mac and not WSL
-  if [[ "$(uname)" != "Darwin" ]] && [[ -z "$WSLENV" ]]; then
+  if [[ "$(uname)" != "Darwin" ]] && ! [[ -v WSLENV ]]; then
     hask_build xmobar-0.29.5      xmobar "with_xft with_alsa"
     pushd "$PWD/dot/xmonad"
     cabal new-build
@@ -138,12 +138,12 @@ then
     popd
   fi
 
-  hask_build hledger-1.14.2   hledger
-  hask_build pandoc-2.7.3     pandoc
-  hask_build hlint-2.1.3      hlint
-  hask_build hpack-0.28.2     hpack
+  hask_build hledger-1.21   hledger
+  hask_build pandoc-2.13    pandoc
+  hask_build hlint-3.3      hlint
+  hask_build threadscope-0.2.14 threadscope
+  # hask_build hpack-0.28.2     hpack
   # hask_build packunused-0.1.2 packunused
-  hask_build threadscope-0.2.11.1 threadscope
   # hask_build darcs-2.14.2     darcs
 fi
 
@@ -160,7 +160,7 @@ done
 
 link "$(extern vim/bundle)" "$PWD/dot/vim/bundle"
 
-if [[ -n "$WSLENV" ]]; then
+if [[ -v WSLENV ]]; then
   SSHPAGENT=$HOME/.local/bin/wsl2-ssh-pageant.exe
   if ! [[ -e "$SSHPAGEANT" ]]; then
     curl -L https://github.com/BlackReloaded/wsl2-ssh-pageant/releases/download/v1.2.0/wsl2-ssh-pageant.exe -o "$SSHPAGEANT"
