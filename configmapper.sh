@@ -139,7 +139,7 @@ then
   fi
 
   hask_build hledger-1.21   hledger
-  hask_build pandoc-2.13    pandoc
+  hask_build pandoc-2.12    pandoc
   hask_build hlint-3.3      hlint
   hask_build threadscope-0.2.14 threadscope
   # hask_build hpack-0.28.2     hpack
@@ -161,7 +161,7 @@ done
 link "$(extern vim/bundle)" "$PWD/dot/vim/bundle"
 
 if [[ -v WSLENV ]]; then
-  SSHPAGENT=$HOME/.local/bin/wsl2-ssh-pageant.exe
+  SSHPAGEANT=$HOME/.local/bin/wsl2-ssh-pageant.exe
   if ! [[ -e "$SSHPAGEANT" ]]; then
     curl -L https://github.com/BlackReloaded/wsl2-ssh-pageant/releases/download/v1.2.0/wsl2-ssh-pageant.exe -o "$SSHPAGEANT"
     chmod 775 "$SSHPAGEANT"
