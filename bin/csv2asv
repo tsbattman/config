@@ -1,4 +1,4 @@
-#! /bin/env python
+#! /bin/env python3
 
 import sys,csv
 
@@ -11,6 +11,9 @@ def file_open (fname):
     elif fname.endswith("gz"):
         import gzip
         return gzip.open(fname, "rt")
+    elif fname.endswith("xz"):
+        import lzma
+        return lzma.open(fname, "rt")
     else:
         return open(fname)
 

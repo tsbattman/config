@@ -1,6 +1,6 @@
 [user]
   name = Thayne Batty
-  email = tsbattman@gmail.com
+  email = tsbattman@icloud.com
   signingkey = B3341FB748D805F6
 [alias]
   logx = log --graph --pretty=format:'%C(auto)%h %C(bold blue)%<(12,mtrunc)%an%C(reset) - %Cblue%>(12)%cd%Creset%C(auto) - %s %d' --abbrev-commit --date-order --date=relative
@@ -12,3 +12,5 @@
 [filter "media"]
 	clean = git-media-clean %f
 	smudge = git-media-smudge %f
+[pull]
+	ff = only
