@@ -1,0 +1,66 @@
+version: '2.3'
+networks:
+  qnet-static:
+    driver: qnet
+    ipam:
+      driver: qnet
+      options:
+        iface: "eth0"
+      config:
+        - subnet: "192.168.0.0/24"
+          gateway: "192.168.0.1"
+services:
+  postgres:
+    image: postgres:13
+    shm_size: '2gb'
+    environment:
+      - POSTGRES_PASSWORD=p0stgr3s
+    volumes:
+      - "/share/data/docker/pg13:/var/lib/postgresql/data"
+    networks:
+      qnet-static:
+        ipv4_address: 192.168.0.53
+  gitea:
+    image: gitea/gitea:1
+    # DB settings are in the gitea/conf/app.ini file
+    environment:
+      - USER_UID=1001
+      - USER_GID=1001
+    volumes:
+      - "/share/data/docker/gitea:/data"
+    ports:
+      - "80:3000"
+      - "22:22"
+    networks:
+      qnet-static:
+        ipv4_address: 192.168.0.59
+    depends_on:
+      - postgres
+  # jenkins:
+  #   image: jenkinsci/blueocean:latest
+  #   volumes:
+  #     - "/share/data/docker/jenkins:/var/jenkins_home"
+  #     # - "/var/run/docker.sock:/var/run/docker.sock"
+  #   networks:
+  #     qnet-static:
+  #       ipv4_address: 192.168.0.51
+  # httpd:
+  #   image: httpd:2.4
+  #   volumes:
+  #     - "/share/data/docker/httpd:/usr/local/apache2/htdocs"
+  #   networks:
+  #     qnet-static:
+  #       ipv4_address: 192.168.0.60
+  plex:
+    container_name: plex
+    image: plexinc/pms-docker:public
+    environment:
+      - TZ=America/Chicago
+      - PLEX_CLAIM=claim-P7KW3_MapqNypzukePye
+    volumes:
+      - "/share/Multimedia/plex/config:/config"
+      - "/share/Multimedia/plex/transcode:/transcode"
+      - "/share/Multimedia:/media"
+    networks:
+      qnet-static:
+        ipv4_address: 192.168.0.60
