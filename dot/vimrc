@@ -71,7 +71,7 @@ Plug 'maverickg/stan.vim'
 Plug 'wlangstroth/vim-racket'
 Plug 'pprovost/vim-ps1'
 Plug 'JuliaLang/julia-vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'derekwyatt/vim-scala'
 " Plug 'kchmck/vim-coffee-script'
 " Plug 'pangloss/vim-javascript'

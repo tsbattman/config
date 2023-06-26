@@ -1,6 +1,6 @@
 #! /usr/bin/env zsh
 
-function executable() { which $1 >> /dev/null && [[ -x `which $1` ]] }
+function executable() { command -v $1 >> /dev/null && [[ -x `command -v $1` ]] }
 function is_bsd() { [[ `uname` = 'Darwin' || `uname` = 'FreeBSD' ]] }
 function is_linux() { [[ `uname` = 'Linux' ]] }
 
@@ -44,7 +44,6 @@ done
 if $UPDATE_EXTERNAL; then
   mkdir -p "$(extern vim)" "$(extern style)"
   if executable git; then
-    # gitdl https://github.com/VundleVim/Vundle.vim.git "$(extern vim/bundle/Vundle.vim)"
     gitdl https://github.com/junegunn/vim-plug.git "$(extern vim/bundle/vim-plug)"
     gitdl https://github.com/robbyrussell/oh-my-zsh.git "$(extern zsh/oh-my-zsh)"
     gitdl https://github.com/zsh-users/zsh-completions.git "$(extern zsh/zsh-completions)"
@@ -57,7 +56,7 @@ if $UPDATE_EXTERNAL; then
     #gitdl http://github.com/creationix/nvm.git "$(extern js/nvm)"
   fi
 
-  if is_linux && ! which ghcup >> /dev/null; then
+  if is_linux && ! executable ghcup; then
     curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
   fi
 fi
@@ -120,31 +119,28 @@ function hask_build () {
   pushd $(extern hs)
   [[ -d "$PKG" ]] || cabal get "$PKG"
   pushd "$PKG"
-  cabal new-build --flags="$FLAGS"
+  cabal new-build "$FLAGS"
   echo $PWD
   hask_link "$PWD" "$PKG" "$EXEC"
   popd
   popd
 }
-if which cabal >> /dev/null ;
-then
+if executable cabal; then
   mkdir -p $(extern hs)
   # Not Mac and not WSL
   if [[ "$(uname)" != "Darwin" ]] && ! [[ -v WSLENV ]]; then
-    hask_build xmobar-0.29.5      xmobar "with_xft with_alsa"
+    hask_build xmobar-0.46 xmobar "with_xft with_alsa"
     pushd "$PWD/dot/xmonad"
     cabal new-build
     hask_link $PWD xmonconf-0.1.0.0 xmonconf xmonad-$(uname -m)-$(uname -s | tr 'A-Z' 'a-z')
     popd
   fi
 
-  hask_build hledger-1.21   hledger
-  hask_build pandoc-2.12    pandoc
-  hask_build hlint-3.3      hlint
-  hask_build threadscope-0.2.14 threadscope
-  # hask_build hpack-0.28.2     hpack
-  # hask_build packunused-0.1.2 packunused
-  # hask_build darcs-2.14.2     darcs
+  hask_build hledger-1.30.1   hledger
+  hask_build pandoc-cli-0.1.1    pandoc
+  hask_build hlint-3.5      hlint
+  hask_build threadscope-0.2.14.1 threadscope
+  hask_build darcs-2.16.5 darcs --allow-newer
 fi
 
 [[ ! -d "${XDG_CONFIG_HOME=$HOME/.config}" ]] && mkdir -p "$XDG_CONFIG_HOME"
