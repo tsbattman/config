@@ -25,7 +25,7 @@ fi
 NUM_MONITORS=$(xrandr --listactivemonitors | grep '^Monitors' | cut -d: -f2)
 echo "NUM_MONITORS=$NUM_MONITORS"
 if [ "$NUM_MONITORS" -gt 1 ]; then
-  echo "xrandr --output eDP1 --primary --below DP1"
+  xrandr --output eDP1 --primary --below DP1
 fi
 
 export LANG=en_US.UTF-8
