@@ -113,13 +113,12 @@ function hask_link () {
   fi
 }
 function hask_build () {
-  PKG=$1
-  EXEC=$2
-  FLAGS=$3
+  PKG=$1; shift
+  EXEC=$1; shift
   pushd $(extern hs)
   [[ -d "$PKG" ]] || cabal get "$PKG"
   pushd "$PKG"
-  cabal new-build "$FLAGS"
+  cabal build "$@"
   echo $PWD
   hask_link "$PWD" "$PKG" "$EXEC"
   popd
@@ -129,9 +128,9 @@ if executable cabal; then
   mkdir -p $(extern hs)
   # Not Mac and not WSL
   if [[ "$(uname)" != "Darwin" ]] && ! [[ -v WSLENV ]]; then
-    hask_build xmobar-0.46 xmobar "with_xft with_alsa"
+    hask_build xmobar-0.46 xmobar --flags="with_xft -with_alsa"
     pushd "$PWD/dot/xmonad"
-    cabal new-build
+    cabal build
     hask_link $PWD xmonconf-0.1.0.0 xmonconf xmonad-$(uname -m)-$(uname -s | tr 'A-Z' 'a-z')
     popd
   fi
