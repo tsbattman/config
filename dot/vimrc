@@ -52,7 +52,7 @@ endif
 Plug 'altercation/vim-colors-solarized'
 Plug 'luochen1990/rainbow'
 " Plug 'chriskempson/base16-vim'
-Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline'
 " Git helpers
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'

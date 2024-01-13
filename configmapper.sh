@@ -1,13 +1,14 @@
 #! /usr/bin/env zsh
 
 function executable() { command -v $1 >> /dev/null && [[ -x `command -v $1` ]] }
-function is_bsd() { [[ `uname` = 'Darwin' || `uname` = 'FreeBSD' ]] }
+function is_macos() { [[ `uname` = 'Darwin' ]] }
+function is_bsd() { [[ `uname` = 'FreeBSD' ]] }
 function is_linux() { [[ `uname` = 'Linux' ]] }
 
 function link() {
   src=$1; des=$2
   if [[ -e "$src" ]]; then
-    if is_bsd; then
+    if is_bsd || is_macos; then
       ln -sfhF "$src" "$des"
     else
       ln -sfT "$src" "$des"
@@ -62,7 +63,7 @@ if $UPDATE_EXTERNAL; then
 fi
 
 # Ensure certain directories are not made into links
-for dir in ".vnc" ".stack" ".gnupg"; do
+for dir in ".vnc" ".gnupg"; do
   [[ ! -d "$HOME/$dir" ]] && mkdir "$HOME/$dir"
 done
 
@@ -84,7 +85,7 @@ for b in bin/*; do
   link "$PWD/$b" "$LOCAL/$b"
 done
 
-if is_bsd; then
+if is_macos && ls mac/*.plist &> /dev/null; then
   for pl in mac/*.plist; do
     link "$PWD/$pl" "$HOME/Library/LaunchAgents/$(basename $pl)"
   done
@@ -102,8 +103,12 @@ function hask_link () {
     FreeBSD) OS=freebsd ;;
     Linux | * ) OS=linux ;;
   esac
-  SRCPATH1="$BASE/dist-newstyle/build/$(uname -m)-$OS/ghc-$GHC_VER/$PKG/build/$EXEC/$EXEC"
-  SRCPATH2="$BASE/dist-newstyle/build/$(uname -m)-$OS/ghc-$GHC_VER/$PKG/x/$EXEC/build/$EXEC/$EXEC"
+  case $(uname -m) in
+    arm64) ARCH=aarch64 ;;
+    *) ARCH=$(uname -m) ;;
+  esac
+  SRCPATH1="$BASE/dist-newstyle/build/$ARCH-$OS/ghc-$GHC_VER/$PKG/build/$EXEC/$EXEC"
+  SRCPATH2="$BASE/dist-newstyle/build/$ARCH-$OS/ghc-$GHC_VER/$PKG/x/$EXEC/build/$EXEC/$EXEC"
   if [[ -e "$SRCPATH1" ]]; then
     link "$SRCPATH1" $HOME/.local/bin/$TGT
   elif [[ -e "$SRCPATH2" ]]; then
@@ -135,11 +140,11 @@ if executable cabal; then
     popd
   fi
 
-  hask_build hledger-1.30.1   hledger
-  hask_build pandoc-cli-0.1.1    pandoc
-  hask_build hlint-3.5      hlint
-  hask_build threadscope-0.2.14.1 threadscope
-  hask_build darcs-2.16.5 darcs --allow-newer
+  hask_build hledger-1.32.2   hledger
+  hask_build pandoc-cli-3.1.11.1    pandoc
+  hask_build hlint-3.6.1      hlint
+  # hask_build threadscope-0.2.14.1 threadscope
+  # hask_build darcs-2.16.5 darcs --allow-newer
 fi
 
 [[ ! -d "${XDG_CONFIG_HOME=$HOME/.config}" ]] && mkdir -p "$XDG_CONFIG_HOME"

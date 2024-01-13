@@ -17,17 +17,20 @@ echo ${XDG_CACHE_HOME:=$HOME/.cache} >> /dev/null
 echo ${XDG_DATA_HOME:=$HOME/.local/share} >> /dev/null
 echo ${XDG_DATA_DIRS:=/usr/local/share:/usr/share} >> /dev/null
 echo ${XDG_CONFIG_DIRS:=/etc/xdg} >> /dev/null
+echo ${XDG_STATE_HOME:=$HOME/.local/state} >> /dev/null
+
+if [[ -e "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh" ]]
+then
+  source "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh"
+fi
 
 typeset -gU path
 function init_path_base() {
   typeset -a bins
-  if isosx; then
-    bins=($HOME/Library/Python/2.7/bin /usr/local/sbin /usr/local/bin /usr/texbin)
-  else
-    bins=($HOME/.local/bin)
-  fi
+  bins=($HOME/.local/bin)
   [[ -d /opt/endurance/bin ]] && bins+=(/opt/endurance/bin)
   [[ -d $HOME/.cargo/bin ]] && bins+=($HOME/.cargo/bin)
+  [[ -d $HOME/.ghcup/bin ]] && bins+=($HOME/.ghcup/bin)
   path=($bins $path)
 }
 function init_path_extern() {
