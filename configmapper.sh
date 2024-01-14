@@ -1,5 +1,8 @@
 #! /usr/bin/env zsh
 
+set -o errexit
+set -o pipefail
+
 function executable() { command -v $1 >> /dev/null && [[ -x `command -v $1` ]] }
 function is_macos() { [[ `uname` = 'Darwin' ]] }
 function is_bsd() { [[ `uname` = 'FreeBSD' ]] }
@@ -85,7 +88,10 @@ for b in bin/*; do
   link "$PWD/$b" "$LOCAL/$b"
 done
 
-if is_macos && ls mac/*.plist &> /dev/null; then
+mkdir -p "$LOCAL/state/nix/defexpr"
+link "$PWD/nix/defexpr.nix" "$LOCAL/state/nix/defexpr/default.nix"
+
+if is_macos && (ls mac/*.plist > /dev/null 2>&1); then
   for pl in mac/*.plist; do
     link "$PWD/$pl" "$HOME/Library/LaunchAgents/$(basename $pl)"
   done
