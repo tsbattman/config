@@ -1,23 +1,24 @@
 #! /usr/bin/env zsh
 
 # don't want global settings
+# especially skip /etc/zprofile
 unsetopt GLOBAL_RCS
 
 # zshrc does compinit, so don't do it twice
-skip_global_compinit=1
+# skip_global_compinit=1
 
 function extern() { echo "$HOME/thirdparty/$1" }
 
-function executable() { which $1 >> /dev/null && [[ -x `which $1` ]] }
+function executable() { command -v $1 >> /dev/null && [[ -x `command -v "$1"` ]] }
 function isosx() { [[ `uname` = 'Darwin' ]] }
 function isbsd() { [[ `uname` = 'FreeBSD' ]] }
 
-echo ${XDG_CONFIG_HOME:=$HOME/.config} >> /dev/null
-echo ${XDG_CACHE_HOME:=$HOME/.cache} >> /dev/null
-echo ${XDG_DATA_HOME:=$HOME/.local/share} >> /dev/null
-echo ${XDG_DATA_DIRS:=/usr/local/share:/usr/share} >> /dev/null
-echo ${XDG_CONFIG_DIRS:=/etc/xdg} >> /dev/null
-echo ${XDG_STATE_HOME:=$HOME/.local/state} >> /dev/null
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
+export XDG_DATA_HOME=$HOME/.local/share
+export XDG_DATA_DIRS=/usr/local/share:/usr/share
+export XDG_CONFIG_DIRS=/etc/xdg
+export XDG_STATE_HOME=$HOME/.local/state
 
 if [[ -e "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh" ]]
 then
@@ -25,25 +26,18 @@ then
 fi
 
 typeset -gU path
-function init_path_base() {
-  typeset -a bins
-  bins=($HOME/.local/bin)
-  [[ -d /opt/endurance/bin ]] && bins+=(/opt/endurance/bin)
-  [[ -d $HOME/.cargo/bin ]] && bins+=($HOME/.cargo/bin)
-  [[ -d $HOME/.ghcup/bin ]] && bins+=($HOME/.ghcup/bin)
-  path=($bins $path)
-}
-function init_path_extern() {
-  [[ -d $(extern julia/julia) ]] && path=($(extern julia/julia) $path)
-  [[ -d /usr/local/MATLAB/R2011a ]] && path=($path /usr/local/MATLAB/R2011a/bin)
+function init_path() {
+  path=($HOME/.local/bin $path)
+  [[ -d /opt/endurance/bin ]] && path=(/opt/endurance/bin $path)
+  [[ -d $HOME/.cargo/bin ]] && path=($HOME/.cargo/bin $path)
+  [[ -d $HOME/.ghcup/bin ]] && path=($HOME/.ghcup/bin $path)
 }
 function init_aws() {
   local AWS_CONFIG=$HOME/etc/aws-config.ini
   [[ -f $AWS_CONFIG ]] && export AWS_CONFIG_FILE=$AWS_CONFIG
 }
 
-init_path_base
-init_path_extern
+init_path
 [[ -d /opt/haskell/bin ]] && path+=/opt/haskell/bin
 #init_aws
 

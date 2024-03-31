@@ -1,0 +1,4 @@
+
+# /etc/zprofile sourcing is skipped
+# but want to source /etc/zshrc
+setopt GLOBAL_RCS
