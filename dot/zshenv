@@ -1,7 +1,7 @@
 #! /usr/bin/env zsh
 
 # don't want global settings
-# especially skip /etc/zprofile
+# especially skip /etc/zprofile (see ~/.zprofile)
 unsetopt GLOBAL_RCS
 
 # zshrc does compinit, so don't do it twice

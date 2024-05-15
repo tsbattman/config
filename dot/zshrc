@@ -1,11 +1,15 @@
 #! /usr/bin/env
 
-fpath=($HOME/thirdparty/zsh/zsh-completions/src $fpath /usr/local/share/zsh/site-functions)
+source $HOME/thirdparty/zsh/nix-zsh-completions/nix.plugin.zsh
+fpath=($HOME/thirdparty/zsh/nix-zsh-completions
+  $HOME/thirdparty/zsh/zsh-completions/src
+  $fpath
+  /usr/local/share/zsh/site-functions)
 
 # oh my zsh
 ZSH=$HOME/thirdparty/zsh/oh-my-zsh
 ZSH_THEME=""
-plugins=(colored-man-pages colorize git-prompt)
+plugins=(colored-man-pages colorize fzf git-prompt gpg-agent ripgrep tmux)
 CASE_SENSITIVE="true"
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
@@ -22,6 +26,7 @@ bindkey -v
 function _wrap_sp() { [[ -n $1 ]] && echo "$1 " }
 #PROMPT='%{$fg[blue]%}%D{[%I:%M:%S]} %{$fg[white]%}%2~ $(_wrap_sp $(prompt_git_info))%{$fg_bold[blue]%}%#%{$reset_color%} '
 PROMPT='%{$fg[blue]%}%D{[%I:%M:%S]} %{$fg[white]%}%2~ %{$fg_bold[blue]%}%#%{$reset_color%} '
+prompt_nix_shell_setup
 # RPS1='%{$fg_bold[green]%}%n@%m %{$reset_color%}'
 RPS1='$(git_super_status)'
 

@@ -156,6 +156,7 @@ fi
 [[ ! -d "${XDG_CONFIG_HOME=$HOME/.config}" ]] && mkdir -p "$XDG_CONFIG_HOME"
 for p in $PWD/xdg/*; do
   if [[ $(basename $p) == "msmtp" ]]; then
+    # msmtp cannot be a link in debian
     local XDGCFG="$XDG_CONFIG_HOME/$(basename $p)"
     rm -r "$XDGCFG"
     cp -R "$p" "$XDGCFG"
