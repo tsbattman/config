@@ -1,13 +1,13 @@
 #! /usr/bin/env
 
 source $HOME/thirdparty/zsh/nix-zsh-completions/nix.plugin.zsh
-fpath=($HOME/thirdparty/zsh/nix-zsh-completions
-  $HOME/thirdparty/zsh/zsh-completions/src
+fpath=("$HOME/thirdparty/zsh/nix-zsh-completions"
+  "$HOME/thirdparty/zsh/zsh-completions/src"
   $fpath
   /usr/local/share/zsh/site-functions)
 
 # oh my zsh
-ZSH=$HOME/thirdparty/zsh/oh-my-zsh
+ZSH="$HOME/thirdparty/zsh/oh-my-zsh"
 ZSH_THEME=""
 plugins=(colored-man-pages colorize fzf git-prompt gpg-agent ripgrep tmux)
 CASE_SENSITIVE="true"
@@ -40,6 +40,7 @@ else
   alias myproc='ps -u $USER uf'
 fi
 alias hp2ps='hp2ps -c'
+alias nix-zsh="nix-shell --run 'exec zsh'"
 
 # my opts
 setopt no_beep
@@ -49,8 +50,8 @@ setopt no_share_history
 function cd () { builtin cd $1; ls; }
 function pd () { builtin pushd $1; ls; }
 
-executable lesspipe && eval $(lesspipe)
-executable lesspipe.sh && export LESSOPEN="| lesspipe.sh %s" # XXX: Why has eval $(lesspipe.sh) stopped working???
+executable lesspipe && eval "$(lesspipe)"
+executable lesspipe.sh && eval "$(lesspipe.sh)"
 executable aws_zsh_completer.sh && source `which aws_zsh_completer.sh`
 if executable dircolors && [[ -f $HOME/.dircolors ]]; then
   eval $(dircolors $HOME/.dircolors)
@@ -62,16 +63,11 @@ fi
 function svndiff() { svn diff "$@" | pygmentize -l diff }
 function zle-line-finish() { zle reset-prompt }
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 autoload insert-unicode-char
 zle -N insert-unicode-char
 bindkey '^Xi' insert-unicode-char
 
 autoload -U +X bashcompinit && bashcompinit
-# executable stack && eval "$(stack --bash-completion-script stack)"
 # executable pandoc && eval "$(pandoc --bash-completion)"
 export GHCUP_USE_XDG_DIRS=1
 

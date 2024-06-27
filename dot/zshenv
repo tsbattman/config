@@ -25,21 +25,26 @@ then
   source "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh"
 fi
 
+typeset -gTU NIX_PATH nix_path :
+nix_path+=$XDG_STATE_HOME/nix/defexpr/channels
+
+if [[ -e "${XDG_STATE_HOME}/nix/profile/etc/profile.d/hm-session-vars.sh" ]]
+then
+  source "${XDG_STATE_HOME}/nix/profile/etc/profile.d/hm-session-vars.sh"
+fi
+
+
 typeset -gU path
-function init_path() {
-  path=($HOME/.local/bin $path)
-  [[ -d /opt/endurance/bin ]] && path=(/opt/endurance/bin $path)
-  [[ -d $HOME/.cargo/bin ]] && path=($HOME/.cargo/bin $path)
-  [[ -d $HOME/.ghcup/bin ]] && path=($HOME/.ghcup/bin $path)
-}
+path=($HOME/.local/bin $path)
+[[ -d /opt/endurance/bin ]] && path=(/opt/endurance/bin $path)
+[[ -d $HOME/.cargo/bin ]] && path=($HOME/.cargo/bin $path)
+[[ -d $HOME/.ghcup/bin ]] && path=($HOME/.ghcup/bin $path)
+[[ -d /opt/haskell/bin ]] && path+=/opt/haskell/bin
+
 function init_aws() {
   local AWS_CONFIG=$HOME/etc/aws-config.ini
   [[ -f $AWS_CONFIG ]] && export AWS_CONFIG_FILE=$AWS_CONFIG
 }
-
-init_path
-[[ -d /opt/haskell/bin ]] && path+=/opt/haskell/bin
-#init_aws
 
 # export DOCKER_HOST=tcp://seymour:2376
 # export DOCKER_TLS_VERIFY=1
