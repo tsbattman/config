@@ -34,6 +34,10 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
+    pkgs.lesspipe
+    pkgs.tree
+    pkgs.xz
+    pkgs.brotli
     pkgs.gnupg
     pkgs.pinentry_mac
     pkgs.iterm2
@@ -43,15 +47,15 @@
     pkgs.fd
     pkgs.vim-darwin
     pkgs.texliveFull
-    (pkgs.rWrapper.override {
-      packages = with pkgs.rPackages; [
-        magrittr
-        devtools
-        ggplot2
-        data_table
-        rstan
-      ];
-    })
+    # (pkgs.rWrapper.override {
+    #   packages = with pkgs.rPackages; [
+    #     magrittr
+    #     devtools
+    #     ggplot2
+    #     data_table
+    #     rstan
+    #   ];
+    # })
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -85,6 +89,8 @@
   };
 
   # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
-  programs.home-manager.path = "$XDG_STATE_HOME/nix/defexpr/channels/home-manager";
+  programs.home-manager = {
+    enable = true;
+    # path = "$XDG_STATE_HOME/nix/defexpr/channels/home-manager";
+  };
 }
