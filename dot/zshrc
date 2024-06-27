@@ -4,7 +4,8 @@ source $HOME/thirdparty/zsh/nix-zsh-completions/nix.plugin.zsh
 fpath=(
   "$XDG_STATE_HOME/nix/profile/share/zsh/site-functions"
   $fpath
-  /usr/local/share/zsh/site-functions)
+  /usr/local/share/zsh/site-functions
+)
 
 # oh my zsh
 ZSH="$HOME/thirdparty/zsh/oh-my-zsh"
@@ -40,7 +41,9 @@ else
   alias myproc='ps -u $USER uf'
 fi
 alias hp2ps='hp2ps -c'
+
 alias nix-zsh="nix-shell --run 'exec zsh'"
+alias home-manager="home-manager -I \"$XDG_STATE_HOME/nix/defexpr/channels\""
 
 # my opts
 setopt no_beep

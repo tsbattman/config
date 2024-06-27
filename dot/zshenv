@@ -25,9 +25,6 @@ then
   source "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh"
 fi
 
-typeset -gTU NIX_PATH nix_path :
-nix_path+=$XDG_STATE_HOME/nix/defexpr/channels
-
 if [[ -e "${XDG_STATE_HOME}/nix/profile/etc/profile.d/hm-session-vars.sh" ]]
 then
   source "${XDG_STATE_HOME}/nix/profile/etc/profile.d/hm-session-vars.sh"
