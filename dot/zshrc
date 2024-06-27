@@ -1,8 +1,8 @@
 #! /usr/bin/env
 
 source $HOME/thirdparty/zsh/nix-zsh-completions/nix.plugin.zsh
-fpath=("$HOME/thirdparty/zsh/nix-zsh-completions"
-  "$HOME/thirdparty/zsh/zsh-completions/src"
+fpath=(
+  "$XDG_STATE_HOME/nix/profile/share/zsh/site-functions"
   $fpath
   /usr/local/share/zsh/site-functions)
 

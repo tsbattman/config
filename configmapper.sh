@@ -49,7 +49,6 @@ if $UPDATE_EXTERNAL; then
   mkdir -p "$(extern style)"
   if executable git; then
     gitdl https://github.com/robbyrussell/oh-my-zsh.git "$(extern zsh/oh-my-zsh)"
-    gitdl https://github.com/zsh-users/zsh-completions.git "$(extern zsh/zsh-completions)"
     gitdl https://github.com/solarized/xresources.git "$(extern style/solarized-xresources)"
     if is_bsd; then
       #gitdl http://github.com/chriskempson/base16-iterm2.git "$HOME/thirdparty/style/base16-iterm2"

@@ -46,6 +46,8 @@
     pkgs.fzf
     pkgs.fd
     pkgs.texliveFull
+    pkgs.zsh-completions
+    pkgs.nix-zsh-completions
     # (pkgs.rWrapper.override {
     #   packages = with pkgs.rPackages; [
     #     magrittr
