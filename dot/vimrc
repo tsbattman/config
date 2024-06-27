@@ -41,51 +41,6 @@ let g:coc_disable_startup_warning=1
 
 filetype off
 
-runtime! bundle/vim-plug/plug.vim
-if WINDOWS()
-  call plug#begin('~/vimfiles/bundle')
-else
-  call plug#begin('~/.vim/bundle')
-endif
-
-" Theme
-Plug 'altercation/vim-colors-solarized'
-Plug 'luochen1990/rainbow'
-" Plug 'chriskempson/base16-vim'
-" Plug 'vim-airline/vim-airline'
-" Git helpers
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
-" Searching
-Plug 'mileszs/ack.vim'
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
-" Linters
-" Plug 'scrooloose/syntastic'
-Plug 'w0rp/ale'
-" Languages
-" Plug 'sheerun/vim-polyglot'
-Plug 'ledger/vim-ledger'
-" Plug 'kongo2002/fsharp-vim'
-Plug 'maverickg/stan.vim'
-Plug 'wlangstroth/vim-racket'
-Plug 'pprovost/vim-ps1'
-Plug 'JuliaLang/julia-vim'
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'derekwyatt/vim-scala'
-" Plug 'kchmck/vim-coffee-script'
-" Plug 'pangloss/vim-javascript'
-" Plug 'mxw/vim-jsx'
-" Plug 'Shougo/unite.vim'
-" Haskell
-" Plug 'Twinside/vim-hoogle'
-" Plug 'eagletmt/ghcmod-vim'
-" Plug 'enomsg/vim-haskellConcealPlus'
-" tmux integration
-" Plug 'christoomey/vim-tmux-navigator'
-" Plug 'benmills/vimux'
-call plug#end()
-
 """"" My stuff
 syntax enable
 set hlsearch

@@ -46,9 +46,8 @@ while [[ $# -gt 0 ]]; do
 done
 
 if $UPDATE_EXTERNAL; then
-  mkdir -p "$(extern vim)" "$(extern style)"
+  mkdir -p "$(extern style)"
   if executable git; then
-    gitdl https://github.com/junegunn/vim-plug.git "$(extern vim/bundle/vim-plug)"
     gitdl https://github.com/robbyrussell/oh-my-zsh.git "$(extern zsh/oh-my-zsh)"
     gitdl https://github.com/zsh-users/zsh-completions.git "$(extern zsh/zsh-completions)"
     gitdl https://github.com/solarized/xresources.git "$(extern style/solarized-xresources)"
@@ -87,9 +86,6 @@ LOCAL="$HOME/.local"
 for b in bin/*; do
   link "$PWD/$b" "$LOCAL/$b"
 done
-
-mkdir -p "$LOCAL/state/nix/defexpr"
-link "$PWD/nix/defexpr.nix" "$LOCAL/state/nix/defexpr/default.nix"
 
 if is_macos && (ls mac/*.plist > /dev/null 2>&1); then
   for pl in mac/*.plist; do
@@ -164,8 +160,6 @@ for p in $PWD/xdg/*; do
     link "$p" "$XDG_CONFIG_HOME/$(basename $p)"
   fi
 done
-
-link "$(extern vim/bundle)" "$PWD/dot/vim/bundle"
 
 if [[ -v WSLENV ]]; then
   SSHPAGEANT=$HOME/.local/bin/wsl2-ssh-pageant.exe

@@ -45,7 +45,6 @@
     pkgs.ripgrep
     pkgs.fzf
     pkgs.fd
-    pkgs.vim-darwin
     pkgs.texliveFull
     # (pkgs.rWrapper.override {
     #   packages = with pkgs.rPackages; [
@@ -92,5 +91,24 @@
   programs.home-manager = {
     enable = true;
     # path = "$XDG_STATE_HOME/nix/defexpr/channels/home-manager";
+  };
+
+  programs.vim = {
+    enable = true;
+    extraConfig = ''
+      source $HOME/.vimrc
+    '';
+    plugins = with pkgs.vimPlugins; [
+      vim-colors-solarized
+      rainbow
+
+      vim-fugitive
+      vim-gitgutter
+
+      fzf-vim
+      fzfWrapper
+
+      ale
+    ];
   };
 }
