@@ -138,6 +138,6 @@ set grepformat=%f:%l:%c:%m
 nnoremap <leader>cn :edit ++enc=gb18030<CR>
 nnoremap } }zz
 nnoremap { {zz
-nnoremap <leader>ag :Ack<Space>
+nnoremap <leader>rg :Rg<Space>
 
 nnoremap <leader>o :FZF<CR>

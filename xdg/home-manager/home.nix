@@ -103,6 +103,7 @@
     plugins = with pkgs.vimPlugins; [
       vim-colors-solarized
       rainbow
+      vim-nix
 
       vim-fugitive
       vim-gitgutter
