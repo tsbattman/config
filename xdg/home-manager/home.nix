@@ -34,18 +34,22 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
-    pkgs.lesspipe
-    pkgs.tree
-    pkgs.xz
     pkgs.brotli
+    pkgs.xz
+
+    pkgs.iterm2
     pkgs.gnupg
     pkgs.pinentry_mac
-    pkgs.iterm2
-    pkgs.tmux
-    pkgs.ripgrep
-    pkgs.fzf
+
     pkgs.fd
+    pkgs.ffmpeg
+    pkgs.fzf
+    pkgs.lesspipe
+    pkgs.ripgrep
     pkgs.texliveFull
+    pkgs.tmux
+    pkgs.tree
+
     pkgs.zsh-completions
     pkgs.nix-zsh-completions
     # (pkgs.rWrapper.override {
