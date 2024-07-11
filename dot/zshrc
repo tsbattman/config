@@ -32,7 +32,6 @@ prompt_nix_shell_setup
 RPS1='$(git_super_status)'
 
 alias lt='ll -rt'
-alias ccat='colorize'
 if isosx; then
   alias myproc='ps -u $USER -f'
   alias showHidden='defaults write com.apple.finder AppleShowAllFiles YES'
@@ -41,6 +40,10 @@ else
   alias myproc='ps -u $USER uf'
 fi
 alias hp2ps='hp2ps -c'
+
+# oh-my-zsh set to ls -G on mac, but may use gnu ls if in nix-shell
+# and ls --color may work anyhow so always check
+command ls --color=tty /dev/null &> /dev/null && alias ls='ls --color=tty'
 
 alias nix-zsh="nix-shell --run 'exec zsh'"
 alias home-manager="home-manager -I \"$XDG_STATE_HOME/nix/defexpr/channels\""
@@ -56,12 +59,12 @@ function pd () { builtin pushd $1; ls; }
 executable lesspipe && eval "$(lesspipe)"
 executable lesspipe.sh && eval "$(lesspipe.sh)"
 executable aws_zsh_completer.sh && source `which aws_zsh_completer.sh`
-if executable dircolors && [[ -f $HOME/.dircolors ]]; then
-  eval $(dircolors $HOME/.dircolors)
-  zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-else
-  export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
-fi
+# if executable dircolors && [[ -f $HOME/.dircolors ]]; then
+#   eval $(dircolors $HOME/.dircolors)
+#   zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+# else
+#   export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
+# fi
 
 function svndiff() { svn diff "$@" | pygmentize -l diff }
 function zle-line-finish() { zle reset-prompt }
