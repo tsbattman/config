@@ -34,13 +34,14 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
-    pkgs.brotli
-    pkgs.xz
 
+    pkgs.anki-bin
     pkgs.iterm2
     pkgs.gnupg
     pkgs.pinentry_mac
 
+    pkgs.brotli
+    pkgs.chroma
     pkgs.fd
     pkgs.ffmpeg
     pkgs.fzf
@@ -49,6 +50,7 @@
     pkgs.texliveFull
     pkgs.tmux
     pkgs.tree
+    pkgs.xz
 
     pkgs.zsh-completions
     pkgs.nix-zsh-completions
