@@ -35,9 +35,11 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
 
+    # pkgs.alacritty
     pkgs.anki-bin
-    pkgs.iterm2
     pkgs.gnupg
+    pkgs.iterm2
+    # pkgs.kitty
     pkgs.pinentry_mac
 
     pkgs.brotli
@@ -46,6 +48,7 @@
     pkgs.ffmpeg
     pkgs.fzf
     pkgs.lesspipe
+    pkgs.mosh
     pkgs.ripgrep
     pkgs.texliveFull
     pkgs.tmux
@@ -54,6 +57,8 @@
 
     pkgs.zsh-completions
     pkgs.nix-zsh-completions
+
+    pkgs.youtube-dl
     # (pkgs.rWrapper.override {
     #   packages = with pkgs.rPackages; [
     #     magrittr
