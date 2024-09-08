@@ -1,23 +1,20 @@
 { lib
+, buildPythonPackage
 , fetchFromGitHub
-, python3
 , setuptools
-}:
-python3.pkgs.buildPythonApplication rec {
+}: buildPythonPackage rec {
   pname = "youtube-dl";
   version = "c5098961b04ce83f4615f2a846c84f803b072639";
-  format = "setuptools";
+  pyproject = true;
 
   src = fetchFromGitHub {
     owner = "ytdl-org";
-    repo = "youtube-dl";
+    repo = pname;
     rev = version;
     hash = "sha256-bR3ns7mnavRXeZazAIuF8FmUXeWSiB7+zdtBpSKTtiw";
   };
 
   build-system = [ setuptools ];
-
-  doCheck= false;
 
   meta = {
     description = "YouTube downloader";

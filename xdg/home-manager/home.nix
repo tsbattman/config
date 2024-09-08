@@ -49,6 +49,7 @@
     pkgs.fzf
     pkgs.lesspipe
     pkgs.mosh
+    pkgs.pstree
     pkgs.ripgrep
     pkgs.texliveFull
     pkgs.tmux
