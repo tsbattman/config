@@ -51,6 +51,7 @@
     pkgs.mosh
     pkgs.pstree
     pkgs.ripgrep
+    pkgs.statix
     pkgs.texliveFull
     pkgs.tmux
     pkgs.tree
