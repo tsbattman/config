@@ -4,14 +4,14 @@
 , setuptools
 }: buildPythonPackage rec {
   pname = "youtube-dl";
-  version = "c5098961b04ce83f4615f2a846c84f803b072639";
+  version = "5975d7bb96095fae7c35e7cfcd819255a5b57087";
   pyproject = true;
 
   src = fetchFromGitHub {
     owner = "ytdl-org";
     repo = pname;
     rev = version;
-    hash = "sha256-bR3ns7mnavRXeZazAIuF8FmUXeWSiB7+zdtBpSKTtiw";
+    hash = "sha256-mQX9lN6LVXDIdzcC08MH/y99g/6jG5k4GoVsdSr5jwc=";
   };
 
   build-system = [ setuptools ];

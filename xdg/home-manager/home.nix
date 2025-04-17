@@ -41,9 +41,11 @@
     pkgs.iterm2
     # pkgs.kitty
     pkgs.pinentry_mac
+    pkgs.vlc-bin
 
     pkgs.brotli
     pkgs.chroma
+    pkgs.docker-client
     pkgs.fd
     pkgs.ffmpeg
     pkgs.fzf
@@ -117,6 +119,7 @@
       vim-colors-solarized
       rainbow
       vim-nix
+      stan-vim
 
       vim-fugitive
       vim-gitgutter
