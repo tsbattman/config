@@ -1,5 +1,5 @@
 { lib
-, python3
+, python
 }: let
-  youtube-dl = python3.pkgs.callPackage ./python-package.nix {};
-in python3.pkgs.toPythonApplication youtube-dl
+  youtube-dl = python.pkgs.callPackage ./python-package.nix {};
+in python.pkgs.toPythonApplication youtube-dl
