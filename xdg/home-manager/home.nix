@@ -38,7 +38,6 @@
 
       # pkgs.alacritty
       pkgs.anki-bin
-      pkgs.gnupg
       pkgs.iterm2
       # pkgs.kitty
       pkgs.pinentry_mac
@@ -50,6 +49,7 @@
       pkgs.fd
       pkgs.ffmpeg
       pkgs.fzf
+      pkgs.gnupg
       pkgs.lesspipe
       pkgs.mosh
       pkgs.pstree
@@ -58,6 +58,7 @@
       pkgs.texliveFull
       pkgs.tmux
       pkgs.tree
+      pkgs.yubikey-manager
       pkgs.xz
 
       pkgs.zsh-completions
