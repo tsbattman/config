@@ -1,10 +1,12 @@
-{ lib
-, buildPythonPackage
-, fetchFromGitHub
-, setuptools
-}: buildPythonPackage rec {
+{
+  lib,
+  buildPythonPackage,
+  fetchFromGitHub,
+  setuptools,
+}:
+buildPythonPackage rec {
   pname = "youtube-dl";
-  version = "5975d7bb96095fae7c35e7cfcd819255a5b57087";
+  version = "a084c80f7bac9ae343075a97cc0fb2c1c96ade89";
   pyproject = true;
 
   src = fetchFromGitHub {

@@ -43,15 +43,18 @@
       pkgs.pinentry_mac
       pkgs.vlc-bin
 
-      pkgs.brotli
-      pkgs.chroma
+      pkgs.bat
+      # pkgs.brotli
+      # pkgs.chroma
       pkgs.docker-client
       pkgs.fd
       pkgs.ffmpeg
       pkgs.fzf
+      pkgs.gh
       pkgs.gnupg
       pkgs.lesspipe
       pkgs.mosh
+      pkgs.nixfmt-rfc-style
       pkgs.pstree
       pkgs.ripgrep
       pkgs.statix
@@ -60,10 +63,8 @@
       pkgs.tree
       pkgs.yubikey-manager
       pkgs.xz
-
       pkgs.zsh-completions
       pkgs.nix-zsh-completions
-      pkgs.nixfmt-rfc-style
 
       pkgs.youtube-dl
       # (pkgs.rWrapper.override {
@@ -133,6 +134,8 @@
         fzfWrapper
 
         ale
+
+        copilot-vim
       ];
     };
   };
