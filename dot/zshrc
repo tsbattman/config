@@ -1,6 +1,6 @@
 #! /usr/bin/env
 
-source $HOME/thirdparty/zsh/nix-zsh-completions/nix.plugin.zsh
+source "$XDG_STATE_HOME/nix/profile/share/zsh/plugins/nix/nix.plugin.zsh"
 fpath=(
   "$XDG_STATE_HOME/nix/profile/share/zsh/site-functions"
   $fpath

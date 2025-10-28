@@ -36,16 +36,13 @@
       #   echo "Hello, ${config.home.username}!"
       # '')
 
-      # pkgs.alacritty
       pkgs.anki-bin
       pkgs.iterm2
-      # pkgs.kitty
       pkgs.pinentry_mac
       pkgs.vlc-bin
 
       pkgs.bat
-      # pkgs.brotli
-      # pkgs.chroma
+      pkgs.claude-code
       pkgs.docker-client
       pkgs.fd
       pkgs.ffmpeg
@@ -53,6 +50,7 @@
       pkgs.gh
       pkgs.gnupg
       pkgs.lesspipe
+      pkgs.mc
       pkgs.mosh
       pkgs.nixfmt-rfc-style
       pkgs.pstree
@@ -66,16 +64,7 @@
       pkgs.zsh-completions
       pkgs.nix-zsh-completions
 
-      pkgs.youtube-dl
-      # (pkgs.rWrapper.override {
-      #   packages = with pkgs.rPackages; [
-      #     magrittr
-      #     devtools
-      #     ggplot2
-      #     data_table
-      #     rstan
-      #   ];
-      # })
+      pkgs.yt-dlp
     ];
 
     # Home Manager is pretty good at managing dotfiles. The primary way to manage
