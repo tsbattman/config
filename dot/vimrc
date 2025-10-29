@@ -100,8 +100,12 @@ end
 
 if OSX()
   " Paste from system clipboard using pbpaste
+  vnoremap <leader>p :r!pbpaste<CR>
   nnoremap <leader>p :r!pbpaste<CR>
-  inoremap <leader>p <Esc>:r!pbpaste<CR>
+
+  " Copy to clipboard
+  vnoremap <leader>y :w !pbcopy<CR><CR>
+  nnoremap <leader>y :w !pbcopy<CR><CR>
 end
 
 if &term =~ '^screen'
