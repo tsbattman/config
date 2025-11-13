@@ -42,6 +42,7 @@
       pkgs.vlc-bin
 
       pkgs.bat
+      pkgs.btop
       pkgs.claude-code
       pkgs.docker-client
       pkgs.fd
@@ -49,9 +50,12 @@
       pkgs.fzf
       pkgs.gh
       pkgs.gnupg
+      pkgs.graphviz
       pkgs.lesspipe
+      pkgs.macpm
       pkgs.mc
       pkgs.mosh
+      pkgs.ncdu
       pkgs.nixfmt-rfc-style
       pkgs.pstree
       pkgs.ripgrep
