@@ -49,7 +49,6 @@
       pkgs.ffmpeg
       pkgs.fzf
       pkgs.gh
-      pkgs.gnupg
       pkgs.graphviz
       pkgs.lesspipe
       pkgs.macpm

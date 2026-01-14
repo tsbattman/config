@@ -63,8 +63,12 @@ else
   export FZF_ALT_C_COMMAND="fd -t d . $HOME"
 fi
 alias convcn='iconv -f gb18030'
-export GPG_TTY=$(tty)
-export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+if isosx; then
+  export SSH_AUTH_SOCK="$HOME/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock"
+else
+  export SSH_AUTH_SOCK="$HOME/.bitwarden-ssh-agent.sock"
+fi
+
 # export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles
 export LEDGER_FILE=$HOME/notes/unified.ldg
 
