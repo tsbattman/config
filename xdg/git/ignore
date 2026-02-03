@@ -19,3 +19,5 @@ Icon
 *.hi
 *.o
 *.so
+
+**/.claude/settings.local.json

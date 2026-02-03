@@ -37,11 +37,12 @@
       # '')
 
       pkgs.anki-bin
-      pkgs.iterm2
-      pkgs.pinentry_mac
+      pkgs.ghostty-bin
       pkgs.vlc-bin
 
+      pkgs.aider-chat
       pkgs.bat
+      pkgs.bitwarden-cli
       pkgs.btop
       pkgs.claude-code
       pkgs.docker-client
@@ -58,6 +59,7 @@
       pkgs.nixfmt-rfc-style
       pkgs.pstree
       pkgs.ripgrep
+      pkgs.ruff
       pkgs.statix
       pkgs.texliveFull
       pkgs.tmux
