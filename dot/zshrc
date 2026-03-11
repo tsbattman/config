@@ -24,8 +24,6 @@ export EDITOR="vim"
 # use  oh-my-zsh for now
 bindkey -v
 #bindkey '^R' history-incremental-pattern-search-backward
-function _wrap_sp() { [[ -n $1 ]] && echo "$1 " }
-#PROMPT='%{$fg[blue]%}%D{[%I:%M:%S]} %{$fg[white]%}%2~ $(_wrap_sp $(prompt_git_info))%{$fg_bold[blue]%}%#%{$reset_color%} '
 PROMPT='%{$fg[blue]%}%D{[%I:%M:%S]} %{$fg[white]%}%2~ %{$fg_bold[blue]%}%#%{$reset_color%} '
 prompt_nix_shell_setup
 # RPS1='%{$fg_bold[green]%}%n@%m %{$reset_color%}'
@@ -46,7 +44,6 @@ alias hp2ps='hp2ps -c'
 command ls --color=tty /dev/null &> /dev/null && alias ls='ls --color=tty'
 
 alias nix-zsh="nix-shell --run 'exec zsh'"
-alias home-manager="home-manager -I \"$XDG_STATE_HOME/nix/defexpr/channels\""
 
 # my opts
 setopt no_beep
@@ -66,7 +63,7 @@ executable aws_zsh_completer.sh && source `which aws_zsh_completer.sh`
 #   export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
 # fi
 
-function svndiff() { svn diff "$@" | pygmentize -l diff }
+function svndiff() { svn diff "$@" | bat --language diff }
 function zle-line-finish() { zle reset-prompt }
 
 autoload insert-unicode-char
