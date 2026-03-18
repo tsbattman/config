@@ -22,12 +22,15 @@ api_key = ""
 [ai.google]
 
 [ai.models]
-custom_models = []
 chat_model = "anthropic/claude-sonnet-4-20250514"
 edit_model = "ollama/kimi-k2.5:cloud"
-displayed_models = []
+custom_models = ["xai/grok-code-fast-1"]
 
 [ai.open_ai]
+
+[ai.custom_providers.xai]
+api_key = ""
+base_url = "https://api.x.ai/v1/"
 
 [keymap]
 preset = "vim"
