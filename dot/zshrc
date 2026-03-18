@@ -14,6 +14,7 @@ plugins=(colored-man-pages colorize fzf git-prompt tmux)
 CASE_SENSITIVE="true"
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
+ZSH_TMUX_FIXTERM=false
 source $ZSH/oh-my-zsh.sh
 
 # my stuff
