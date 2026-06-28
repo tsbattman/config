@@ -54,13 +54,16 @@
       pkgs.mc
       pkgs.mosh
       pkgs.ncdu
+      pkgs.neovim
       pkgs.nixfmt
+      pkgs.opencode
       pkgs.pstree
       pkgs.ripgrep
       pkgs.ruff
       pkgs.statix
       pkgs.texliveFull
       pkgs.tmux
+      pkgs.tombi
       pkgs.tree
       pkgs.yubikey-manager
       pkgs.xz
