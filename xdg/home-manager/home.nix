@@ -54,7 +54,7 @@
       pkgs.mc
       pkgs.mosh
       pkgs.ncdu
-      pkgs.neovim
+      # pkgs.neovim  # Managed via programs.neovim instead
       pkgs.nixfmt
       pkgs.opencode
       pkgs.pstree
@@ -133,6 +133,48 @@
       ale
 
       copilot-vim
+    ];
+  };
+
+  programs.neovim = {
+    enable = true;
+    viAlias = true;
+    vimAlias = false; # Keep vim pointing to vim for now
+    vimdiffAlias = true;
+    defaultEditor = false;
+    withRuby = false;
+    withPython3 = false;
+
+    # Don't manage the config file - we have a custom Lua config
+    extraConfig = ''
+      " Neovim config is managed manually in ~/.config/nvim/
+      " This just ensures the init.backup.lua is loaded
+      lua dofile(vim.fn.stdpath('config') .. '/init.backup.lua')
+    '';
+
+    # LSP servers, formatters, linters
+    extraPackages = with pkgs; [
+      # LSP servers
+      nil # Nix LSP
+      pyright # Python LSP
+      ruff # Python linting/formatting
+      clang-tools # C++ LSP (clangd)
+      haskell-language-server # Haskell LSP
+      texlab # LaTeX LSP
+
+      # Formatters
+      nixfmt # Nix formatter
+      # ruff also used for formatting
+
+      # Linters
+      statix # Nix linter
+      hlint # Haskell linter
+
+      # Tools for fuzzy finder
+      ripgrep
+      fd
+      fzf
+      bat
     ];
   };
 }

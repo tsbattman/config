@@ -3,6 +3,9 @@ xmonad.errors
 xmonad-*-linux
 .ghc.environment.*
 
+# managed by home-manager
+xdg/nvim/init.lua
+
 # Created by http://www.gitignore.io
 
 ### Linux ###
